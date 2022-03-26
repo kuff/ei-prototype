@@ -19,6 +19,7 @@ public class Level : MonoBehaviour
     public static int activeLevelIndex = -1;
 
     private static Level[] levelsInScene = new Level[3];
+    private static bool firstLevelStarted = false;
 
     private void OnEnable()
     {
@@ -27,7 +28,8 @@ public class Level : MonoBehaviour
 
     protected void Start()
     {
-        Level.Continue();
+        if (!Level.firstLevelStarted)
+            Level.Continue();
     }
 
     private static Level[] getLevelsInScene(Scene scene)
@@ -64,14 +66,18 @@ public class Level : MonoBehaviour
      */
     private static void Continue()
     {
-        if (Level.activeLevelIndex == -1) Logger.Log(Classifier.Level.Unloaded, Level.activeLevel);
+        if (!Level.firstLevelStarted)
+        {
+            Logger.Log(Classifier.Level.Unloaded, Level.activeLevel);
+            Level.firstLevelStarted = true;
+        }
 
         Scene scene = SceneManager.GetActiveScene();
         
         Level.activeLevelIndex++;
         
         Logger.Log(Classifier.Level.Loaded, Level.activeLevel);
-        if (Level.activeLevelIndex == -1) Debug.Log("Active Level is now " + Level.activeLevel.name + " in Scene " + scene.name);
+        if (!Level.firstLevelStarted) Debug.Log("Active Level is now " + Level.activeLevel.name + " in Scene " + scene.name);
 
         // activate the new activeLevel
         Level.getLevelsInScene(scene)[Level.activeLevelIndex].Activate();
