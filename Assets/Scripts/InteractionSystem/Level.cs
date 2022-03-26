@@ -12,222 +12,80 @@ public class Level : MonoBehaviour
     public Prompt entryPrompt;
 
     [HideInInspector]
-    public static GameObject globalPlayerObject;
-    [HideInInspector]
     public bool isActive;
     [HideInInspector]
     public static Level activeLevel;
     [HideInInspector]
-    public static int totalSceneChanges = 0;
+    public static int activeLevelIndex = -1;
 
-    private static bool playerInitiated = false;
-    private static List<int> culledScenes = new List<int>();
-
-    static Level()
-    {
-        SceneManager.activeSceneChanged += OnActiveSceneChanged;
-        SceneManager.sceneLoaded += OnSceneLoaded;
-        SceneManager.sceneUnloaded += OnSceneUnloaded;
-
-        /*GameObject[] objects = SceneManager.GetSceneByBuildIndex(0).GetRootGameObjects();
-        foreach (GameObject gameObject in objects)
-        {
-            Debug.Log(gameObject.name);
-            if (gameObject.tag == "Player")
-                globalPlayerObject = gameObject;
-        }
-        Debug.Log(globalPlayerObject);*/
-    }
+    private static Level[] levelsInScene = new Level[3];
 
     private void OnEnable()
     {
         this.SetVisibilityOfAllChildren(false);
     }
 
-    private void Start()
+    protected void Start()
     {
-        // ...
+        Level.Continue();
     }
 
-    private static void CullPlayerObjects()
+    private static Level[] getLevelsInScene(Scene scene)
     {
-        //Debug.Log(SceneManager.sceneCount);
-        //Debug.Log(!playerInitiated && SceneManager.GetActiveScene().buildIndex != 0);
-        if (!playerInitiated && SceneManager.GetActiveScene().buildIndex == 0)
-            return;
-
-        bool hasEncounteredPlayer = false;
-        for (int i = 0; i < SceneManager.sceneCount; i++)
+        if (Level.levelsInScene[0] == null)
         {
-            Scene scene = SceneManager.GetSceneAt(i);
-            //Debug.Log("Looking at Scene " + scene.name);
-
-            /*if (Level.culledScenes.Contains(scene.buildIndex))
-                continue;*/
-
-            IEnumerator rootEnumerator = scene.GetRootGameObjects().GetEnumerator();
-            rootEnumerator.Reset();
-            //GameObject playerGameObject = Level.globalPlayerObject;
-
-            while (rootEnumerator.MoveNext())
+            // find all Level components in the Scene
+            IEnumerator ie = scene.GetRootGameObjects().GetEnumerator();
+            ie.Reset();
+            while (ie.MoveNext())
             {
-                GameObject current = (GameObject)rootEnumerator.Current;
-                if (current.tag == "Player")
-                {
-                    if (scene.name == "Microverse" && !hasEncounteredPlayer)
-                        hasEncounteredPlayer = true;
-                    else
+                GameObject currentObject = (GameObject)ie.Current;
+                if (currentObject != null && currentObject.GetComponent<Level>())
+                    //levelsInScene.Add(currentObject.GetComponent<Level>());
+                    switch (currentObject.name)
                     {
-                        Debug.Log("Found Player in Scene " + scene.name);
-                        if (!DebugPlayer.isActive)
-                        {
-                            current.SetActive(false);
-                            //culledScenes.Add(scene.buildIndex);
-                        }
-
-                        break;
+                        case "Level1":
+                            Level.levelsInScene[0] = currentObject.GetComponent<Level>();
+                            break;
+                        case "Level2":
+                            Level.levelsInScene[1] = currentObject.GetComponent<Level>();
+                            break;
+                        case "Level3":
+                            Level.levelsInScene[2] = currentObject.GetComponent<Level>();
+                            break;
                     }
-                }
             }
-            //Debug.Log("Number of culled Scenes: " + Level.culledScenes.Count);
         }
-
-        playerInitiated = true;
+        return Level.levelsInScene;
     }
 
-    private static void OnActiveSceneChanged(Scene oldScene, Scene newScene)
-    {
-        Logger.Log(Classifier.Level.Unloaded, Level.activeLevel);
-        Level.CullPlayerObjects();
-
-        // find all Level components in the Scene
-        Level[] levelsInScene = new Level[4];
-        IEnumerator ie = newScene.GetRootGameObjects().GetEnumerator();
-        ie.Reset();
-        while (ie.MoveNext())
-        {
-            GameObject currentObject = (GameObject)ie.Current;
-            if (currentObject != null && currentObject.GetComponent<Level>())
-                //levelsInScene.Add(currentObject.GetComponent<Level>());
-                switch (currentObject.name)
-                {
-                    case "Level1":
-                        levelsInScene[0] = currentObject.GetComponent<Level>();
-                        break;
-                    case "Level2":
-                        levelsInScene[1] = currentObject.GetComponent<Level>();
-                        break;
-                    case "Level3":
-                        levelsInScene[2] = currentObject.GetComponent<Level>();
-                        break;
-                    case "Level4":
-                        levelsInScene[3] = currentObject.GetComponent<Level>();
-                        break;
-                }
-        }
-
-        // use totalSceneLoads to figure out what level to load
-        switch (Level.totalSceneChanges)
-        {
-            case 0:
-            case 1:
-            case 2:
-                Level.activeLevel = levelsInScene[0];
-                break;
-            case 3:
-            case 4:
-                Level.activeLevel = levelsInScene[1];
-                break;
-            case 5:
-            case 6:
-                Level.activeLevel = levelsInScene[2];
-                break;
-            case 7:
-                Level.activeLevel = levelsInScene[3];
-                break;
-            default:  // case 8
-                Level.activeLevel = levelsInScene[1];
-                break;
-        }
-        Logger.Log(Classifier.Level.Loaded, Level.activeLevel);
-
-        Debug.Log("Active Level is now " + Level.activeLevel.name + " in Scene " + SceneManager.GetActiveScene().name);
-        //Debug.Log(Level.totalSceneChanges);
-
-        //Level.LoadNextLevel(Level.GetNextSceneName());
-        Level.activeLevel.Activate();
-        //if (SceneManager.GetActiveScene().buildIndex == 0 || Level.totalSceneChanges > 0) 
-        Level.totalSceneChanges++;
-    }
-
-    private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        // ...
-    }
-
-    private static void OnSceneUnloaded(Scene scene)
-    {
-        // ...
-    }
-
+    /*
+     * Continue to the next Level after completing the current activeLevel
+     */
     private static void Continue()
     {
-        try
-        {
-            Scene nextScene = SceneManager.GetSceneByName(Level.GetNextSceneName());
-            if (nextScene != null && nextScene.isLoaded)  // these two conditions are probably the same thing...
-                SceneManager.SetActiveScene(nextScene);
-            else
-                // load next level (and scene) if async load didn't work for some reason
-                SceneManager.LoadScene(Level.GetNextSceneName());
-        }
-        catch (System.InvalidOperationException e)
-        {
-            // we just pretend the level changed here
-            Level.totalSceneChanges++;
-            Debug.LogWarning("Level tried to continue to next level but failed: " + e);
-        }
+        if (Level.activeLevelIndex == -1) Logger.Log(Classifier.Level.Unloaded, Level.activeLevel);
+
+        Scene scene = SceneManager.GetActiveScene();
+        
+        Level.activeLevelIndex++;
+        
+        Logger.Log(Classifier.Level.Loaded, Level.activeLevel);
+        if (Level.activeLevelIndex == -1) Debug.Log("Active Level is now " + Level.activeLevel.name + " in Scene " + scene.name);
+
+        // activate the new activeLevel
+        Level.getLevelsInScene(scene)[Level.activeLevelIndex].Activate();
     }
 
-    private static IEnumerator LoadNextLevel(string sceneName)
-    {
-        // use totalSceneLoads to figure out what scene to load
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
-        asyncLoad.allowSceneActivation = false;
-
-        // wait until the asynchronous scene fully loads
-        while (!asyncLoad.isDone)
-            yield return null;
-    }
-
-    private static string GetNextSceneName()
-    {
-        switch (Level.totalSceneChanges)
-        {
-            // first scene (tutorial) will be loaded automatically
-            case 1:
-            case 3:
-            case 5:
-            case 7:
-                return "Village";
-            case 2:
-            case 4:
-            case 6:
-                return "Microverse";
-            default:  // 8
-                return "Room";
-        }
-    }
-
+    /*
+     * Set visibility of all child GameObjects
+     */
     private void SetVisibilityRecursively(GameObject node, bool isVisible, bool keepDisabled = false)
     {
         if (node.GetComponent<InteractionTarget>() != null)
             keepDisabled = true;
         else if (node.GetComponent<Task>() != null && node.GetComponent<Task>().hideUntilActive)
             keepDisabled = true;
-
-        /*if (isVisible) node.layer = 0;
-        else node.layer = 1;*/
 
         if (!keepDisabled || node.GetComponent<InteractionTarget>() == null || !isVisible)
         {
@@ -252,8 +110,6 @@ public class Level : MonoBehaviour
      */
     public void SetVisibilityOfAllChildren(bool isVisible)
     {
-        //Debug.Log(this.name + "->SetVisibilityOfAllChildren->" + isVisible);
-
         this.isActive = isVisible;
 
         this.SetVisibilityRecursively(this.gameObject, isVisible);
@@ -264,8 +120,7 @@ public class Level : MonoBehaviour
      */
     public void Activate()
     {
-        //Debug.Log(this.name + "->Activate");
-
+        Level.activeLevel = this;
         this.SetVisibilityOfAllChildren(true);
         if (entryPrompt != null) entryPrompt.Activate();
         else Debug.LogError(this + " was activated but no initial Prompt was given. Did you foget to reference the entry Prompt?");
@@ -289,6 +144,9 @@ public class Level : MonoBehaviour
         Level.Continue();
     }
 
+    /*
+     * Overload function for event chain calls, pointing to Complete()
+     */
     public void Complete(Prompt p)
     {
         this.Complete();
