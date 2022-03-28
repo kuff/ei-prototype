@@ -174,8 +174,6 @@ public class Task : Prompt
 
     protected override void TurnOn(int delayTime = 0)  // delayTime not actually used
     {
-        Debug.Log("Turned On!");
-
         // make visible and interactable
         if (this.hideUntilActive && !isVisible) this.Show();
 
