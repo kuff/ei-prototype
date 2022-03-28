@@ -13,7 +13,7 @@ public class GrabEvent : UnityEvent<Prompt> { }
 public class Task : Prompt
 {
     [Tooltip("Make GameObject glow when activated.")]
-    public bool isGlowing = true;
+    public bool isGlovingImmidiately = true;
     [Tooltip("Hide GameObject until activated.")]
     public bool hideUntilActive = false;
     [Tooltip("If set, the Task will only resolve when the associated GameObject is moved to the same location as the target transform. Setting this also makes the Task movable by the Player.")]
@@ -62,15 +62,17 @@ public class Task : Prompt
             if (validPosition && validRotation) this.Resolve();
         }
     }
-    private bool CompareRotation(Quaternion r1, Quaternion r2, float precision)
-    {
-        return Mathf.Abs(Quaternion.Dot(r1, r2)) >= 1 - precision;
-    }
+    
     protected override void OnPlaybackEnd()
     {
         if (this.GetAudioClip() != null && this.isLooping)
             this.PlaySound();  // keep playing sound effect recursively if there is one to be played
         //else this.TurnOff();
+    }
+
+    private bool CompareRotation(Quaternion r1, Quaternion r2, float precision)
+    {
+        return Mathf.Abs(Quaternion.Dot(r1, r2)) >= 1 - precision;
     }
 
     public bool IsMovable()
@@ -170,11 +172,17 @@ public class Task : Prompt
         if (this.gameObject == node) isVisible = state;
     }
 
-    protected override void TurnOn()
+    protected override void TurnOn(int delayTime = 0)  // delayTime not actually used
     {
+        Debug.Log("Turned On!");
+
+        // make visible and interactable
         if (this.hideUntilActive && !isVisible) this.Show();
-        base.TurnOn();
-        this.gameObject.GetComponent<FriendlyInteractable>().Activate();
+
+        // wait to activate glow and sound if specified
+        int delay = this.isGlovingImmidiately ? 0 : 10;  // TODO: adjust wait timer here;
+        this.gameObject.GetComponent<FriendlyInteractable>().Activate(delay);
+        base.TurnOn(delay);
     }
 
     protected override void TurnOff()

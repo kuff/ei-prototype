@@ -36,11 +36,20 @@ public class FriendlyInteractable : Interactable
         }
     }
 
-    public void Activate()
+    public void Activate(int delayTime = 0)
     {
-        this.ChangeMaterial(this.highlightMaterial);
-        if (!this.gameObject.GetComponent<Task>().isGlowing) return;
-        base.OnHandHoverBegin(new Hand());  // fake hand don't sue me Valve
+        // wait to activate glow if specified
+        IEnumerator DelayedCallback()
+        {
+            yield return new WaitForSeconds(delayTime);
+            if (this.parentTask.IsActive())
+            {
+                this.ChangeMaterial(this.highlightMaterial);
+                //if (!this.gameObject.GetComponent<Task>().isGlovingImmidiately) return;
+                base.OnHandHoverBegin(new Hand());  // fake hand don't sue me Valve
+            }
+        }
+        StartCoroutine(DelayedCallback());
     }
 
     public void DebugEnterHover()
@@ -84,7 +93,7 @@ public class FriendlyInteractable : Interactable
         this.isActuallyHovering = true;
         this.parentTask.EnterHover(hand);
 
-        if (!this.parentTask.isGlowing) return;
+        //if (!this.parentTask.isGlovingImmidiately) return;
         base.OnHandHoverEnd(hand);
         this.ChangeMaterial(this.hoverMaterial);
         base.OnHandHoverBegin(hand);
@@ -99,7 +108,7 @@ public class FriendlyInteractable : Interactable
         this.isActuallyHovering = false;
         this.parentTask.ExitHover(hand);
 
-        if (!this.parentTask.isGlowing) return;
+        //if (!this.parentTask.isGlovingImmidiately) return;
         base.OnHandHoverEnd(hand);
         this.ChangeMaterial(this.highlightMaterial);
         base.OnHandHoverBegin(hand);

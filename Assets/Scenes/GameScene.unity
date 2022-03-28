@@ -240,7 +240,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  isGlowing: 1
+  isGlovingImmidiately: 0
   hideUntilActive: 0
   target: {fileID: 0}
   targetPrecision: 0.2
@@ -762,7 +762,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  isGlowing: 1
+  isGlovingImmidiately: 0
   hideUntilActive: 0
   target: {fileID: 0}
   targetPrecision: 0.2
@@ -1126,7 +1126,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  isGlowing: 1
+  isGlovingImmidiately: 0
   hideUntilActive: 1
   target: {fileID: 0}
   targetPrecision: 0.2
@@ -1444,7 +1444,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  isGlowing: 1
+  isGlovingImmidiately: 0
   hideUntilActive: 1
   target: {fileID: 0}
   targetPrecision: 0.2
@@ -1715,7 +1715,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  isGlowing: 1
+  isGlovingImmidiately: 0
   hideUntilActive: 1
   target: {fileID: 0}
   targetPrecision: 0.2
@@ -1986,7 +1986,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  isGlowing: 1
+  isGlovingImmidiately: 0
   hideUntilActive: 0
   target: {fileID: 0}
   targetPrecision: 0.2

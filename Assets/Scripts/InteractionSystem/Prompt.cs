@@ -171,14 +171,23 @@ public class Prompt : MonoBehaviour
         }
     }
 
-    protected virtual void TurnOn()
+    protected virtual void TurnOn(int delayTime = 0)
     {
         this.isActive = true;
         activePrompts.Add(this);
         if (this.OnActive != null) this.OnActive.Invoke(this);
         Logger.Log(Classifier.Prompt.Activated, this);
 
-        PlaySound();
+        // wait to activate sound if specified
+        IEnumerator DelayedCallback()
+        {
+            yield return new WaitForSeconds(delayTime);
+            if (this.IsActive())
+            {
+                PlaySound();
+            }
+        }
+        StartCoroutine(DelayedCallback());
     }
 
     protected virtual void OnPlaybackEnd()

@@ -32,7 +32,7 @@ public class TaskTest : PromptTest
     /*[Test]
     public void GlowsWhenGlowingIsEnabled()
     {
-        Assert.True(testTask.isGlowing);
+        Assert.True(testTask.isGlovingImmidiately);
         Material defaultHighlightMaterial = Resources.Load<Material>("YellowHue");  // whatever we go for as the default material must be updated here
         //Debug.Log(defaultHighlightMaterial);
         Assert.AreNotEqual(defaultHighlightMaterial, testTask.GetComponent<MeshRenderer>().materials[0]);
