@@ -106,6 +106,8 @@ public class Level : MonoBehaviour
 
         if (node.GetComponent<Renderer>() != null && keepDisabled)
             node.GetComponent<Renderer>().enabled = false;
+        if (node.GetComponent<Collider>() != null && keepDisabled)
+            node.GetComponent<Collider>().enabled = false;
 
         if (node.GetComponent<Canvas>() != null)
             node.GetComponent<Canvas>().enabled = isVisible;
