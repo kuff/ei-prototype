@@ -33,6 +33,7 @@ public class Task : Prompt
     protected override void Start()
     {
         if (this.target != null) this.gameObject.AddComponent<Rigidbody>();
+        if (this.hideUntilActive) this.Hide();
         base.Start();
     }
 
@@ -122,18 +123,16 @@ public class Task : Prompt
     public new void Resolve()
     {
         if (this.target)
-        {
             this.target.Resolve();
-            this.GetComponent<Rigidbody>().isKinematic = false;
-            this.GetComponent<FriendlyInteractable>().enabled = false;
-            if (this.hideAfterCompletion)
-            {
-                this.SetChildRenderersRecursively(this.gameObject, false);
-            }
-            // impose constraints
-            Rigidbody localRigidbody = this.GetComponent<Rigidbody>();
-            localRigidbody.constraints = RigidbodyConstraints.FreezeAll;
-        }
+
+        this.GetComponent<Rigidbody>().isKinematic = false;
+        this.GetComponent<FriendlyInteractable>().enabled = false;
+        if (this.hideAfterCompletion) this.Hide();
+
+        // impose constraints
+        Rigidbody localRigidbody = this.GetComponent<Rigidbody>();
+        localRigidbody.constraints = RigidbodyConstraints.FreezeAll;
+
         base.Resolve();
     }
 
@@ -165,14 +164,15 @@ public class Task : Prompt
 
         if (node.GetComponent<Renderer>() != null)
             node.GetComponent<Renderer>().enabled = state;
+        if (node.GetComponent<Collider>() != null)
+            node.GetComponent<Collider>().enabled = state;
 
         if (this.gameObject == node) isVisible = state;
     }
 
     protected override void TurnOn()
     {
-        if (this.hideUntilActive && !isVisible)
-            this.SetChildRenderersRecursively(this.gameObject);
+        if (this.hideUntilActive && !isVisible) this.Show();
         base.TurnOn();
         this.gameObject.GetComponent<FriendlyInteractable>().Activate();
     }
