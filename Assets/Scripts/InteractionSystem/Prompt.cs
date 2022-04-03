@@ -114,14 +114,14 @@ public class Prompt : MonoBehaviour
      * Resolve this Prompt
      * This can be called as often as you like; it'll only fire if the Prompt is currently active
      */
-    public void Resolve()
+    public void Resolve(bool successful = true)
     {
-        this.SetActive(false);
+        this.SetActive(false, successful);
     }
 
-    public void Resolve(Prompt parentPrompt)
+    public void Resolve(Prompt parentPrompt, bool successful = true)
     {
-        this.Resolve();
+        this.Resolve(successful);
     }
 
     /*
@@ -161,13 +161,13 @@ public class Prompt : MonoBehaviour
         return null;
     }
 
-    private void SetActive(bool newState)
+    private void SetActive(bool newState, bool successful = true)
     {
         // make sure to not invoke events unless the state has actually changed
         if (newState != this.IsActive())
         {
             if (newState) this.TurnOn();
-            else this.TurnOff();
+            else this.TurnOff(successful);
         }
     }
 
@@ -224,7 +224,7 @@ public class Prompt : MonoBehaviour
         }*/
     }
 
-    protected virtual void TurnOff()
+    protected virtual void TurnOff(bool successful = true)
     {
         this.isActive = false;
         activePrompts.Remove(this);
@@ -232,7 +232,7 @@ public class Prompt : MonoBehaviour
 
         this.GetAudioSource().Stop();
 
-        if (this.OnActive != null) this.OnResolve.Invoke(this);
+        if (this.OnActive != null && successful) this.OnResolve.Invoke(this);
         else Debug.LogWarning(this + " OnResolve was invoked with no subscribed listeners. Is the event chain supposed to end here?", this);
     }
 

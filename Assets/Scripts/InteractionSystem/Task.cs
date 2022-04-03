@@ -183,7 +183,7 @@ public class Task : Prompt
         base.TurnOn(delay);
     }
 
-    protected override void TurnOff()
+    protected override void TurnOff(bool successful = true)
     {
         base.TurnOff();
         this.gameObject.GetComponent<FriendlyInteractable>().DebugExitHover();

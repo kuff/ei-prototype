@@ -107,6 +107,15 @@ public class PromptTest
     }
 
     [Test]
+    public void DoesNotInvokeOnResolveIfUnsuccessful()
+    {
+        testPrompt.OnResolve.AddListener(p => Assert.True(false));
+        testPrompt.Activate();
+        Assert.True(testPrompt.IsActive());
+        testPrompt.Resolve(false);
+    }
+
+    [Test]
     public void DoesNotActivateIfAlreadyActive()
     {
         testPrompt.Activate();
