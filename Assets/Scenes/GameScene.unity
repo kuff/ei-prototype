@@ -192,10 +192,10 @@ GameObject:
   - component: {fileID: 354786404}
   - component: {fileID: 354786403}
   - component: {fileID: 354786402}
-  - component: {fileID: 354786401}
-  - component: {fileID: 354786397}
   - component: {fileID: 354786400}
+  - component: {fileID: 354786401}
   - component: {fileID: 354786399}
+  - component: {fileID: 354786397}
   m_Layer: 0
   m_Name: Cube1
   m_TagString: Untagged
@@ -212,67 +212,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 354786396}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56e13e420d38de04b964d5cb8a0e5ba0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  promptName: An Awesome Prompt
-  promptText: 
-  audioClip: {fileID: 8300000, guid: ceabb36072bc7274cb34e0e8a13ef31b, type: 3}
-  playbackVolume: 0.12
-  isOmnidirectional: 0
-  isLooping: 1
-  secondsWaitAfterPlay: 1.5
-  OnActive:
-    m_PersistentCalls:
-      m_Calls: []
-  OnResolve:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 793666593}
-        m_TargetAssemblyTypeName: Prompt, PPSAssemblyDefinition
-        m_MethodName: Activate
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  isGlovingImmidiately: 0
-  hideUntilActive: 0
-  target: {fileID: 0}
-  targetPrecision: 0.2
-  matchRotation: 0
-  hideAfterCompletion: 1
-  OnGrab:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!4 &354786398
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 354786396}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0.5, z: -2}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
-  m_Children: []
-  m_Father: {fileID: 510518653}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &354786399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 354786396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c6f1ea8df310e341a72ddfd15e04cc0, type: 3}
+  m_Script: {fileID: 11500000, guid: a91669a0f6d41254eb7a6a04a210260a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attachmentFlags: 44
@@ -317,6 +257,69 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   interactable: {fileID: 0}
+--- !u!4 &354786398
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354786396}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1, y: 0.5, z: -2}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_Children: []
+  m_Father: {fileID: 510518653}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &354786399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354786396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b719f9275fa1b4640bf9aa421ddccf7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  promptName: An Awesome Prompt
+  promptText: 
+  audioClip: {fileID: 8300000, guid: ceabb36072bc7274cb34e0e8a13ef31b, type: 3}
+  playbackVolume: 0.2
+  isOmnidirectional: 0
+  isLooping: 1
+  secondsWaitAfterPlay: 1.5
+  OnActive:
+    m_PersistentCalls:
+      m_Calls: []
+  OnResolve:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 793666594}
+        m_TargetAssemblyTypeName: Prompt, PPSAssemblyDefinition
+        m_MethodName: Activate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnPlay:
+    m_PersistentCalls:
+      m_Calls: []
+  isGlovingImmidiately: 0
+  hideUntilActive: 0
+  target: {fileID: 0}
+  targetPrecision: 0.2
+  matchRotation: 0
+  hideAfterCompletion: 1
+  OnGrab:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!54 &354786400
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -342,7 +345,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 354786396}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 458007caeb372264bad492460bdf6ed7, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d830ab2947c5ef4592e75474a0b543d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   activateActionSetOnAttach:
@@ -477,10 +480,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 440167178}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77260f43bce538e42bf035845b1ef128, type: 3}
+  m_Script: {fileID: 11500000, guid: 19cfb376b4f4bad4ebc9598ef2d357bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entryPrompt: {fileID: 633160824}
+  entryPrompt: {fileID: 633160825}
+  isFirstLevel: 0
   isActive: 0
 --- !u!4 &440167180
 Transform:
@@ -489,13 +493,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 440167178}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.1502109, y: -0.8697307, z: 0.8646531}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 633160831}
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 1822571636}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &485437897
 PrefabInstance:
@@ -584,10 +588,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 510518651}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77260f43bce538e42bf035845b1ef128, type: 3}
+  m_Script: {fileID: 11500000, guid: 19cfb376b4f4bad4ebc9598ef2d357bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entryPrompt: {fileID: 354786397}
+  entryPrompt: {fileID: 354786399}
+  isFirstLevel: 1
   isActive: 0
 --- !u!4 &510518653
 Transform:
@@ -596,15 +601,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 510518651}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.1502109, y: -0.8697307, z: 0.8646531}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 354786398}
   - {fileID: 793666598}
   - {fileID: 1500457591}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 1822571636}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &575270189
 GameObject:
@@ -726,7 +731,7 @@ MonoBehaviour:
   OnHit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 354786397}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Task, PPSAssemblyDefinition
         m_MethodName: Resolve
         m_Mode: 1
@@ -763,10 +768,10 @@ GameObject:
   - component: {fileID: 633160830}
   - component: {fileID: 633160829}
   - component: {fileID: 633160828}
-  - component: {fileID: 633160827}
-  - component: {fileID: 633160824}
   - component: {fileID: 633160826}
+  - component: {fileID: 633160827}
   - component: {fileID: 633160825}
+  - component: {fileID: 633160824}
   m_Layer: 0
   m_Name: Cube6
   m_TagString: Untagged
@@ -783,53 +788,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 633160823}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56e13e420d38de04b964d5cb8a0e5ba0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  promptName: An Awesome Prompt
-  promptText: 
-  audioClip: {fileID: 8300000, guid: ceabb36072bc7274cb34e0e8a13ef31b, type: 3}
-  playbackVolume: 0.12
-  isOmnidirectional: 0
-  isLooping: 1
-  secondsWaitAfterPlay: 1.5
-  OnActive:
-    m_PersistentCalls:
-      m_Calls: []
-  OnResolve:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 440167179}
-        m_TargetAssemblyTypeName: Level, PPSAssemblyDefinition
-        m_MethodName: Complete
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  isGlovingImmidiately: 0
-  hideUntilActive: 0
-  target: {fileID: 0}
-  targetPrecision: 0.2
-  matchRotation: 0
-  hideAfterCompletion: 0
-  OnGrab:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &633160825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 633160823}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c6f1ea8df310e341a72ddfd15e04cc0, type: 3}
+  m_Script: {fileID: 11500000, guid: a91669a0f6d41254eb7a6a04a210260a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attachmentFlags: 44
@@ -874,6 +833,43 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   interactable: {fileID: 0}
+--- !u!114 &633160825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633160823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b719f9275fa1b4640bf9aa421ddccf7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  promptName: An Awesome Prompt
+  promptText: 
+  audioClip: {fileID: 8300000, guid: ceabb36072bc7274cb34e0e8a13ef31b, type: 3}
+  playbackVolume: 0.2
+  isOmnidirectional: 0
+  isLooping: 1
+  secondsWaitAfterPlay: 1.5
+  OnActive:
+    m_PersistentCalls:
+      m_Calls: []
+  OnResolve:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPlay:
+    m_PersistentCalls:
+      m_Calls: []
+  isGlovingImmidiately: 0
+  hideUntilActive: 1
+  target: {fileID: 0}
+  targetPrecision: 0.2
+  matchRotation: 0
+  hideAfterCompletion: 1
+  OnGrab:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!54 &633160826
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -899,7 +895,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 633160823}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 458007caeb372264bad492460bdf6ed7, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d830ab2947c5ef4592e75474a0b543d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   activateActionSetOnAttach:
@@ -1127,10 +1123,10 @@ GameObject:
   - component: {fileID: 793666597}
   - component: {fileID: 793666596}
   - component: {fileID: 793666595}
-  - component: {fileID: 793666594}
-  - component: {fileID: 793666593}
   - component: {fileID: 793666600}
   - component: {fileID: 793666599}
+  - component: {fileID: 793666594}
+  - component: {fileID: 793666593}
   m_Layer: 0
   m_Name: Cube2
   m_TagString: Untagged
@@ -1147,70 +1143,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 793666592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56e13e420d38de04b964d5cb8a0e5ba0, type: 3}
+  m_Script: {fileID: 11500000, guid: a91669a0f6d41254eb7a6a04a210260a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptName: An Awesome Prompt
-  promptText: 
-  audioClip: {fileID: 8300000, guid: ceabb36072bc7274cb34e0e8a13ef31b, type: 3}
-  playbackVolume: 0.12
-  isOmnidirectional: 0
-  isLooping: 1
-  secondsWaitAfterPlay: 1.5
-  OnActive:
-    m_PersistentCalls:
-      m_Calls: []
-  OnResolve:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1500457586}
-        m_TargetAssemblyTypeName: Prompt, PPSAssemblyDefinition
-        m_MethodName: Activate
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  isGlovingImmidiately: 0
-  hideUntilActive: 1
-  target: {fileID: 0}
-  targetPrecision: 0.2
-  matchRotation: 0
-  hideAfterCompletion: 1
-  OnGrab:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &793666594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 793666592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 458007caeb372264bad492460bdf6ed7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activateActionSetOnAttach:
-    actionSetPath: 
-  hideHandOnAttach: 1
-  hideSkeletonOnAttach: 0
-  hideControllerOnAttach: 0
-  handAnimationOnPickup: 0
-  setRangeOfMotionOnPickup: -1
-  useHandObjectAttachmentPoint: 1
-  attachEaseIn: 0
-  snapAttachEaseInCurve:
+  attachmentFlags: 44
+  attachmentOffset: {fileID: 0}
+  catchingSpeedThreshold: -1
+  releaseVelocityStyle: 1
+  releaseVelocityTimeOffset: -0.011
+  scaleReleaseVelocity: 1.1
+  scaleReleaseVelocityThreshold: -1
+  scaleReleaseVelocityCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1229,17 +1177,66 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  snapAttachEaseInTime: 0.15
-  snapAttachEaseInCompleted: 0
-  skeletonPoser: {fileID: 0}
-  handFollowTransform: 1
-  highlightOnHover: 1
-  hideHighlight: []
-  hoverPriority: 0
-  highlightMaterial: {fileID: 0}
-  hoverMaterial: {fileID: 0}
-  grabMaterial: {fileID: 0}
-  isActuallyHovering: 0
+  restoreOriginalParent: 0
+  onPickUp:
+    m_PersistentCalls:
+      m_Calls: []
+  onDetachFromHand:
+    m_PersistentCalls:
+      m_Calls: []
+  onHeldUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  interactable: {fileID: 0}
+--- !u!114 &793666594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793666592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b719f9275fa1b4640bf9aa421ddccf7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  promptName: An Awesome Prompt
+  promptText: 
+  audioClip: {fileID: 8300000, guid: ceabb36072bc7274cb34e0e8a13ef31b, type: 3}
+  playbackVolume: 0.2
+  isOmnidirectional: 0
+  isLooping: 1
+  secondsWaitAfterPlay: 1.5
+  OnActive:
+    m_PersistentCalls:
+      m_Calls: []
+  OnResolve:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1500457587}
+        m_TargetAssemblyTypeName: Prompt, PPSAssemblyDefinition
+        m_MethodName: Activate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnPlay:
+    m_PersistentCalls:
+      m_Calls: []
+  isGlovingImmidiately: 1
+  hideUntilActive: 1
+  target: {fileID: 0}
+  targetPrecision: 0.2
+  matchRotation: 0
+  hideAfterCompletion: 0
+  OnGrab:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &793666595
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1325,22 +1322,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 793666592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c6f1ea8df310e341a72ddfd15e04cc0, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d830ab2947c5ef4592e75474a0b543d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attachmentFlags: 44
-  attachmentOffset: {fileID: 0}
-  catchingSpeedThreshold: -1
-  releaseVelocityStyle: 1
-  releaseVelocityTimeOffset: -0.011
-  scaleReleaseVelocity: 1.1
-  scaleReleaseVelocityThreshold: -1
-  scaleReleaseVelocityCurve:
+  activateActionSetOnAttach:
+    actionSetPath: 
+  hideHandOnAttach: 1
+  hideSkeletonOnAttach: 0
+  hideControllerOnAttach: 0
+  handAnimationOnPickup: 0
+  setRangeOfMotionOnPickup: -1
+  useHandObjectAttachmentPoint: 1
+  attachEaseIn: 0
+  snapAttachEaseInCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1359,17 +1358,17 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  restoreOriginalParent: 0
-  onPickUp:
-    m_PersistentCalls:
-      m_Calls: []
-  onDetachFromHand:
-    m_PersistentCalls:
-      m_Calls: []
-  onHeldUpdate:
-    m_PersistentCalls:
-      m_Calls: []
-  interactable: {fileID: 0}
+  snapAttachEaseInTime: 0.15
+  snapAttachEaseInCompleted: 0
+  skeletonPoser: {fileID: 0}
+  handFollowTransform: 1
+  highlightOnHover: 1
+  hideHighlight: []
+  hoverPriority: 0
+  highlightMaterial: {fileID: 0}
+  hoverMaterial: {fileID: 0}
+  grabMaterial: {fileID: 0}
+  isActuallyHovering: 0
 --- !u!54 &793666600
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1412,10 +1411,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1105824359}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77260f43bce538e42bf035845b1ef128, type: 3}
+  m_Script: {fileID: 11500000, guid: 19cfb376b4f4bad4ebc9598ef2d357bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entryPrompt: {fileID: 1167557287}
+  entryPrompt: {fileID: 1167557288}
+  isFirstLevel: 0
   isActive: 0
 --- !u!4 &1105824361
 Transform:
@@ -1424,14 +1424,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1105824359}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.1502109, y: -0.8697307, z: 0.8646531}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1167557294}
   - {fileID: 1366875726}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 1822571636}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1167557286
 GameObject:
@@ -1445,10 +1445,10 @@ GameObject:
   - component: {fileID: 1167557293}
   - component: {fileID: 1167557292}
   - component: {fileID: 1167557291}
-  - component: {fileID: 1167557290}
-  - component: {fileID: 1167557287}
   - component: {fileID: 1167557289}
+  - component: {fileID: 1167557290}
   - component: {fileID: 1167557288}
+  - component: {fileID: 1167557287}
   m_Layer: 0
   m_Name: Cube4
   m_TagString: Untagged
@@ -1465,53 +1465,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1167557286}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56e13e420d38de04b964d5cb8a0e5ba0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  promptName: An Awesome Prompt
-  promptText: 
-  audioClip: {fileID: 8300000, guid: ceabb36072bc7274cb34e0e8a13ef31b, type: 3}
-  playbackVolume: 0.12
-  isOmnidirectional: 0
-  isLooping: 1
-  secondsWaitAfterPlay: 1.5
-  OnActive:
-    m_PersistentCalls:
-      m_Calls: []
-  OnResolve:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1366875719}
-        m_TargetAssemblyTypeName: Prompt, PPSAssemblyDefinition
-        m_MethodName: Activate
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  isGlovingImmidiately: 0
-  hideUntilActive: 1
-  target: {fileID: 0}
-  targetPrecision: 0.2
-  matchRotation: 0
-  hideAfterCompletion: 0
-  OnGrab:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1167557288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1167557286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c6f1ea8df310e341a72ddfd15e04cc0, type: 3}
+  m_Script: {fileID: 11500000, guid: a91669a0f6d41254eb7a6a04a210260a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attachmentFlags: 44
@@ -1556,6 +1510,55 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   interactable: {fileID: 0}
+--- !u!114 &1167557288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167557286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b719f9275fa1b4640bf9aa421ddccf7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  promptName: An Awesome Prompt
+  promptText: 
+  audioClip: {fileID: 8300000, guid: ceabb36072bc7274cb34e0e8a13ef31b, type: 3}
+  playbackVolume: 0.2
+  isOmnidirectional: 0
+  isLooping: 1
+  secondsWaitAfterPlay: 1.5
+  OnActive:
+    m_PersistentCalls:
+      m_Calls: []
+  OnResolve:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1366875720}
+        m_TargetAssemblyTypeName: Prompt, PPSAssemblyDefinition
+        m_MethodName: Activate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnPlay:
+    m_PersistentCalls:
+      m_Calls: []
+  isGlovingImmidiately: 1
+  hideUntilActive: 1
+  target: {fileID: 0}
+  targetPrecision: 0.2
+  matchRotation: 0
+  hideAfterCompletion: 0
+  OnGrab:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!54 &1167557289
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1581,7 +1584,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1167557286}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 458007caeb372264bad492460bdf6ed7, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d830ab2947c5ef4592e75474a0b543d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   activateActionSetOnAttach:
@@ -1716,10 +1719,10 @@ GameObject:
   - component: {fileID: 1366875725}
   - component: {fileID: 1366875724}
   - component: {fileID: 1366875723}
-  - component: {fileID: 1366875722}
-  - component: {fileID: 1366875719}
   - component: {fileID: 1366875721}
+  - component: {fileID: 1366875722}
   - component: {fileID: 1366875720}
+  - component: {fileID: 1366875719}
   m_Layer: 0
   m_Name: Cube5
   m_TagString: Untagged
@@ -1736,53 +1739,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1366875718}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56e13e420d38de04b964d5cb8a0e5ba0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  promptName: An Awesome Prompt
-  promptText: 
-  audioClip: {fileID: 8300000, guid: ceabb36072bc7274cb34e0e8a13ef31b, type: 3}
-  playbackVolume: 0.12
-  isOmnidirectional: 0
-  isLooping: 1
-  secondsWaitAfterPlay: 1.5
-  OnActive:
-    m_PersistentCalls:
-      m_Calls: []
-  OnResolve:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1105824360}
-        m_TargetAssemblyTypeName: Level, PPSAssemblyDefinition
-        m_MethodName: Complete
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  isGlovingImmidiately: 0
-  hideUntilActive: 1
-  target: {fileID: 0}
-  targetPrecision: 0.2
-  matchRotation: 0
-  hideAfterCompletion: 1
-  OnGrab:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1366875720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1366875718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c6f1ea8df310e341a72ddfd15e04cc0, type: 3}
+  m_Script: {fileID: 11500000, guid: a91669a0f6d41254eb7a6a04a210260a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attachmentFlags: 44
@@ -1827,6 +1784,55 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   interactable: {fileID: 0}
+--- !u!114 &1366875720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366875718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b719f9275fa1b4640bf9aa421ddccf7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  promptName: An Awesome Prompt
+  promptText: 
+  audioClip: {fileID: 8300000, guid: ceabb36072bc7274cb34e0e8a13ef31b, type: 3}
+  playbackVolume: 0.2
+  isOmnidirectional: 0
+  isLooping: 1
+  secondsWaitAfterPlay: 1.5
+  OnActive:
+    m_PersistentCalls:
+      m_Calls: []
+  OnResolve:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 440167179}
+        m_TargetAssemblyTypeName: Level, PPSAssemblyDefinition
+        m_MethodName: Activate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnPlay:
+    m_PersistentCalls:
+      m_Calls: []
+  isGlovingImmidiately: 0
+  hideUntilActive: 0
+  target: {fileID: 0}
+  targetPrecision: 0.2
+  matchRotation: 0
+  hideAfterCompletion: 0
+  OnGrab:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!54 &1366875721
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1852,7 +1858,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1366875718}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 458007caeb372264bad492460bdf6ed7, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d830ab2947c5ef4592e75474a0b543d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   activateActionSetOnAttach:
@@ -1987,10 +1993,10 @@ GameObject:
   - component: {fileID: 1500457590}
   - component: {fileID: 1500457589}
   - component: {fileID: 1500457588}
-  - component: {fileID: 1500457587}
-  - component: {fileID: 1500457586}
   - component: {fileID: 1500457593}
   - component: {fileID: 1500457592}
+  - component: {fileID: 1500457587}
+  - component: {fileID: 1500457586}
   m_Layer: 0
   m_Name: Cube3
   m_TagString: Untagged
@@ -2007,70 +2013,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1500457585}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56e13e420d38de04b964d5cb8a0e5ba0, type: 3}
+  m_Script: {fileID: 11500000, guid: a91669a0f6d41254eb7a6a04a210260a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptName: An Awesome Prompt
-  promptText: 
-  audioClip: {fileID: 8300000, guid: ceabb36072bc7274cb34e0e8a13ef31b, type: 3}
-  playbackVolume: 0.12
-  isOmnidirectional: 0
-  isLooping: 1
-  secondsWaitAfterPlay: 1.5
-  OnActive:
-    m_PersistentCalls:
-      m_Calls: []
-  OnResolve:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 510518652}
-        m_TargetAssemblyTypeName: Level, PPSAssemblyDefinition
-        m_MethodName: Complete
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  isGlovingImmidiately: 0
-  hideUntilActive: 0
-  target: {fileID: 0}
-  targetPrecision: 0.2
-  matchRotation: 0
-  hideAfterCompletion: 1
-  OnGrab:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1500457587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1500457585}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 458007caeb372264bad492460bdf6ed7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activateActionSetOnAttach:
-    actionSetPath: 
-  hideHandOnAttach: 1
-  hideSkeletonOnAttach: 0
-  hideControllerOnAttach: 0
-  handAnimationOnPickup: 0
-  setRangeOfMotionOnPickup: -1
-  useHandObjectAttachmentPoint: 1
-  attachEaseIn: 0
-  snapAttachEaseInCurve:
+  attachmentFlags: 44
+  attachmentOffset: {fileID: 0}
+  catchingSpeedThreshold: -1
+  releaseVelocityStyle: 1
+  releaseVelocityTimeOffset: -0.011
+  scaleReleaseVelocity: 1.1
+  scaleReleaseVelocityThreshold: -1
+  scaleReleaseVelocityCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2089,17 +2047,66 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  snapAttachEaseInTime: 0.15
-  snapAttachEaseInCompleted: 0
-  skeletonPoser: {fileID: 0}
-  handFollowTransform: 1
-  highlightOnHover: 1
-  hideHighlight: []
-  hoverPriority: 0
-  highlightMaterial: {fileID: 0}
-  hoverMaterial: {fileID: 0}
-  grabMaterial: {fileID: 0}
-  isActuallyHovering: 0
+  restoreOriginalParent: 0
+  onPickUp:
+    m_PersistentCalls:
+      m_Calls: []
+  onDetachFromHand:
+    m_PersistentCalls:
+      m_Calls: []
+  onHeldUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  interactable: {fileID: 0}
+--- !u!114 &1500457587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500457585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b719f9275fa1b4640bf9aa421ddccf7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  promptName: An Awesome Prompt
+  promptText: 
+  audioClip: {fileID: 8300000, guid: ceabb36072bc7274cb34e0e8a13ef31b, type: 3}
+  playbackVolume: 0.2
+  isOmnidirectional: 0
+  isLooping: 1
+  secondsWaitAfterPlay: 1.5
+  OnActive:
+    m_PersistentCalls:
+      m_Calls: []
+  OnResolve:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1105824360}
+        m_TargetAssemblyTypeName: Level, PPSAssemblyDefinition
+        m_MethodName: Activate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnPlay:
+    m_PersistentCalls:
+      m_Calls: []
+  isGlovingImmidiately: 1
+  hideUntilActive: 1
+  target: {fileID: 0}
+  targetPrecision: 0.2
+  matchRotation: 0
+  hideAfterCompletion: 1
+  OnGrab:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &1500457588
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2185,22 +2192,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1500457585}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c6f1ea8df310e341a72ddfd15e04cc0, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d830ab2947c5ef4592e75474a0b543d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attachmentFlags: 44
-  attachmentOffset: {fileID: 0}
-  catchingSpeedThreshold: -1
-  releaseVelocityStyle: 1
-  releaseVelocityTimeOffset: -0.011
-  scaleReleaseVelocity: 1.1
-  scaleReleaseVelocityThreshold: -1
-  scaleReleaseVelocityCurve:
+  activateActionSetOnAttach:
+    actionSetPath: 
+  hideHandOnAttach: 1
+  hideSkeletonOnAttach: 0
+  hideControllerOnAttach: 0
+  handAnimationOnPickup: 0
+  setRangeOfMotionOnPickup: -1
+  useHandObjectAttachmentPoint: 1
+  attachEaseIn: 0
+  snapAttachEaseInCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2219,17 +2228,17 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  restoreOriginalParent: 0
-  onPickUp:
-    m_PersistentCalls:
-      m_Calls: []
-  onDetachFromHand:
-    m_PersistentCalls:
-      m_Calls: []
-  onHeldUpdate:
-    m_PersistentCalls:
-      m_Calls: []
-  interactable: {fileID: 0}
+  snapAttachEaseInTime: 0.15
+  snapAttachEaseInCompleted: 0
+  skeletonPoser: {fileID: 0}
+  handFollowTransform: 1
+  highlightOnHover: 1
+  hideHighlight: []
+  hoverPriority: 0
+  highlightMaterial: {fileID: 0}
+  hoverMaterial: {fileID: 0}
+  grabMaterial: {fileID: 0}
+  isActuallyHovering: 0
 --- !u!54 &1500457593
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2390,6 +2399,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   locked: 0
   markerActive: 1
+--- !u!1 &1822571635
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1822571636}
+  m_Layer: 0
+  m_Name: DYNAMIC
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1822571636
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822571635}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.1502109, y: 0.8697307, z: -0.8646531}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 510518653}
+  - {fileID: 1105824361}
+  - {fileID: 440167180}
+  - {fileID: 1972618327}
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1970795858
 GameObject:
   m_ObjectHideFlags: 0
@@ -2586,11 +2629,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1972618321}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1.796, y: 1.037, z: 0.112}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 2.9462109, y: 0.16726923, z: 0.9766531}
   m_LocalScale: {x: 0.12, y: 0.12, z: 0.12}
   m_Children:
   - {fileID: 1970795859}
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 1822571636}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
