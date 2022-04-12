@@ -109,18 +109,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1833370830683759386}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c6c61704dc551c429674c0969c86399, type: 3}
+  m_Script: {fileID: 11500000, guid: 4bb05ff85e8f5d84f97341fb8fab9c84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 6668643273669711083, guid: 2bb68da58c00b1b4ebaf762d2bd98f51, type: 3}
-  bulletSource: {fileID: 1833370830685590040}
+  projectilePrefab: {fileID: 0}
+  bulletSource: {fileID: 0}
   projectileSpeed: 5
   gunType: 1
   input:
-    actionPath: /actions/default/in/GrabGrip
+    actionPath: 
     needsReinit: 0
   input2:
-    actionPath: /actions/default/in/GrabPinch
+    actionPath: 
     needsReinit: 0
   grabbable: 0
 --- !u!114 &1833370830683759385

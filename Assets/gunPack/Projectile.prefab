@@ -44,9 +44,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6668643273669711083}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b09ca045ce4858643b761af77464b40d, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cae1f264621ce44682367bf4c75a625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  impactPrefab: {fileID: 5225637730352121479, guid: 7a44caba68cdbe64da638bba2ec49ba6, type: 3}
 --- !u!54 &590492301407839397
 Rigidbody:
   m_ObjectHideFlags: 0

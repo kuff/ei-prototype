@@ -15,7 +15,7 @@ public class Target : MonoBehaviour
     {
         gun = GameObject.Find("Gun").GetComponent<GunScript>();
         GetComponent<BoxCollider>().enabled = true;
-        GetComponent<BoxCollider>().size = new Vector3(5,5,5);
+        GetComponent<BoxCollider>().size = new Vector3(1,1,1);
     }
 
     private void OnCollisionEnter(Collision collision)
