@@ -143,7 +143,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0002674096, y: 0.005418186, z: 0.0037624768}
   m_Center: {x: -0.0000054756892, y: -9.313226e-10, z: 0}
---- !u!114 &6762985457029399206
+--- !u!114 &2948728831293594325
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -152,9 +152,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6663204481800420208}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d668946a754a45d4b929561ab9fad2fe, type: 3}
+  m_Script: {fileID: 11500000, guid: 10dc2176c7f8bcc47ba8e4849b42893d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectGenerated: {fileID: 3262622921959976616, guid: 2060388b6687fa840ae0cb129b6a594f, type: 3}
+  type: 2
+  creationTimestamp: 0
+  targetCell: {fileID: 0}
+  sparklesPrefab: {fileID: 0}
   explosionPrefab: {fileID: 8311635123287835687, guid: 9b61e6c4432c21b40b9fab541bc5d32b, type: 3}
-  targetTag: Virus
+  ObjectGenerated: {fileID: 3262622921959976616, guid: 2060388b6687fa840ae0cb129b6a594f, type: 3}
+  Antibody: {fileID: 0}
