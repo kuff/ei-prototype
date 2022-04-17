@@ -96,7 +96,7 @@ public class Simulation : MonoBehaviour
         // ...
     }
 
-    public void SpawnPathogenCells(int amount)
+    public void SpawnPathogenCells(int amount, bool neutralized = false)
     {
         // ...
     }
@@ -175,6 +175,15 @@ public class Simulation : MonoBehaviour
                 this.OnPathogenSpawn.Invoke(new Scenario());
                 break;
 
+            case CellType.PathogenNeutralized:
+                // TODO: spawn NeutralizedPathogen Cell prefab
+                newCellObject = new GameObject();
+
+                this.PathogensSpawned++;
+                this.PathogenCount++;
+                this.OnPathogenSpawn.Invoke(new Scenario());
+                break;
+
             case CellType.Antibody:
                 // TODO: spawn Antibody Cell prefab
                 newCellObject = new GameObject();
@@ -207,6 +216,7 @@ public class Simulation : MonoBehaviour
                 break;
 
             case CellType.Pathogen:
+            case CellType.PathogenNeutralized:
                 this.PathogenCount--;
                 this.PathogensDestroyed++;
                 this.OnPathgenDespawn.Invoke(new Scenario());
