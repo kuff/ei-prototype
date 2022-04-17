@@ -20,15 +20,25 @@ public class CollisionEvent : UnityEvent<Scenario> { }
 
 public class Simulation : MonoBehaviour
 {
+    [HideInInspector]
     public int WBCsSpawned;
+    [HideInInspector]
     public int PathogensSpawned;
+    [HideInInspector]
     public int AntibodiesSpawned;
+    [HideInInspector]
     public int WBCsDestroyed;
+    [HideInInspector]
     public int PathogensDestroyed;
+    [HideInInspector]
     public int AntibodiesDestroyed;
+    [HideInInspector]
     public int WBCCount;
+    [HideInInspector]
     public int PathogenCount;
+    [HideInInspector]
     public int AntibodyCount;
+    [HideInInspector]
     public int collisionCount;
 
     public WBCSpawnEvent        OnWBCSpawn          = new WBCSpawnEvent();
@@ -39,7 +49,7 @@ public class Simulation : MonoBehaviour
     public AntibodyDespawnEvent OnAntibodyDespawn   = new AntibodyDespawnEvent();
     public CollisionEvent       OnCollision         = new CollisionEvent();
 
-    private List<Cell> cells;
+    private List<Cell> cells = new List<Cell>();
     private bool allowCollisions = true;  // TODO: implement the logic for this...
 
     public void Tick()
