@@ -17,6 +17,12 @@ public class PathogenDespawnEvent : UnityEvent<Scenario> { }
 public class AntibodyDespawnEvent : UnityEvent<Scenario> { }
 [Serializable]
 public class CollisionEvent : UnityEvent<Scenario> { }
+[Serializable]
+public class PlayerPickupEvent : UnityEvent<Scenario> { }
+[Serializable]
+public class PlayerReloadEvent : UnityEvent<Scenario> { }
+[Serializable]
+public class PlayerShootEvent : UnityEvent<Scenario> { }
 
 public class Simulation : MonoBehaviour
 {
@@ -40,6 +46,12 @@ public class Simulation : MonoBehaviour
     public int AntibodyCount;
     [HideInInspector]
     public int collisionCount;
+    [HideInInspector]
+    public int AntibodyPickupCount;
+    [HideInInspector]
+    public int gunReloadCount;
+    [HideInInspector]
+    public int gunShotCount;
 
     public WBCSpawnEvent        OnWBCSpawn          = new WBCSpawnEvent();
     public PathogenSpawnEvent   OnPathogenSpawn     = new PathogenSpawnEvent();
@@ -48,9 +60,13 @@ public class Simulation : MonoBehaviour
     public PathogenDespawnEvent OnPathgenDespawn    = new PathogenDespawnEvent();
     public AntibodyDespawnEvent OnAntibodyDespawn   = new AntibodyDespawnEvent();
     public CollisionEvent       OnCollision         = new CollisionEvent();
+    public PlayerPickupEvent    OnPickup            = new PlayerPickupEvent();
+    public PlayerReloadEvent    OnReload            = new PlayerReloadEvent();
+    public PlayerShootEvent     OnShot              = new PlayerShootEvent();
 
     private List<Cell> cells = new List<Cell>();
     private bool allowCollisions = true;  // TODO: implement the logic for this...
+
 
     //Spawn/Despawn variables
     public float WBCRadiusMax, WBCRadiusMin;
@@ -58,6 +74,15 @@ public class Simulation : MonoBehaviour
     public float AntibodyRadiusMax, AntibodyRadiusMin;
     [Range(0.1f, 1f)]
     public float ceiling;
+
+    protected void Start()
+    {
+        this.OnPickup   .AddListener(s => this.AntibodyPickupCount++);
+        this.OnReload   .AddListener(s => this.gunReloadCount++);
+        this.OnShot     .AddListener(s => this.gunShotCount++);
+    }
+
+
     public void Tick()
     {
         foreach (Cell c in this.cells)
@@ -108,7 +133,7 @@ public class Simulation : MonoBehaviour
         }
     }
 
-    public void SpawnPathogenCells(int amount)
+    public void SpawnPathogenCells(int amount, bool neutralized = false)
     {
         for (int i = 0; i < amount; i++)
         {
@@ -198,6 +223,15 @@ public class Simulation : MonoBehaviour
                 this.OnPathogenSpawn.Invoke(new Scenario());
                 break;
 
+            case CellType.PathogenNeutralized:
+                // TODO: spawn NeutralizedPathogen Cell prefab
+                newCellObject = new GameObject();
+
+                this.PathogensSpawned++;
+                this.PathogenCount++;
+                this.OnPathogenSpawn.Invoke(new Scenario());
+                break;
+
             case CellType.Antibody:
                 // TODO: spawn Antibody Cell prefab
                 newCellObject = new GameObject();
@@ -230,6 +264,7 @@ public class Simulation : MonoBehaviour
                 break;
 
             case CellType.Pathogen:
+            case CellType.PathogenNeutralized:
                 this.PathogenCount--;
                 this.PathogensDestroyed++;
                 this.OnPathgenDespawn.Invoke(new Scenario());
