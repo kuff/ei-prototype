@@ -40,7 +40,7 @@ public class Simulation : MonoBehaviour
     public CollisionEvent       OnCollision         = new CollisionEvent();
 
     private List<Cell> cells;
-    private bool allowCollisions;
+    private bool allowCollisions = true;  // TODO: implement the logic for this...
 
     public void Tick()
     {
@@ -81,7 +81,7 @@ public class Simulation : MonoBehaviour
         return false;
     }
 
-    public void SpawnWBCCells(int amount)
+    public void SpawnWBCells(int amount)
     {
         // ...
     }
@@ -101,7 +101,7 @@ public class Simulation : MonoBehaviour
         // ...
     }
 
-    public void DespawnWBCCells(int amount = 0)
+    public void DespawnWBCells(int amount = 0)
     {
         // ...
     }
@@ -121,7 +121,7 @@ public class Simulation : MonoBehaviour
         // ...
     }
 
-    public void DespawnWBCCells(Cell[] cells)
+    public void DespawnWBCells(Cell[] cells)
     {
         // ...
     }
@@ -150,16 +150,31 @@ public class Simulation : MonoBehaviour
             case CellType.WhiteBloodCell:
                 // TODO: spawn White Blood Cell prefab
                 newCellObject = new GameObject();
-                break;
+
+                this.WBCsSpawned++;
+                this.WBCCount++;
+                this.OnWBCSpawn.Invoke(new Scenario());  // TODO: replace Scenario placeholder
+                break;                                   // API will probably change here...
+
             case CellType.Pathogen:
                 // TODO: spawn Pathogen Cell prefab
                 newCellObject = new GameObject();
+
+                this.PathogensSpawned++;
+                this.PathogenCount++;
+                this.OnPathogenSpawn.Invoke(new Scenario());
                 break;
+
             case CellType.Antibody:
                 // TODO: spawn Antibody Cell prefab
                 newCellObject = new GameObject();
+
+                this.AntibodiesSpawned++;
+                this.AntibodyCount++;
+                this.OnAntibodySpawn.Invoke(new Scenario());
                 break;
-            default:
+
+            default:  // CellType.Filler
                 // TODO: randomly select and spawn Filler Cell prefab
                 newCellObject = new GameObject();
                 break;
@@ -172,5 +187,28 @@ public class Simulation : MonoBehaviour
     {
         cell.Despawn();
         this.cells.Remove(cell);
+
+        switch (cell.type)
+        {
+            case CellType.WhiteBloodCell:
+                this.WBCCount--;
+                this.WBCsDestroyed++;
+                this.OnWBCDespawn.Invoke(new Scenario());
+                break;
+
+            case CellType.Pathogen:
+                this.PathogenCount--;
+                this.PathogensDestroyed++;
+                this.OnPathgenDespawn.Invoke(new Scenario());
+                break;
+
+            case CellType.Antibody:
+                this.AntibodyCount--;
+                this.AntibodiesDestroyed++;
+                this.OnAntibodyDespawn.Invoke(new Scenario());
+                break;
+
+            // Filler Cells don't have these events so we don't need to catch them here
+        }
     }
 }

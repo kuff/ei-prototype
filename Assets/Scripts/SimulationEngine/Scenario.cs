@@ -43,19 +43,19 @@ public class Scenario : Level
 
     private void HandleFirstCollision(Scenario s)
     {
-        if (this.simulation.collisionCount == 1)
+        if (this.isActive && this.simulation.collisionCount == 1)
             this.OnFirstCollision.Invoke(s);
     }
 
     private void HandleFirstAntibodyInfusion(Scenario s)
     {
-        if (this.simulation.PathogensDestroyed == 1)
+        if (this.isActive && this.simulation.PathogensDestroyed == 1)
             this.OnFirstAntibodyInfusion.Invoke(s);
     }
 
     private void HandlePathogensReducedToFiftyPercent(Scenario s)
     {
-        if (!this.hasReachFiftyPercent && simulation.PathogensDestroyed >= simulation.PathogenCount)
+        if (this.isActive && !this.hasReachFiftyPercent && simulation.PathogensDestroyed >= simulation.PathogenCount)
         {
             this.hasReachFiftyPercent = true;
             this.OnPathogensReducedToFiftyPercent.Invoke(s);
@@ -87,6 +87,4 @@ public class Scenario : Level
 
         base.Complete();
     }
-
-
 }
