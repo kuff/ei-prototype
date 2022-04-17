@@ -17,6 +17,12 @@ public class PathogenDespawnEvent : UnityEvent<Scenario> { }
 public class AntibodyDespawnEvent : UnityEvent<Scenario> { }
 [Serializable]
 public class CollisionEvent : UnityEvent<Scenario> { }
+[Serializable]
+public class PlayerPickupEvent : UnityEvent<Scenario> { }
+[Serializable]
+public class PlayerReloadEvent : UnityEvent<Scenario> { }
+[Serializable]
+public class PlayerShootEvent : UnityEvent<Scenario> { }
 
 public class Simulation : MonoBehaviour
 {
@@ -40,6 +46,12 @@ public class Simulation : MonoBehaviour
     public int AntibodyCount;
     [HideInInspector]
     public int collisionCount;
+    [HideInInspector]
+    public int AntibodyPickupCount;
+    [HideInInspector]
+    public int gunReloadCount;
+    [HideInInspector]
+    public int gunShotCount;
 
     public WBCSpawnEvent        OnWBCSpawn          = new WBCSpawnEvent();
     public PathogenSpawnEvent   OnPathogenSpawn     = new PathogenSpawnEvent();
@@ -48,9 +60,19 @@ public class Simulation : MonoBehaviour
     public PathogenDespawnEvent OnPathgenDespawn    = new PathogenDespawnEvent();
     public AntibodyDespawnEvent OnAntibodyDespawn   = new AntibodyDespawnEvent();
     public CollisionEvent       OnCollision         = new CollisionEvent();
+    public PlayerPickupEvent    OnPickup            = new PlayerPickupEvent();
+    public PlayerReloadEvent    OnReload            = new PlayerReloadEvent();
+    public PlayerShootEvent     OnShot              = new PlayerShootEvent();
 
     private List<Cell> cells = new List<Cell>();
     private bool allowCollisions = true;  // TODO: implement the logic for this...
+
+    protected void Start()
+    {
+        this.OnPickup   .AddListener(s => this.AntibodyPickupCount++);
+        this.OnReload   .AddListener(s => this.gunReloadCount++);
+        this.OnShot     .AddListener(s => this.gunShotCount++);
+    }
 
     public void Tick()
     {
