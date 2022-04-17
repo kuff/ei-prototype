@@ -52,6 +52,12 @@ public class Simulation : MonoBehaviour
     private List<Cell> cells = new List<Cell>();
     private bool allowCollisions = true;  // TODO: implement the logic for this...
 
+    //Spawn/Despawn variables
+    public float WBCRadiusMax, WBCRadiusMin;
+    public float PathogenRadiusMax, PathogenRadiusMin;
+    public float AntibodyRadiusMax, AntibodyRadiusMin;
+    [Range(0.1f, 1f)]
+    public float ceiling;
     public void Tick()
     {
         foreach (Cell c in this.cells)
@@ -93,17 +99,34 @@ public class Simulation : MonoBehaviour
 
     public void SpawnWBCells(int amount)
     {
-        // ...
+       Vector3 playerPos = GameObject.Find("Player").transform.position;
+       for (int i = 0; i < amount; i++)
+        {
+            Vector3 randpoint = UnityEngine.Random.insideUnitSphere.normalized;
+            Vector3 spawnPos = playerPos + new Vector3(randpoint.x, Mathf.Abs(randpoint.y), randpoint.z) * UnityEngine.Random.Range(WBCRadiusMin, WBCRadiusMax);
+            SpawnCell(CellType.WhiteBloodCell,spawnPos);
+        }
     }
 
     public void SpawnPathogenCells(int amount)
     {
-        // ...
+        for (int i = 0; i < amount; i++)
+        {
+            Vector3 randpoint = UnityEngine.Random.insideUnitSphere.normalized;
+            Vector3 spawnPos = Vector3.zero + new Vector3(randpoint.x, Mathf.Abs(randpoint.y), randpoint.z) * UnityEngine.Random.Range(PathogenRadiusMin, PathogenRadiusMax);
+            SpawnCell(CellType.Pathogen, spawnPos);
+        }
     }
 
     public void SpawnAntibodyCells(int amount)
     {
-        // ...
+        Vector3 playerPos = GameObject.Find("Player").transform.position;
+        for (int i = 0; i < amount; i++)
+        {
+            Vector3 randpoint = UnityEngine.Random.insideUnitSphere.normalized;
+            Vector3 spawnPos = playerPos + new Vector3(randpoint.x, Mathf.Abs(randpoint.y * 0.4f), randpoint.z) * UnityEngine.Random.Range(AntibodyRadiusMin, AntibodyRadiusMax);
+            SpawnCell(CellType.Antibody, spawnPos);
+        }
     }
 
     public void SpawnFillerCells(int amount)
