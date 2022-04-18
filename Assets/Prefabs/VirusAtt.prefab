@@ -142,15 +142,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10dc2176c7f8bcc47ba8e4849b42893d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 3
+  type: 2
   creationTimestamp: 0
   targetCell: {fileID: 0}
   sparklesPrefab: {fileID: 0}
   explosionPrefab: {fileID: 0}
-  ObjectGenerated: {fileID: 0}
-  Antibody: {fileID: 0}
   explosionSound: {fileID: 8300000, guid: 918ee1b51fd32d748a66d520586569ba, type: 3}
   sparklesSound: {fileID: 0}
+  ObjectGenerated: {fileID: 0}
+  Antibody: {fileID: 0}
 --- !u!114 &2213419033011033897
 MonoBehaviour:
   m_ObjectHideFlags: 0

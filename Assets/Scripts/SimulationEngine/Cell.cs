@@ -59,8 +59,15 @@ public class Cell : MonoBehaviour
             {
                 if (this.type == CellType.WhiteBloodCell)
                 {
-                    Debug.Log("WhiteCell");
-                    SpawnElements(Antibody, sparklesPrefab, collision, sparklesSound, 0.7f, false, false);
+                    bool applyForDrop = simulation.ApplyForDrop(this);
+                    if (applyForDrop == true) {
+                        Debug.Log("WhiteCell");
+                        SpawnElements(Antibody, sparklesPrefab, collision, sparklesSound, 0.7f, false, false);
+                    }
+                    else
+                    {
+                        SpawnElements(sparklesPrefab, collision, sparklesSound, 0.7f, false, false);
+                    }
                 }
                 else if (this.type == CellType.Antibody)
                 {
@@ -83,6 +90,20 @@ public class Cell : MonoBehaviour
         Transform newInstance = Instantiate(Element, collision.transform.position, collision.transform.rotation);
         Transform generatedEffect = Instantiate(Effect, collision.transform.position, collision.transform.rotation);
         newInstance.gameObject.GetComponent<AudioSource>().PlayOneShot(sound, volume);
+        Destroy(generatedEffect.gameObject, 1);
+    }
+
+    public void SpawnElements(Transform Effect, Collision collision, AudioClip sound, float volume, bool destroySelf, bool destroyOther)
+    {
+        if (destroySelf == true)
+            Destroy(this.gameObject);
+
+        if (destroyOther == true)
+            Destroy(collision.gameObject);
+
+        Transform generatedEffect = Instantiate(Effect, collision.transform.position, collision.transform.rotation);
+        this.gameObject.GetComponent<AudioSource>().PlayOneShot(sound, volume);
+        Destroy(generatedEffect.gameObject, 1);
     }
 
     public void Despawn()

@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &158048482
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -4966,6 +4966,9 @@ MonoBehaviour:
   PathogenCount: 0
   AntibodyCount: 0
   collisionCount: 0
+  AntibodyPickupCount: 0
+  gunReloadCount: 0
+  gunShotCount: 0
   OnWBCSpawn:
     m_PersistentCalls:
       m_Calls: []
@@ -4987,6 +4990,22 @@ MonoBehaviour:
   OnCollision:
     m_PersistentCalls:
       m_Calls: []
+  OnPickup:
+    m_PersistentCalls:
+      m_Calls: []
+  OnReload:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShot:
+    m_PersistentCalls:
+      m_Calls: []
+  WBCRadiusMax: 0
+  WBCRadiusMin: 0
+  PathogenRadiusMax: 0
+  PathogenRadiusMin: 0
+  AntibodyRadiusMax: 0
+  AntibodyRadiusMin: 0
+  ceiling: 0
 --- !u!4 &443720548
 Transform:
   m_ObjectHideFlags: 0
@@ -5555,11 +5574,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 969689424696836543, guid: be0dedad366ecd5459f91d00412109a4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.548031
+      value: -4.87
       objectReference: {fileID: 0}
     - target: {fileID: 969689424696836543, guid: be0dedad366ecd5459f91d00412109a4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.76
+      value: 6.4
       objectReference: {fileID: 0}
     - target: {fileID: 969689424696836543, guid: be0dedad366ecd5459f91d00412109a4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5624,7 +5643,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &2041085871
 ParticleSystemRenderer:
   serializedVersion: 6

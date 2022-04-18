@@ -158,15 +158,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10dc2176c7f8bcc47ba8e4849b42893d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  type: 1
   creationTimestamp: 0
   targetCell: {fileID: 0}
   sparklesPrefab: {fileID: 0}
   explosionPrefab: {fileID: 0}
-  ObjectGenerated: {fileID: 0}
-  Antibody: {fileID: 0}
   explosionSound: {fileID: 8300000, guid: 6dff03c50ee9a3c45b16f6cbe71bec37, type: 3}
   sparklesSound: {fileID: 0}
+  ObjectGenerated: {fileID: 0}
+  Antibody: {fileID: 0}
 --- !u!1001 &4739196776654874612
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1328,7 +1328,7 @@ MonoBehaviour:
   targetCell: {fileID: 0}
   sparklesPrefab: {fileID: 0}
   explosionPrefab: {fileID: 0}
-  ObjectGenerated: {fileID: 0}
-  Antibody: {fileID: 0}
   explosionSound: {fileID: 0}
   sparklesSound: {fileID: 0}
+  ObjectGenerated: {fileID: 0}
+  Antibody: {fileID: 0}

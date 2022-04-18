@@ -119,7 +119,7 @@ public class Simulation : MonoBehaviour
     {
         // ...
 
-        return false;
+        return false; // for testing purposes
     }
 
     public void SpawnWBCells(int amount)
