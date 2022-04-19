@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -53,6 +54,10 @@ public class Simulation : MonoBehaviour
     [HideInInspector]
     public int gunShotCount;
 
+    public GameObject WBCPrefab;
+    public GameObject PathogenPrefab;
+    public GameObject AntibodyPrefab;
+
     public WBCSpawnEvent        OnWBCSpawn          = new WBCSpawnEvent();
     public PathogenSpawnEvent   OnPathogenSpawn     = new PathogenSpawnEvent();
     public AntibodySpawnEvent   OnAntibodySpawn     = new AntibodySpawnEvent();
@@ -68,7 +73,7 @@ public class Simulation : MonoBehaviour
     private bool allowCollisions = true;  // TODO: implement the logic for this...
 
 
-    //Spawn/Despawn variables
+    // spawning & despawning variables
     public float WBCRadiusMax, WBCRadiusMin;
     public float PathogenRadiusMax, PathogenRadiusMin;
     public float AntibodyRadiusMax, AntibodyRadiusMin;
@@ -85,8 +90,8 @@ public class Simulation : MonoBehaviour
 
     public void Tick()
     {
-        foreach (Cell c in this.cells)
-            c.Tick();
+        /*foreach (Cell c in this.cells)
+            c.Tick();*/
 
         // ...
     }
@@ -125,15 +130,15 @@ public class Simulation : MonoBehaviour
     public void SpawnWBCells(int amount)
     {
        Vector3 playerPos = GameObject.Find("Player").transform.position;
-       for (int i = 0; i < amount; i++)
-        {
+       for (int i = 0; i < amount; i++) 
+       {
             Vector3 randpoint = UnityEngine.Random.insideUnitSphere.normalized;
             Vector3 spawnPos = playerPos + new Vector3(randpoint.x, Mathf.Abs(randpoint.y), randpoint.z) * UnityEngine.Random.Range(WBCRadiusMin, WBCRadiusMax);
-            SpawnCell(CellType.WhiteBloodCell,spawnPos);
-        }
+            SpawnCell(CellType.WhiteBloodCell,spawnPos); 
+       }
     }
 
-    public void SpawnPathogenCells(int amount, bool neutralized = false)
+    public void SpawnPathogenCells(int amount)
     {
         for (int i = 0; i < amount; i++)
         {
@@ -204,10 +209,8 @@ public class Simulation : MonoBehaviour
         GameObject newCellObject;
 
         switch(type) {
-
             case CellType.WhiteBloodCell:
-                // TODO: spawn White Blood Cell prefab
-                newCellObject = new GameObject();
+                newCellObject = this.WBCPrefab;
 
                 this.WBCsSpawned++;
                 this.WBCCount++;
@@ -215,8 +218,7 @@ public class Simulation : MonoBehaviour
                 break;                                   // API will probably change here...
 
             case CellType.Pathogen:
-                // TODO: spawn Pathogen Cell prefab
-                newCellObject = new GameObject();
+                newCellObject = this.PathogenPrefab;
 
                 this.PathogensSpawned++;
                 this.PathogenCount++;
@@ -224,8 +226,7 @@ public class Simulation : MonoBehaviour
                 break;
 
             case CellType.PathogenNeutralized:
-                // TODO: spawn NeutralizedPathogen Cell prefab
-                newCellObject = new GameObject();
+                newCellObject = this.PathogenPrefab;
 
                 this.PathogensSpawned++;
                 this.PathogenCount++;
@@ -233,8 +234,7 @@ public class Simulation : MonoBehaviour
                 break;
 
             case CellType.Antibody:
-                // TODO: spawn Antibody Cell prefab
-                newCellObject = new GameObject();
+                newCellObject = this.AntibodyPrefab;
 
                 this.AntibodiesSpawned++;
                 this.AntibodyCount++;
@@ -244,16 +244,19 @@ public class Simulation : MonoBehaviour
             default:  // CellType.Filler
                 // TODO: randomly select and spawn Filler Cell prefab
                 newCellObject = new GameObject();
-                break;
+                return;
         }
 
         cells.Add(newCellObject.GetComponent<Cell>());
+        Instantiate(newCellObject, position, Quaternion.identity);
     }
 
-    private void DespawnCell(Cell cell)
+    public void DespawnCell([CanBeNull] Cell cell)
     {
-        cell.Despawn();
+        if (cell == null) return;
+        
         this.cells.Remove(cell);
+        Destroy(cell.gameObject);
 
         switch (cell.type)
         {

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 969689424696836543}
   - component: {fileID: 5545352042747456843}
   m_Layer: 0
-  m_Name: whiteBlood
+  m_Name: WhiteBloodCell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

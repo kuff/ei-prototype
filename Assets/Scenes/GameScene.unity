@@ -308,6 +308,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1171922089}
+        m_TargetAssemblyTypeName: Simulation, SEAssemblyDefinition
+        m_MethodName: SpawnWBCells
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlay:
     m_PersistentCalls:
       m_Calls: []
@@ -589,7 +601,7 @@ GameObject:
   - component: {fileID: 440167180}
   - component: {fileID: 440167179}
   m_Layer: 0
-  m_Name: Level3
+  m_Name: Level3 NOT SET UP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -617,6 +629,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnFirstPlayerReload:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFirstPlayerShot:
     m_PersistentCalls:
       m_Calls: []
   OnFirstAntibodyInfusion:
@@ -740,6 +755,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnFirstPlayerReload:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFirstPlayerShot:
     m_PersistentCalls:
       m_Calls: []
   OnFirstAntibodyInfusion:
@@ -1379,6 +1397,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1171922089}
+        m_TargetAssemblyTypeName: Simulation, SEAssemblyDefinition
+        m_MethodName: SpawnPathogenCells
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlay:
     m_PersistentCalls:
       m_Calls: []
@@ -1550,7 +1580,7 @@ GameObject:
   - component: {fileID: 1105824361}
   - component: {fileID: 1105824360}
   m_Layer: 0
-  m_Name: Level2
+  m_Name: Level2 NOT SET UP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1578,6 +1608,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnFirstPlayerReload:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFirstPlayerShot:
     m_PersistentCalls:
       m_Calls: []
   OnFirstAntibodyInfusion:
@@ -1886,6 +1919,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1171922088}
   - component: {fileID: 1171922089}
+  - component: {fileID: 1171922090}
   m_Layer: 0
   m_Name: Simulator
   m_TagString: Simulator
@@ -1929,6 +1963,12 @@ MonoBehaviour:
   PathogenCount: 0
   AntibodyCount: 0
   collisionCount: 0
+  AntibodyPickupCount: 0
+  gunReloadCount: 0
+  gunShotCount: 0
+  WBCPrefab: {fileID: 1585205167227470869, guid: be0dedad366ecd5459f91d00412109a4, type: 3}
+  PathogenPrefab: {fileID: 8393812991690933782, guid: 867aae8ec02e0c6488abf240e1a564db, type: 3}
+  AntibodyPrefab: {fileID: 8393812991690933782, guid: f4822e0e8f087d34ba771d4a1e828f0f, type: 3}
   OnWBCSpawn:
     m_PersistentCalls:
       m_Calls: []
@@ -1950,6 +1990,38 @@ MonoBehaviour:
   OnCollision:
     m_PersistentCalls:
       m_Calls: []
+  OnPickup:
+    m_PersistentCalls:
+      m_Calls: []
+  OnReload:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShot:
+    m_PersistentCalls:
+      m_Calls: []
+  WBCRadiusMax: 8
+  WBCRadiusMin: 7
+  PathogenRadiusMax: 9
+  PathogenRadiusMin: 9
+  AntibodyRadiusMax: 6
+  AntibodyRadiusMin: 5
+  ceiling: 0.8
+--- !u!114 &1171922090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171922087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40803bf65ca0a714fb888aa6503460d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  origin: {x: 0, y: 0, z: 0}
+  ceiling: 0.805
+  min: 8.84
+  max: 8.9
 --- !u!1 &1366875718
 GameObject:
   m_ObjectHideFlags: 0
@@ -2326,14 +2398,14 @@ MonoBehaviour:
   OnResolve:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1105824360}
-        m_TargetAssemblyTypeName: Level, PPSAssemblyDefinition
-        m_MethodName: Activate
-        m_Mode: 0
+      - m_Target: {fileID: 1171922089}
+        m_TargetAssemblyTypeName: Simulation, SEAssemblyDefinition
+        m_MethodName: SpawnAntibodyCells
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
