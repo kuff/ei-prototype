@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ProjectileScript : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject impactPrefab;
     void Awake()
     {
         StartCoroutine(kill(8));
@@ -13,5 +15,14 @@ public class ProjectileScript : MonoBehaviour
     {     
         yield return new WaitForSeconds(T);
         Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        ContactPoint contact = collision.GetContact(0);
+
+        GameObject impact;
+        impact = Instantiate(impactPrefab,contact.point, Quaternion.LookRotation(contact.normal));
+        
     }
 }

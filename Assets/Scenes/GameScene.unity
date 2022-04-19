@@ -308,6 +308,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1171922089}
+        m_TargetAssemblyTypeName: Simulation, SEAssemblyDefinition
+        m_MethodName: SpawnWBCells
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlay:
     m_PersistentCalls:
       m_Calls: []
@@ -454,6 +466,130 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 354786396}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &417231923
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 417231928}
+  - component: {fileID: 417231927}
+  - component: {fileID: 417231926}
+  - component: {fileID: 417231925}
+  - component: {fileID: 417231924}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &417231924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417231923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4de9e8c1b3058b642ba44599b08e209e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetType: 1
+  OnHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3960755999004109594}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!65 &417231925
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417231923}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &417231926
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417231923}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &417231927
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417231923}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &417231928
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417231923}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.237, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &440167178
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,7 +601,7 @@ GameObject:
   - component: {fileID: 440167180}
   - component: {fileID: 440167179}
   m_Layer: 0
-  m_Name: Level3
+  m_Name: Level3 NOT SET UP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -480,12 +616,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 440167178}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19cfb376b4f4bad4ebc9598ef2d357bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 62dd83913bf049f4f990e0bba1eb918a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   entryPrompt: {fileID: 633160825}
   isFirstLevel: 0
   isActive: 0
+  OnFirstCollision:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFirstPlayerPickup:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFirstPlayerReload:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFirstPlayerShot:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFirstAntibodyInfusion:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPathogensReducedToFiftyPercent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &440167180
 Transform:
   m_ObjectHideFlags: 0
@@ -588,12 +742,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 510518651}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19cfb376b4f4bad4ebc9598ef2d357bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 62dd83913bf049f4f990e0bba1eb918a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   entryPrompt: {fileID: 354786399}
   isFirstLevel: 1
   isActive: 0
+  OnFirstCollision:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFirstPlayerPickup:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFirstPlayerReload:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFirstPlayerShot:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFirstAntibodyInfusion:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPathogensReducedToFiftyPercent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &510518653
 Transform:
   m_ObjectHideFlags: 0
@@ -1225,6 +1397,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1171922089}
+        m_TargetAssemblyTypeName: Simulation, SEAssemblyDefinition
+        m_MethodName: SpawnPathogenCells
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlay:
     m_PersistentCalls:
       m_Calls: []
@@ -1396,7 +1580,7 @@ GameObject:
   - component: {fileID: 1105824361}
   - component: {fileID: 1105824360}
   m_Layer: 0
-  m_Name: Level2
+  m_Name: Level2 NOT SET UP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1411,12 +1595,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 1105824359}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19cfb376b4f4bad4ebc9598ef2d357bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 62dd83913bf049f4f990e0bba1eb918a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   entryPrompt: {fileID: 1167557288}
   isFirstLevel: 0
   isActive: 0
+  OnFirstCollision:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFirstPlayerPickup:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFirstPlayerReload:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFirstPlayerShot:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFirstAntibodyInfusion:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPathogensReducedToFiftyPercent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1105824361
 Transform:
   m_ObjectHideFlags: 0
@@ -1707,6 +1909,119 @@ Transform:
   m_Father: {fileID: 1105824361}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1171922087
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1171922088}
+  - component: {fileID: 1171922089}
+  - component: {fileID: 1171922090}
+  m_Layer: 0
+  m_Name: Simulator
+  m_TagString: Simulator
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1171922088
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171922087}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.6135399, y: 0.322057, z: 1.1100802}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1533687217}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1171922089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171922087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e05065e48ec3df1478d9a47be2f4a78f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WBCsSpawned: 0
+  PathogensSpawned: 0
+  AntibodiesSpawned: 0
+  WBCsDestroyed: 0
+  PathogensDestroyed: 0
+  AntibodiesDestroyed: 0
+  WBCCount: 0
+  PathogenCount: 0
+  AntibodyCount: 0
+  collisionCount: 0
+  AntibodyPickupCount: 0
+  gunReloadCount: 0
+  gunShotCount: 0
+  WBCPrefab: {fileID: 1585205167227470869, guid: be0dedad366ecd5459f91d00412109a4, type: 3}
+  PathogenPrefab: {fileID: 8393812991690933782, guid: 867aae8ec02e0c6488abf240e1a564db, type: 3}
+  AntibodyPrefab: {fileID: 8393812991690933782, guid: f4822e0e8f087d34ba771d4a1e828f0f, type: 3}
+  OnWBCSpawn:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPathogenSpawn:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAntibodySpawn:
+    m_PersistentCalls:
+      m_Calls: []
+  OnWBCDespawn:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPathgenDespawn:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAntibodyDespawn:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollision:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPickup:
+    m_PersistentCalls:
+      m_Calls: []
+  OnReload:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShot:
+    m_PersistentCalls:
+      m_Calls: []
+  WBCRadiusMax: 8
+  WBCRadiusMin: 7
+  PathogenRadiusMax: 9
+  PathogenRadiusMin: 9
+  AntibodyRadiusMax: 6
+  AntibodyRadiusMin: 5
+  ceiling: 0.8
+--- !u!114 &1171922090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171922087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40803bf65ca0a714fb888aa6503460d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  origin: {x: 0, y: 0, z: 0}
+  ceiling: 0.805
+  min: 8.84
+  max: 8.9
 --- !u!1 &1366875718
 GameObject:
   m_ObjectHideFlags: 0
@@ -2083,14 +2398,14 @@ MonoBehaviour:
   OnResolve:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1105824360}
-        m_TargetAssemblyTypeName: Level, PPSAssemblyDefinition
-        m_MethodName: Activate
-        m_Mode: 0
+      - m_Target: {fileID: 1171922089}
+        m_TargetAssemblyTypeName: Simulation, SEAssemblyDefinition
+        m_MethodName: SpawnAntibodyCells
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2285,6 +2600,7 @@ Transform:
   - {fileID: 705507995}
   - {fileID: 1744038986}
   - {fileID: 575270190}
+  - {fileID: 1171922088}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2637,3 +2953,65 @@ Transform:
   m_Father: {fileID: 1822571636}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!198 &3960755999004109594 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5666961792417559291, guid: abede87ad0be4f3439dc475ade1b55e9, type: 3}
+  m_PrefabInstance: {fileID: 8670125415993530849}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8670125415993530849
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4630947450783804010, guid: abede87ad0be4f3439dc475ade1b55e9, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630947450783804010, guid: abede87ad0be4f3439dc475ade1b55e9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630947450783804010, guid: abede87ad0be4f3439dc475ade1b55e9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.529
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630947450783804010, guid: abede87ad0be4f3439dc475ade1b55e9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.025
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630947450783804010, guid: abede87ad0be4f3439dc475ade1b55e9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630947450783804010, guid: abede87ad0be4f3439dc475ade1b55e9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630947450783804010, guid: abede87ad0be4f3439dc475ade1b55e9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630947450783804010, guid: abede87ad0be4f3439dc475ade1b55e9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630947450783804010, guid: abede87ad0be4f3439dc475ade1b55e9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630947450783804010, guid: abede87ad0be4f3439dc475ade1b55e9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630947450783804010, guid: abede87ad0be4f3439dc475ade1b55e9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8530033936763852363, guid: abede87ad0be4f3439dc475ade1b55e9, type: 3}
+      propertyPath: m_Name
+      value: Particle System
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: abede87ad0be4f3439dc475ade1b55e9, type: 3}
