@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Virus
   - Simulator
+  - Target
   layers:
   - Default
   - TransparentFX

@@ -227,19 +227,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &2162960165904792168
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6663204481800420208}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.0002674096, y: 0.005418186, z: 0.0037624768}
-  m_Center: {x: -0.0000054756892, y: -9.313226e-10, z: 0}
 --- !u!82 &4155692178141144019
 AudioSource:
   m_ObjectHideFlags: 0
@@ -357,3 +344,4 @@ MonoBehaviour:
   sparklesSound: {fileID: 0}
   ObjectGenerated: {fileID: 3262622921959976616, guid: 2060388b6687fa840ae0cb129b6a594f, type: 3}
   Antibody: {fileID: 0}
+  antibodyTarget: {fileID: 0}
