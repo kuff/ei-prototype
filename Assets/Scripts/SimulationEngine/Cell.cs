@@ -107,9 +107,21 @@ public class Cell : MonoBehaviour
     {
         // define point of collision, where we want particles to spawn
         Vector3 center = collision.transform.position;
+        Vector3 player = GameObject.FindGameObjectWithTag("Player").transform.position;
+        Vector3 direction = center - player;
+        float vectMagnitude = direction.magnitude;
+
+        Debug.Log(vectMagnitude);
+
+        float spacing = vectMagnitude / 50f;
+        Vector3 position = center - (direction * spacing);
+        position.y = position.y + Random.Range(-0.5f, 0.5f);
+        position.x = position.x + Random.Range(-0.5f, 0.5f);
+        position.z = position.z + Random.Range(-0.5f, 0.5f);
+
 
         // find a random area around the center to avoid spawning inside a Cell and look more organic
-        Vector3 RandomCircle(Vector3 center, float radius)
+        /*Vector3 RandomCircle(Vector3 center, float radius)
         {
             float ang = Random.value * 360;
             Vector3 pos;
@@ -119,13 +131,13 @@ public class Cell : MonoBehaviour
             return pos;
         }
         Vector3 pos = RandomCircle(center, 1f);
-        Quaternion rot = Quaternion.FromToRotation(Vector3.forward, center - pos);
-        
+        Quaternion rot = Quaternion.FromToRotation(Vector3.forward, center - pos);*/
+
         // spawn the new Cell differently depending on what we are colliding with
         // either replaces the object or spawns the new Cell around it
         Transform newInstance;
         if (spawnAroundObject == true)
-            newInstance = Instantiate(Element, pos, rot);
+            newInstance = Instantiate(Element, position, collision.transform.rotation);
         else
             newInstance = Instantiate(Element, collision.transform.position, collision.transform.rotation);
 
