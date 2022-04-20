@@ -22,8 +22,10 @@ public class Cell : MonoBehaviour
     public Cell targetCell;
     public Transform sparklesPrefab;
     public Transform explosionPrefab;
+    public Transform destructionPrefab;
     public AudioClip explosionSound;
     public AudioClip sparklesSound;
+    public AudioClip destructionSound;
     public Transform ObjectGenerated;
     public Transform Antibody;
     public GameObject antibodyTarget;
@@ -33,20 +35,33 @@ public class Cell : MonoBehaviour
         simulation = GameObject.FindGameObjectWithTag("Simulator").GetComponent<Simulation>();
         simulation.SetAllowCollisions(true); //for testing purposes
 
+        if (this.type == CellType.PathogenNeutralized)
+        {
+            StartCoroutine(Destruction());
+        }
+
+        IEnumerator Destruction()
+        {
+            yield return new WaitForSeconds(3);
+            Transform generatedEffect = Instantiate(destructionPrefab, this.transform.position, this.transform.rotation);
+            this.gameObject.GetComponent<AudioSource>().PlayOneShot(destructionSound, 0.7f);
+            Destroy(this.gameObject);
+            Destroy(generatedEffect.gameObject, 1);  // destroy effect after 1 second
+        }
         // TODO: should trigger spawning animation...
     }
 
-    /*protected void Update()
-    {
-        // ...
-    }
+        /*protected void Update()
+        {
+            // ...
+        }
 
-    protected void FixedUpdate()
-    {
-        // ...
-    }*/
+        protected void FixedUpdate()
+        {
+            // ...
+        }*/
 
-    public void Tick()
+        public void Tick()
     {
         // ...
     }

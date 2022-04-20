@@ -163,8 +163,10 @@ MonoBehaviour:
   targetCell: {fileID: 0}
   sparklesPrefab: {fileID: 0}
   explosionPrefab: {fileID: 0}
-  explosionSound: {fileID: 8300000, guid: 6dff03c50ee9a3c45b16f6cbe71bec37, type: 3}
+  destructionPrefab: {fileID: 0}
+  explosionSound: {fileID: 8300000, guid: ca0f976ff76b04644a1332f3be4f344b, type: 3}
   sparklesSound: {fileID: 0}
+  destructionSound: {fileID: 0}
   ObjectGenerated: {fileID: 0}
   Antibody: {fileID: 0}
   antibodyTarget: {fileID: 0}
@@ -1329,8 +1331,10 @@ MonoBehaviour:
   targetCell: {fileID: 0}
   sparklesPrefab: {fileID: 0}
   explosionPrefab: {fileID: 0}
+  destructionPrefab: {fileID: 0}
   explosionSound: {fileID: 0}
   sparklesSound: {fileID: 0}
+  destructionSound: {fileID: 0}
   ObjectGenerated: {fileID: 0}
   Antibody: {fileID: 0}
   antibodyTarget: {fileID: 0}
