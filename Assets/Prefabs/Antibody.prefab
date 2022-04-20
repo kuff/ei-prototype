@@ -141,15 +141,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 820a54bf6591dca45b29e3418111befb, type: 3}
       propertyPath: m_LocalScale.x
-      value: 201.4
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 820a54bf6591dca45b29e3418111befb, type: 3}
       propertyPath: m_LocalScale.y
-      value: 201.4
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 820a54bf6591dca45b29e3418111befb, type: 3}
       propertyPath: m_LocalScale.z
-      value: 201.4
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 820a54bf6591dca45b29e3418111befb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -357,3 +357,4 @@ MonoBehaviour:
   sparklesSound: {fileID: 0}
   ObjectGenerated: {fileID: 3262622921959976616, guid: 2060388b6687fa840ae0cb129b6a594f, type: 3}
   Antibody: {fileID: 0}
+  antibodyTarget: {fileID: 0}

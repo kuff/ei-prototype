@@ -151,6 +151,7 @@ MonoBehaviour:
   sparklesSound: {fileID: 0}
   ObjectGenerated: {fileID: 0}
   Antibody: {fileID: 0}
+  antibodyTarget: {fileID: 0}
 --- !u!114 &2213419033011033897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,15 +201,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7282e9ef79929d04dae2cdcf691a4277, type: 3}
       propertyPath: m_LocalScale.x
-      value: 200
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7282e9ef79929d04dae2cdcf691a4277, type: 3}
       propertyPath: m_LocalScale.y
-      value: 200
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7282e9ef79929d04dae2cdcf691a4277, type: 3}
       propertyPath: m_LocalScale.z
-      value: 200
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7282e9ef79929d04dae2cdcf691a4277, type: 3}
       propertyPath: m_LocalPosition.x
