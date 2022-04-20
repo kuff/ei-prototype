@@ -133,7 +133,8 @@ public class Simulation : MonoBehaviour
        for (int i = 0; i < amount; i++) 
        {
             Vector3 randpoint = UnityEngine.Random.insideUnitSphere.normalized;
-            Vector3 spawnPos = playerPos + new Vector3(randpoint.x, Mathf.Abs(randpoint.y), randpoint.z) * UnityEngine.Random.Range(WBCRadiusMin, WBCRadiusMax);
+            Vector3 spawnPos = this.FindSpawnSpace(
+                () => playerPos + new Vector3(randpoint.x, Mathf.Abs(randpoint.y), randpoint.z) * UnityEngine.Random.Range(WBCRadiusMin, WBCRadiusMax));
             SpawnCell(CellType.WhiteBloodCell,spawnPos); 
        }
     }
@@ -143,7 +144,8 @@ public class Simulation : MonoBehaviour
         for (int i = 0; i < amount; i++)
         {
             Vector3 randpoint = UnityEngine.Random.insideUnitSphere.normalized;
-            Vector3 spawnPos = Vector3.zero + new Vector3(randpoint.x, Mathf.Abs(randpoint.y), randpoint.z) * UnityEngine.Random.Range(PathogenRadiusMin, PathogenRadiusMax);
+            Vector3 spawnPos = this.FindSpawnSpace(
+                () => Vector3.zero + new Vector3(randpoint.x, Mathf.Abs(randpoint.y), randpoint.z) * UnityEngine.Random.Range(PathogenRadiusMin, PathogenRadiusMax));
             SpawnCell(CellType.Pathogen, spawnPos);
         }
     }
@@ -154,7 +156,9 @@ public class Simulation : MonoBehaviour
         for (int i = 0; i < amount; i++)
         {
             Vector3 randpoint = UnityEngine.Random.insideUnitSphere.normalized;
-            Vector3 spawnPos = playerPos + new Vector3(randpoint.x, Mathf.Abs(randpoint.y * 0.4f), randpoint.z) * UnityEngine.Random.Range(AntibodyRadiusMin, AntibodyRadiusMax);
+            Vector3 spawnPos = this.FindSpawnSpace(
+                () => playerPos + new Vector3(randpoint.x, Mathf.Abs(randpoint.y * 0.4f), randpoint.z) * UnityEngine.Random.Range(AntibodyRadiusMin, AntibodyRadiusMax),
+                3);
             SpawnCell(CellType.Antibody, spawnPos);
         }
     }
@@ -203,6 +207,30 @@ public class Simulation : MonoBehaviour
     {
         // ...
     }
+    
+    private Vector3 FindSpawnSpace(Func<Vector3> generateSpawn, float minimumDistance = 7)
+    {
+        Vector3 spawnPoint;
+        
+        bool isValidSpawn;
+        int tries = 0;
+        int maxTriesAllowed = 50;
+        do
+        {
+            isValidSpawn = true;
+            tries++;
+            if (tries == maxTriesAllowed) Debug.LogWarning("CELL SPAWNING: Exceeded the allotted number of spawn tries, spawning cell at random...");
+            
+            spawnPoint = generateSpawn();
+            foreach (Cell c in this.cells)
+            {
+                float interCellDistance = Vector3.Distance(c.gameObject.transform.position, spawnPoint);
+                if (interCellDistance < minimumDistance) isValidSpawn = false;
+            }
+        } while (!isValidSpawn && tries <= maxTriesAllowed);
+
+        return spawnPoint;
+    }
 
     private void SpawnCell(CellType type, Vector3 position)
     {
@@ -243,11 +271,11 @@ public class Simulation : MonoBehaviour
 
             default:  // CellType.Filler
                 // TODO: randomly select and spawn Filler Cell prefab
-                newCellObject = new GameObject();
+                //newCellObject = new GameObject();
                 return;
         }
 
-        cells.Add(newCellObject.GetComponent<Cell>());
+        cells.Add(newCellObject.GetComponentInChildren<Cell>());
         Instantiate(newCellObject, position, Quaternion.identity);
     }
 
