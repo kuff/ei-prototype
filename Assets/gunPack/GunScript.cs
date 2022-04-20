@@ -52,6 +52,8 @@ public class GunScript : MonoBehaviour
     }
     void shoot()
     {
+        this.simulation.OnShot.Invoke(new Scenario());
+        
         Debug.Log("Shoot!");
 
         GameObject Projectile;
@@ -63,6 +65,8 @@ public class GunScript : MonoBehaviour
 
     void attachToHand()
     {
+        this.simulation.OnPickup.Invoke(new Scenario());
+        
         gameObject.transform.parent = GetComponent<Interactable>().hoveringHand.transform;
         gameObject.transform.localPosition = new Vector3(0f, 0f, 0f);  // 0f, -0.15f, 0.15f
         gameObject.transform.localRotation = Quaternion.Euler(135f, 0f, 0f);
