@@ -103,7 +103,7 @@ public class Cell : MonoBehaviour
             pos.z = center.z + Random.Range(-1.5f, 1.5f);
             return pos;
         }
-        Vector3 pos = RandomCircle(center, 2f);
+        Vector3 pos = RandomCircle(center, 1f);
         Quaternion rot = Quaternion.FromToRotation(Vector3.forward, center - pos);
         
         // spawn the new Cell differently depending on what we are colliding with
