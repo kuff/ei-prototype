@@ -72,7 +72,7 @@ public class Simulation : MonoBehaviour
 
     private List<Cell> cells = new List<Cell>();
     private bool allowCollisions = true;  // TODO: implement the logic for this...
-
+    private GameObject playerObject;
 
     // spawning & despawning variables
     public float WBCRadiusMax, WBCRadiusMin;
@@ -83,6 +83,8 @@ public class Simulation : MonoBehaviour
 
     protected void Start()
     {
+        this.playerObject = GameObject.FindGameObjectWithTag("Player");
+        
         this.OnPickup   .AddListener(s => this.AntibodyPickupCount++);
         this.OnReload   .AddListener(s => this.gunReloadCount++);
         this.OnShot     .AddListener(s => this.gunShotCount++);
@@ -91,10 +93,18 @@ public class Simulation : MonoBehaviour
 
     public void Tick()
     {
-        /*foreach (Cell c in this.cells)
-            c.Tick();*/
-
-        // ...
+        foreach (Cell c in this.cells)
+        {
+            if (Vector3.Distance(this.playerObject.transform.position, c.transform.position) > 10 || c.transform.position.y < 0)
+            {
+                this.DespawnCell(c);
+                this.SpawnCells(c.type, 1);
+            }
+            else
+            {
+                c.Tick();
+            }
+        }
     }
 
     public void ClearCount()
@@ -245,8 +255,25 @@ public class Simulation : MonoBehaviour
                 return null;
         }
 
-        cells.Add(newCellObject.GetComponentInChildren<Cell>());
-        return Instantiate(newCellObject, position, Quaternion.identity);
+        GameObject instantiatedObject = Instantiate(newCellObject, position, Quaternion.identity); 
+        cells.Add(instantiatedObject.GetComponentInChildren<Cell>());
+        return instantiatedObject;
+    }
+
+    public void SpawnCells(CellType type, int amount)
+    {
+        switch (type)
+        {
+            case CellType.WhiteBloodCell:
+                this.SpawnWBCells(amount);
+                break;
+            case CellType.Pathogen:
+                this.SpawnPathogenCells(amount);
+                break;
+            case CellType.Antibody:
+                this.SpawnAntibodyCells(amount);
+                break;
+        }
     }
     
     private Vector3 FindSpawnSpace(Func<Vector3> generateSpawn, float minimumDistance = 7)
