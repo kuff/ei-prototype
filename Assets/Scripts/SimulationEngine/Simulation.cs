@@ -240,6 +240,14 @@ public class Simulation : MonoBehaviour
                 this.PathogenCount++;
                 this.OnPathogenSpawn.Invoke(new Scenario());
                 break;
+            
+            case CellType.PathogenNeutralized:
+                newCellObject = this.PathogenNeutralizedPrefab;
+
+                this.PathogensSpawned++;
+                this.PathogenCount++;
+                this.OnPathogenSpawn.Invoke(new Scenario());
+                break;
 
             case CellType.Antibody:
                 newCellObject = this.AntibodyPrefab;
@@ -256,7 +264,7 @@ public class Simulation : MonoBehaviour
         }
 
         GameObject instantiatedObject = Instantiate(newCellObject, position, Quaternion.identity); 
-        cells.Add(instantiatedObject.GetComponentInChildren<Cell>());
+        if (type != CellType.PathogenNeutralized) cells.Add(instantiatedObject.GetComponentInChildren<Cell>());
         return instantiatedObject;
     }
 

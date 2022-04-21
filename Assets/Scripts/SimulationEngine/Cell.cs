@@ -48,7 +48,7 @@ public class Cell : MonoBehaviour
 
         IEnumerator Destruction()
         {
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(3.2f);
             Destroy(this.gameObject);
         }
         
@@ -71,7 +71,7 @@ public class Cell : MonoBehaviour
     public void OnCollisionEnter(Collision collision)
     {
         if (simulation.CollisionsAllowed()) { 
-            collisionCell = collision.gameObject.GetComponent<Cell>();
+            collisionCell = collision.gameObject.GetComponentInChildren<Cell>() ?? collision.gameObject.GetComponent<Cell>();
 
             if (collisionCell?.type == CellType.Pathogen)
             {
@@ -79,7 +79,6 @@ public class Cell : MonoBehaviour
                 {
                     bool applyForDrop = simulation.ApplyForDrop(this);
                     if (applyForDrop == true) {
-                        Debug.Log("WhiteCell");
                         SpawnElements(sparklesPrefab, collision, sparklesSound, 0.7f, true);
                     }
                     else
@@ -89,11 +88,11 @@ public class Cell : MonoBehaviour
                 }
                 else if (this.type == CellType.Antibody)
                 {
-                    Debug.Log("Antibody");
                     SpawnElements(explosionPrefab, collision, explosionSound, 0.7f, false);
                     
+                    CellType ct = collision.gameObject.GetComponentInChildren<Cell>().type;
                     this.simulation.DespawnCell(this);
-                    this.simulation.DespawnCell(collision.gameObject.GetComponent<Cell>() ?? null);
+                    this.simulation.DespawnCell(collision.gameObject.GetComponentInChildren<Cell>() ?? null);
                 }
                 
                 this.simulation.OnCollision.Invoke(new Scenario());  // TODO: define the API for this...
@@ -149,13 +148,13 @@ public class Cell : MonoBehaviour
     /*
      * Spawn particle effect and play audio, but no Cell spawning
      */
-    private void SpawnElements([CanBeNull] Transform instance, Transform effect, [CanBeNull] Collision collision, AudioClip sound, float volume)
+    private void SpawnElements(Transform instance, Transform effect, [CanBeNull] Collision collision, AudioClip sound, float volume)
     {
         // play the effects
         var position = collision != null ? collision.transform.position : this.gameObject.transform.position;
         var rotation = collision != null ? collision.transform.rotation : this.gameObject.transform.rotation;
         Transform generatedEffect = Instantiate(effect, position, rotation);
-        instance?.gameObject.GetComponent<AudioSource>().PlayOneShot(sound, volume);
+        instance.gameObject.GetComponentInChildren<AudioSource>().PlayOneShot(sound, volume);
         Destroy(generatedEffect.gameObject, 1);
     }
 
