@@ -257,7 +257,7 @@ MonoBehaviour:
   sparklesPrefab: {fileID: 8311635123287835687, guid: e881f5a5926f4814b9b5f59c0a85ee16, type: 3}
   explosionPrefab: {fileID: 8311635123287835687, guid: 9b61e6c4432c21b40b9fab541bc5d32b, type: 3}
   destructionPrefab: {fileID: 8311635123287835687, guid: 31d7ad60497afe04e8368547b209fa5d, type: 3}
-  explosionSound: {fileID: 8300000, guid: 918ee1b51fd32d748a66d520586569ba, type: 3}
+  explosionSound: {fileID: 8300000, guid: dab10ad554e5f804f9f26ca9ca332f9a, type: 3}
   sparklesSound: {fileID: 0}
   destructionSound: {fileID: 8300000, guid: efee776e88902a74684c56ce2962678f, type: 3}
   ObjectGenerated: {fileID: 3262622921959976616, guid: 2060388b6687fa840ae0cb129b6a594f, type: 3}

@@ -17,7 +17,6 @@ public class Cell : MonoBehaviour
     private Simulation simulation;
     private Cell collisionCell;
     private AudioSource audioSource;
-
     public CellType type;
     public double creationTimestamp;
     public Cell targetCell;
@@ -40,16 +39,15 @@ public class Cell : MonoBehaviour
         IEnumerator DestructionEffect()
         {
             yield return new WaitForSeconds(3);
-            Transform generatedEffect = Instantiate(destructionPrefab, this.transform.position, this.transform.rotation);
+            this.gameObject.transform.localScale = new Vector3(0, 0, 0);
+            PlayDespawnAnimation();
             this.gameObject.GetComponent<AudioSource>().PlayOneShot(destructionSound, 0.7f);
-            Destroy(this.gameObject.transform.GetChild(0).gameObject);
-            Destroy(generatedEffect.gameObject, 1);  // destroy effect after 1 second
         }
 
         IEnumerator Destruction()
         {
-            yield return new WaitForSeconds(3.2f);
-            Destroy(this.gameObject);
+            yield return new WaitForSeconds(6);
+            simulation.DespawnCell(this.gameObject, false);
         }
         
         if (this.type == CellType.PathogenNeutralized)
@@ -91,8 +89,8 @@ public class Cell : MonoBehaviour
                     SpawnElements(explosionPrefab, collision, explosionSound, 0.7f, false);
                     
                     CellType ct = collision.gameObject.GetComponentInChildren<Cell>().type;
-                    this.simulation.DespawnCell(this);
-                    this.simulation.DespawnCell(collision.gameObject.GetComponentInChildren<Cell>() ?? null);
+                    this.simulation.DespawnCell(this, true);
+                    this.simulation.DespawnCell(collision.gameObject.GetComponentInChildren<Cell>() ?? null, true);
                 }
                 
                 this.simulation.OnCollision.Invoke(new Scenario());  // TODO: define the API for this...
@@ -118,20 +116,6 @@ public class Cell : MonoBehaviour
         position.y += Random.Range(-0.5f, 0.5f);
         position.x += Random.Range(-0.5f, 0.5f);
         position.z += Random.Range(-0.5f, 0.5f);
-
-
-        // find a random area around the center to avoid spawning inside a Cell and look more organic
-        /*Vector3 RandomCircle(Vector3 center, float radius)
-        {
-            float ang = Random.value * 360;
-            Vector3 pos;
-            pos.x = center.x + radius * Mathf.Sin(ang * Mathf.Deg2Rad);
-            pos.y = center.y + radius * Mathf.Cos(ang * Mathf.Deg2Rad);
-            pos.z = center.z + Random.Range(-1.5f, 1.5f);
-            return pos;
-        }
-        Vector3 pos = RandomCircle(center, 1f);
-        Quaternion rot = Quaternion.FromToRotation(Vector3.forward, center - pos);*/
 
         // spawn the new Cell differently depending on what we are colliding with
         // either replaces the object or spawns the new Cell around it
@@ -161,7 +145,6 @@ public class Cell : MonoBehaviour
     public void PlayDespawnAnimation()
     {
         Transform generatedEffect = Instantiate(destructionPrefab, this.transform.position, this.transform.rotation);
-        this.gameObject.GetComponent<AudioSource>().PlayOneShot(destructionSound, 0.7f);
         Destroy(generatedEffect.gameObject, 1);  // destroy effect after 1 second
     }
 }

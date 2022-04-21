@@ -258,8 +258,8 @@ MonoBehaviour:
   explosionPrefab: {fileID: 8311635123287835687, guid: 9b61e6c4432c21b40b9fab541bc5d32b, type: 3}
   destructionPrefab: {fileID: 8311635123287835687, guid: 31d7ad60497afe04e8368547b209fa5d, type: 3}
   explosionSound: {fileID: 8300000, guid: 918ee1b51fd32d748a66d520586569ba, type: 3}
-  sparklesSound: {fileID: 8300000, guid: d53053a416c413d40ae35d3b3d2c8277, type: 3}
-  destructionSound: {fileID: 8300000, guid: efee776e88902a74684c56ce2962678f, type: 3}
+  sparklesSound: {fileID: 8300000, guid: 3f8f142e39c3f7b49940ba5168ba9b10, type: 3}
+  destructionSound: {fileID: 8300000, guid: 89bc09e638d372b4da18da17887f3e0e, type: 3}
   ObjectGenerated: {fileID: 0}
   Antibody: {fileID: 3262622921959976616, guid: f4822e0e8f087d34ba771d4a1e828f0f, type: 3}
   antibodyTarget: {fileID: 0}

@@ -97,7 +97,7 @@ public class Simulation : MonoBehaviour
         {
             if (Vector3.Distance(this.playerObject.transform.position, c.transform.position) > 10 || c.transform.position.y < 0)
             {
-                this.DespawnCell(c);
+                this.DespawnCell(c, true);
                 this.SpawnCells(c.type, 1);
             }
             else
@@ -308,11 +308,15 @@ public class Simulation : MonoBehaviour
         return spawnPoint;
     }
 
-    public void DespawnCell([CanBeNull] Cell cell)
+    public void DespawnCell([CanBeNull] Cell cell, bool playAnimation)
     {
         if (cell == null) return;
-        
-        cell.PlayDespawnAnimation();
+
+        if (playAnimation == true)
+        {
+            cell.PlayDespawnAnimation();
+        }
+
         Destroy(cell.gameObject);
         this.cells.Remove(cell);
 
@@ -341,7 +345,7 @@ public class Simulation : MonoBehaviour
         }
     }
     
-    public void DespawnCell(GameObject go) {
-        this.DespawnCell(go.GetComponent<Cell>());
+    public void DespawnCell(GameObject go, bool playAnimation) {
+        this.DespawnCell(go.GetComponent<Cell>(), playAnimation);
     }
 }
