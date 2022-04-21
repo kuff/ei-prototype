@@ -231,14 +231,6 @@ public class Simulation : MonoBehaviour
                 this.OnPathogenSpawn.Invoke(new Scenario());
                 break;
 
-            case CellType.PathogenNeutralized:
-                newCellObject = this.PathogenNeutralizedPrefab;
-
-                this.PathogensSpawned++;
-                this.PathogenCount++;
-                this.OnPathogenSpawn.Invoke(new Scenario());
-                break;
-
             case CellType.Antibody:
                 newCellObject = this.AntibodyPrefab;
 
@@ -286,6 +278,7 @@ public class Simulation : MonoBehaviour
         if (cell == null) return;
         
         cell.PlayDespawnAnimation();
+        Destroy(cell.gameObject);
         this.cells.Remove(cell);
 
         switch (cell.type)

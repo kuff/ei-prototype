@@ -37,13 +37,30 @@ public class Cell : MonoBehaviour
         simulation.SetAllowCollisions(true);  // for testing purposes
 
         // self destruct logic for Neutralized Pathogen Cells
-        IEnumerator Destruction()
+        IEnumerator DestructionEffect()
         {
             yield return new WaitForSeconds(3);
-            this.simulation.DespawnCell(this);
+            Transform generatedEffect = Instantiate(destructionPrefab, this.transform.position, this.transform.rotation);
+            this.gameObject.GetComponent<AudioSource>().PlayOneShot(destructionSound, 0.7f);
+            Destroy(this.gameObject.transform.GetChild(0).gameObject);
+            Destroy(generatedEffect.gameObject, 1);  // destroy effect after 1 second
         }
-        if (this.type == CellType.PathogenNeutralized) StartCoroutine(Destruction());
-        else this.SpawnElements(this.transform, sparklesPrefab, null, explosionSound, 0.2f);  // trigger spawning animation
+
+        IEnumerator Destruction()
+        {
+            yield return new WaitForSeconds(5f);
+            Destroy(this.gameObject);
+        }
+        
+        if (this.type == CellType.PathogenNeutralized)
+        {
+            StartCoroutine(DestructionEffect());
+            StartCoroutine(Destruction());
+        }
+        else
+        {
+            this.SpawnElements(this.transform, sparklesPrefab, null, explosionSound, 0.2f); // trigger spawning animation
+        }
     }
     
     public void Tick()
@@ -79,7 +96,6 @@ public class Cell : MonoBehaviour
                     this.simulation.DespawnCell(collision.gameObject.GetComponent<Cell>() ?? null);
                 }
                 
-                // TODO: do something on other collisions...
                 this.simulation.OnCollision.Invoke(new Scenario());  // TODO: define the API for this...
             }
         }
@@ -147,7 +163,6 @@ public class Cell : MonoBehaviour
     {
         Transform generatedEffect = Instantiate(destructionPrefab, this.transform.position, this.transform.rotation);
         this.gameObject.GetComponent<AudioSource>().PlayOneShot(destructionSound, 0.7f);
-        Destroy(this.gameObject);
         Destroy(generatedEffect.gameObject, 1);  // destroy effect after 1 second
     }
 }
