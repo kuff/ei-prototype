@@ -285,8 +285,8 @@ public class Simulation : MonoBehaviour
     {
         if (cell == null) return;
         
+        cell.PlayDespawnAnimation();
         this.cells.Remove(cell);
-        Destroy(cell.gameObject);
 
         switch (cell.type)
         {
@@ -311,5 +311,9 @@ public class Simulation : MonoBehaviour
 
             // Filler Cells don't have these events so we don't need to catch them here
         }
+    }
+    
+    public void DespawnCell(GameObject go) {
+        this.DespawnCell(go.GetComponent<Cell>());
     }
 }

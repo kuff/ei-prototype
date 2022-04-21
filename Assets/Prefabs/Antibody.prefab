@@ -351,10 +351,12 @@ MonoBehaviour:
   type: 3
   creationTimestamp: 0
   targetCell: {fileID: 0}
-  sparklesPrefab: {fileID: 0}
+  sparklesPrefab: {fileID: 8311635123287835687, guid: e881f5a5926f4814b9b5f59c0a85ee16, type: 3}
   explosionPrefab: {fileID: 8311635123287835687, guid: 9b61e6c4432c21b40b9fab541bc5d32b, type: 3}
+  destructionPrefab: {fileID: 0}
   explosionSound: {fileID: 8300000, guid: 918ee1b51fd32d748a66d520586569ba, type: 3}
   sparklesSound: {fileID: 0}
+  destructionSound: {fileID: 0}
   ObjectGenerated: {fileID: 3262622921959976616, guid: 2060388b6687fa840ae0cb129b6a594f, type: 3}
   Antibody: {fileID: 0}
   antibodyTarget: {fileID: 0}

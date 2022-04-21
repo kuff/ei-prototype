@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3262622921959976616}
   - component: {fileID: 6891638859582895629}
-  - component: {fileID: 3332986195734326419}
-  - component: {fileID: 2213419033011033897}
   m_Layer: 0
   m_Name: PathogenNeutralized
   m_TagString: Untagged
@@ -130,46 +128,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3332986195734326419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8393812991690933782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10dc2176c7f8bcc47ba8e4849b42893d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 2
-  creationTimestamp: 0
-  targetCell: {fileID: 0}
-  sparklesPrefab: {fileID: 0}
-  explosionPrefab: {fileID: 0}
-  destructionPrefab: {fileID: 8311635123287835687, guid: 31d7ad60497afe04e8368547b209fa5d, type: 3}
-  explosionSound: {fileID: 8300000, guid: 918ee1b51fd32d748a66d520586569ba, type: 3}
-  sparklesSound: {fileID: 0}
-  destructionSound: {fileID: 8300000, guid: 918ee1b51fd32d748a66d520586569ba, type: 3}
-  ObjectGenerated: {fileID: 0}
-  Antibody: {fileID: 0}
-  antibodyTarget: {fileID: 0}
---- !u!114 &2213419033011033897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8393812991690933782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf5070a7171da7a4fa8688f801e740ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rpmX: 10
-  rpmY: 10
-  rpmZ: 10
-  Rotating: 1
 --- !u!1001 &4739196776654874612
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1285,6 +1243,46 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2561931879273963744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5549678881499093669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10dc2176c7f8bcc47ba8e4849b42893d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2
+  creationTimestamp: 0
+  targetCell: {fileID: 0}
+  sparklesPrefab: {fileID: 8311635123287835687, guid: e881f5a5926f4814b9b5f59c0a85ee16, type: 3}
+  explosionPrefab: {fileID: 0}
+  destructionPrefab: {fileID: 8311635123287835687, guid: 31d7ad60497afe04e8368547b209fa5d, type: 3}
+  explosionSound: {fileID: 8300000, guid: 918ee1b51fd32d748a66d520586569ba, type: 3}
+  sparklesSound: {fileID: 0}
+  destructionSound: {fileID: 8300000, guid: 918ee1b51fd32d748a66d520586569ba, type: 3}
+  ObjectGenerated: {fileID: 0}
+  Antibody: {fileID: 0}
+  antibodyTarget: {fileID: 0}
+--- !u!114 &5797386506780064871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5549678881499093669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf5070a7171da7a4fa8688f801e740ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rpmX: 10
+  rpmY: 10
+  rpmZ: 10
+  Rotating: 1
 --- !u!1001 &5816712269623199265
 PrefabInstance:
   m_ObjectHideFlags: 0

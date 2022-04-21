@@ -2001,7 +2001,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1171922088}
   - component: {fileID: 1171922089}
-  - component: {fileID: 1171922090}
   m_Layer: 0
   m_Name: Simulator
   m_TagString: Simulator
@@ -2089,22 +2088,6 @@ MonoBehaviour:
   AntibodyRadiusMax: 6
   AntibodyRadiusMin: 5
   ceiling: 0.8
---- !u!114 &1171922090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1171922087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40803bf65ca0a714fb888aa6503460d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  origin: {x: 0, y: 0, z: 0}
-  ceiling: 0.805
-  min: 8.84
-  max: 8.9
 --- !u!1 &1366875718
 GameObject:
   m_ObjectHideFlags: 0

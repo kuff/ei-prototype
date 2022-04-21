@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public enum CellType
@@ -33,35 +34,19 @@ public class Cell : MonoBehaviour
     protected void Start()
     {
         simulation = GameObject.FindGameObjectWithTag("Simulator").GetComponent<Simulation>();
-        simulation.SetAllowCollisions(true); //for testing purposes
+        simulation.SetAllowCollisions(true);  // for testing purposes
 
-        if (this.type == CellType.PathogenNeutralized)
-        {
-            StartCoroutine(Destruction());
-        }
-
+        // self destruct logic for Neutralized Pathogen Cells
         IEnumerator Destruction()
         {
             yield return new WaitForSeconds(3);
-            Transform generatedEffect = Instantiate(destructionPrefab, this.transform.position, this.transform.rotation);
-            this.gameObject.GetComponent<AudioSource>().PlayOneShot(destructionSound, 0.7f);
-            Destroy(this.gameObject);
-            Destroy(generatedEffect.gameObject, 1);  // destroy effect after 1 second
+            this.simulation.DespawnCell(this);
         }
-        // TODO: should trigger spawning animation...
+        if (this.type == CellType.PathogenNeutralized) StartCoroutine(Destruction());
+        else this.SpawnElements(this.transform, sparklesPrefab, null, explosionSound, 0.2f);  // trigger spawning animation
     }
-
-        /*protected void Update()
-        {
-            // ...
-        }
-
-        protected void FixedUpdate()
-        {
-            // ...
-        }*/
-
-        public void Tick()
+    
+    public void Tick()
     {
         // ...
     }
@@ -78,17 +63,17 @@ public class Cell : MonoBehaviour
                     bool applyForDrop = simulation.ApplyForDrop(this);
                     if (applyForDrop == true) {
                         Debug.Log("WhiteCell");
-                        SpawnElements(Antibody, sparklesPrefab, collision, sparklesSound, 0.7f, true);
+                        SpawnElements(sparklesPrefab, collision, sparklesSound, 0.7f, true);
                     }
                     else
                     {
-                        SpawnElements(sparklesPrefab, collision, sparklesSound, 0.7f, false);
+                        SpawnElements(this.transform, sparklesPrefab, collision, sparklesSound, 0.7f);
                     }
                 }
                 else if (this.type == CellType.Antibody)
                 {
                     Debug.Log("Antibody");
-                    SpawnElements(ObjectGenerated, explosionPrefab, collision, explosionSound, 0.7f, false);
+                    SpawnElements(explosionPrefab, collision, explosionSound, 0.7f, false);
                     
                     this.simulation.DespawnCell(this);
                     this.simulation.DespawnCell(collision.gameObject.GetComponent<Cell>() ?? null);
@@ -103,7 +88,7 @@ public class Cell : MonoBehaviour
     /*
      * Spawn Cells and play audio and particle effects
      */
-    public void SpawnElements(Transform Element, Transform Effect, Collision collision, AudioClip sound, float volume, bool spawnAroundObject)
+    public void SpawnElements(Transform effect, Collision collision, AudioClip sound, float volume, bool spawnAroundObject)
     {
         // define point of collision, where we want particles to spawn
         Vector3 center = collision.transform.position;
@@ -115,9 +100,9 @@ public class Cell : MonoBehaviour
 
         float spacing = vectMagnitude / 50f;
         Vector3 position = center - (direction * spacing);
-        position.y = position.y + Random.Range(-0.5f, 0.5f);
-        position.x = position.x + Random.Range(-0.5f, 0.5f);
-        position.z = position.z + Random.Range(-0.5f, 0.5f);
+        position.y += Random.Range(-0.5f, 0.5f);
+        position.x += Random.Range(-0.5f, 0.5f);
+        position.z += Random.Range(-0.5f, 0.5f);
 
 
         // find a random area around the center to avoid spawning inside a Cell and look more organic
@@ -137,26 +122,32 @@ public class Cell : MonoBehaviour
         // either replaces the object or spawns the new Cell around it
         Transform newInstance;
         if (spawnAroundObject == true)
-            //newInstance = Instantiate(Element, position, collision.transform.rotation);
             newInstance = this.simulation.SpawnCell(CellType.Antibody, position)?.transform;
         else
-            //newInstance = Instantiate(Element, collision.transform.position, collision.transform.rotation);
             newInstance = this.simulation.SpawnCell(CellType.PathogenNeutralized, collision.transform.position)?.transform;
 
         // play the effects
-        Transform generatedEffect = Instantiate(Effect, collision.transform.position, collision.transform.rotation);
-        newInstance?.gameObject.GetComponent<AudioSource>().PlayOneShot(sound, volume);
-        Destroy(generatedEffect.gameObject, 1);  // destroy effect after 1 second
+        this.SpawnElements(newInstance, effect, collision, sound, volume);
     }
 
     /*
      * Spawn particle effect and play audio, but no Cell spawning
      */
-    public void SpawnElements(Transform Effect, Collision collision, AudioClip sound, float volume, bool destroyGameObjects)
+    private void SpawnElements([CanBeNull] Transform instance, Transform effect, [CanBeNull] Collision collision, AudioClip sound, float volume)
     {
         // play the effects
-        Transform generatedEffect = Instantiate(Effect, collision.transform.position, collision.transform.rotation);
-        this.gameObject.GetComponent<AudioSource>().PlayOneShot(sound, volume);
+        var position = collision != null ? collision.transform.position : this.gameObject.transform.position;
+        var rotation = collision != null ? collision.transform.rotation : this.gameObject.transform.rotation;
+        Transform generatedEffect = Instantiate(effect, position, rotation);
+        instance?.gameObject.GetComponent<AudioSource>().PlayOneShot(sound, volume);
         Destroy(generatedEffect.gameObject, 1);
+    }
+
+    public void PlayDespawnAnimation()
+    {
+        Transform generatedEffect = Instantiate(destructionPrefab, this.transform.position, this.transform.rotation);
+        this.gameObject.GetComponent<AudioSource>().PlayOneShot(destructionSound, 0.7f);
+        Destroy(this.gameObject);
+        Destroy(generatedEffect.gameObject, 1);  // destroy effect after 1 second
     }
 }
