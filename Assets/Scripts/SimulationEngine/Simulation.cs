@@ -56,6 +56,7 @@ public class Simulation : MonoBehaviour
 
     public GameObject WBCPrefab;
     public GameObject PathogenPrefab;
+    public GameObject PathogenNeutralizedPrefab;
     public GameObject AntibodyPrefab;
 
     public WBCSpawnEvent        OnWBCSpawn          = new WBCSpawnEvent();
@@ -208,31 +209,8 @@ public class Simulation : MonoBehaviour
         // ...
     }
     
-    private Vector3 FindSpawnSpace(Func<Vector3> generateSpawn, float minimumDistance = 7)
-    {
-        Vector3 spawnPoint;
-        
-        bool isValidSpawn;
-        int tries = 0;
-        int maxTriesAllowed = 50;
-        do
-        {
-            isValidSpawn = true;
-            tries++;
-            if (tries == maxTriesAllowed) Debug.LogWarning("CELL SPAWNING: Exceeded the allotted number of spawn tries, spawning cell at random...");
-            
-            spawnPoint = generateSpawn();
-            foreach (Cell c in this.cells)
-            {
-                float interCellDistance = Vector3.Distance(c.gameObject.transform.position, spawnPoint);
-                if (interCellDistance < minimumDistance) isValidSpawn = false;
-            }
-        } while (!isValidSpawn && tries <= maxTriesAllowed);
-
-        return spawnPoint;
-    }
-
-    private void SpawnCell(CellType type, Vector3 position)
+    [CanBeNull]
+    public GameObject SpawnCell(CellType type, Vector3 position)
     {
         GameObject newCellObject;
 
@@ -254,7 +232,7 @@ public class Simulation : MonoBehaviour
                 break;
 
             case CellType.PathogenNeutralized:
-                newCellObject = this.PathogenPrefab;
+                newCellObject = this.PathogenNeutralizedPrefab;
 
                 this.PathogensSpawned++;
                 this.PathogenCount++;
@@ -272,11 +250,35 @@ public class Simulation : MonoBehaviour
             default:  // CellType.Filler
                 // TODO: randomly select and spawn Filler Cell prefab
                 //newCellObject = new GameObject();
-                return;
+                return null;
         }
 
         cells.Add(newCellObject.GetComponentInChildren<Cell>());
-        Instantiate(newCellObject, position, Quaternion.identity);
+        return Instantiate(newCellObject, position, Quaternion.identity);
+    }
+    
+    private Vector3 FindSpawnSpace(Func<Vector3> generateSpawn, float minimumDistance = 7)
+    {
+        Vector3 spawnPoint;
+        
+        bool isValidSpawn;
+        int tries = 0;
+        int maxTriesAllowed = 100;
+        do
+        {
+            isValidSpawn = true;
+            tries++;
+            if (tries == maxTriesAllowed) Debug.LogWarning("CELL SPAWNING: Exceeded the allotted number of spawn tries, spawning cell at random...");
+            
+            spawnPoint = generateSpawn();
+            foreach (Cell c in this.cells)
+            {
+                float interCellDistance = Vector3.Distance(c.gameObject.transform.position, spawnPoint);
+                if (interCellDistance < minimumDistance) isValidSpawn = false;
+            }
+        } while (!isValidSpawn && tries <= maxTriesAllowed);
+
+        return spawnPoint;
     }
 
     public void DespawnCell([CanBeNull] Cell cell)

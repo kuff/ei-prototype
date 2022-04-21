@@ -101,7 +101,7 @@ public class Cell : MonoBehaviour
     }
 
     /*
-     * Spawn Cells and plays audio and particle effects
+     * Spawn Cells and play audio and particle effects
      */
     public void SpawnElements(Transform Element, Transform Effect, Collision collision, AudioClip sound, float volume, bool spawnAroundObject)
     {
@@ -137,13 +137,15 @@ public class Cell : MonoBehaviour
         // either replaces the object or spawns the new Cell around it
         Transform newInstance;
         if (spawnAroundObject == true)
-            newInstance = Instantiate(Element, position, collision.transform.rotation);
+            //newInstance = Instantiate(Element, position, collision.transform.rotation);
+            newInstance = this.simulation.SpawnCell(CellType.Antibody, position)?.transform;
         else
-            newInstance = Instantiate(Element, collision.transform.position, collision.transform.rotation);
+            //newInstance = Instantiate(Element, collision.transform.position, collision.transform.rotation);
+            newInstance = this.simulation.SpawnCell(CellType.PathogenNeutralized, collision.transform.position)?.transform;
 
         // play the effects
         Transform generatedEffect = Instantiate(Effect, collision.transform.position, collision.transform.rotation);
-        newInstance.gameObject.GetComponent<AudioSource>().PlayOneShot(sound, volume);
+        newInstance?.gameObject.GetComponent<AudioSource>().PlayOneShot(sound, volume);
         Destroy(generatedEffect.gameObject, 1);  // destroy effect after 1 second
     }
 

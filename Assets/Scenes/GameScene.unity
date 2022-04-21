@@ -2050,6 +2050,7 @@ MonoBehaviour:
   gunShotCount: 0
   WBCPrefab: {fileID: 1585205167227470869, guid: be0dedad366ecd5459f91d00412109a4, type: 3}
   PathogenPrefab: {fileID: 8393812991690933782, guid: 867aae8ec02e0c6488abf240e1a564db, type: 3}
+  PathogenNeutralizedPrefab: {fileID: 8393812991690933782, guid: 2060388b6687fa840ae0cb129b6a594f, type: 3}
   AntibodyPrefab: {fileID: 8393812991690933782, guid: f4822e0e8f087d34ba771d4a1e828f0f, type: 3}
   OnWBCSpawn:
     m_PersistentCalls:

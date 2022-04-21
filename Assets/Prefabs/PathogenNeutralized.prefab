@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3332986195734326419}
   - component: {fileID: 2213419033011033897}
   m_Layer: 0
-  m_Name: VirusAtt
+  m_Name: PathogenNeutralized
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
