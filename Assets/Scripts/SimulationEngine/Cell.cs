@@ -23,6 +23,8 @@ public class Cell : MonoBehaviour
     public Transform sparklesPrefab;
     public Transform explosionPrefab;
     public Transform destructionPrefab;
+    public Transform spawnPrefab;
+    public Transform despawnPrefab;
     public AudioClip explosionSound;
     public AudioClip sparklesSound;
     public AudioClip destructionSound;
@@ -40,7 +42,7 @@ public class Cell : MonoBehaviour
         {
             yield return new WaitForSeconds(3);
             this.gameObject.transform.localScale = new Vector3(0, 0, 0);
-            PlayDespawnAnimation();
+            PlayDestructionAnimation();
             this.gameObject.GetComponent<AudioSource>().PlayOneShot(destructionSound, 0.7f);
         }
 
@@ -57,7 +59,7 @@ public class Cell : MonoBehaviour
         }
         else
         {
-            this.SpawnElements(this.transform, sparklesPrefab, null, explosionSound, 0.2f); // trigger spawning animation
+            this.SpawnElements(this.transform, spawnPrefab, null, explosionSound, 0f); // trigger spawning animation
         }
     }
     
@@ -143,6 +145,12 @@ public class Cell : MonoBehaviour
     }
 
     public void PlayDespawnAnimation()
+    {
+        Transform generatedEffect = Instantiate(despawnPrefab, this.transform.position, this.transform.rotation);
+        Destroy(generatedEffect.gameObject, 1);  // destroy effect after 1 second
+    }
+
+    public void PlayDestructionAnimation()
     {
         Transform generatedEffect = Instantiate(destructionPrefab, this.transform.position, this.transform.rotation);
         Destroy(generatedEffect.gameObject, 1);  // destroy effect after 1 second

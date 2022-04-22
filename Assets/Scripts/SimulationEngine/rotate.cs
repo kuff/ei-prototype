@@ -8,12 +8,15 @@ public class rotate : MonoBehaviour
     public float rpmY;
     public float rpmZ;
     public bool Rotating = true;
+    public bool RandomRotate = true;
 
     void Start()
     {
+        if (RandomRotate == true) { 
         rpmX = Random.Range(0f, 7f);
         rpmY = Random.Range(0f, 7f);
         rpmZ = Random.Range(0f, 7f);
+        }
     }
 
     void Update()
