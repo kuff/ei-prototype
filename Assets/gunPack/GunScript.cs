@@ -16,15 +16,18 @@ public class GunScript : MonoBehaviour
     private bool grabbed = false;
     private SteamVR_Input_Sources isource;
     private Simulation simulation;
+    private ReloadScript reload;
 
     public int gunType = 1;
     public SteamVR_Action_Boolean input;
     public SteamVR_Action_Boolean input2;
     public bool grabbable = false;
+    
 
     protected void Start()
     {
         simulation = GameObject.FindGameObjectWithTag("Simulator").GetComponent<Simulation>();
+        reload = gameObject.GetComponentInChildren<ReloadScript>();
     }
 
     private void Update()
@@ -41,24 +44,28 @@ public class GunScript : MonoBehaviour
         }
         else
         {
-            if (input2.GetStateDown(isource)&& grabbed)
+            if (input2.GetStateDown(isource) && grabbed && reload.isLoaded)
+            {
                 shoot();
+            }
+            else return;
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             shoot();
         }
+
     }
     void shoot()
     {
         this.simulation.OnShot.Invoke(new Scenario());
-        
+        reload.isLoaded = false;
         Debug.Log("Shoot!");
 
         GameObject Projectile;
         Projectile = Instantiate(projectilePrefab, bulletSource.position, bulletSource.rotation);
-        Projectile.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * projectileSpeed, ForceMode.Impulse);
+        Projectile.GetComponentInChildren<Rigidbody>().AddRelativeForce(Vector3.forward * projectileSpeed, ForceMode.Impulse);
 
         simulation.OnShot.Invoke(new Scenario());  // TODO: replace placeholder Scenario
     }
@@ -68,8 +75,8 @@ public class GunScript : MonoBehaviour
         this.simulation.OnPickup.Invoke(new Scenario());
         
         gameObject.transform.parent = GetComponent<Interactable>().hoveringHand.transform;
-        gameObject.transform.localPosition = new Vector3(0f, 0f, 0f);  // 0f, -0.15f, 0.15f
-        gameObject.transform.localRotation = Quaternion.Euler(135f, 0f, 0f);
+        gameObject.transform.localPosition = new Vector3(0f, -0.20f, 0f);  // 0f, -0.15f, 0.15f
+        gameObject.transform.localRotation = Quaternion.Euler(0f, -90f, -40f);
         grabbed = true;
     }
 
