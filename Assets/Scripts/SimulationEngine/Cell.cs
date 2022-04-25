@@ -123,9 +123,9 @@ public class Cell : MonoBehaviour
         // either replaces the object or spawns the new Cell around it
         Transform newInstance;
         if (spawnAroundObject == true)
-            newInstance = this.simulation.SpawnCell(CellType.Antibody, position)?.transform;
+            newInstance = this.simulation.SpawnCell(CellType.Antibody, position, Quaternion.identity)?.transform;
         else
-            newInstance = this.simulation.SpawnCell(CellType.PathogenNeutralized, collision.transform.position)?.transform;
+            newInstance = this.simulation.SpawnCell(CellType.PathogenNeutralized, collision.transform.position, Quaternion.identity)?.transform;
 
         // play the effects
         this.SpawnElements(newInstance, effect, collision, sound, volume);

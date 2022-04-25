@@ -62,10 +62,10 @@ public class GunScript : MonoBehaviour
         this.simulation.OnShot.Invoke(new Scenario());
         reload.isLoaded = false;
         Debug.Log("Shoot!");
-
-        GameObject Projectile;
-        Projectile = Instantiate(projectilePrefab, bulletSource.position, bulletSource.rotation);
-        Projectile.GetComponentInChildren<Rigidbody>().AddRelativeForce(Vector3.forward * projectileSpeed, ForceMode.Impulse);
+        
+        //var projectile = Instantiate(projectilePrefab, bulletSource.position, bulletSource.rotation);
+        var projectile = this.simulation.SpawnCell(CellType.Antibody, bulletSource.position, bulletSource.rotation);
+        projectile.GetComponentInChildren<Rigidbody>().AddRelativeForce(Vector3.forward * projectileSpeed, ForceMode.Impulse);
 
         simulation.OnShot.Invoke(new Scenario());  // TODO: replace placeholder Scenario
     }

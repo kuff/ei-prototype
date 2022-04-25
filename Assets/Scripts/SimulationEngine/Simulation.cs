@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -146,7 +147,7 @@ public class Simulation : MonoBehaviour
             Vector3 randpoint = UnityEngine.Random.insideUnitSphere.normalized;
             Vector3 spawnPos = this.FindSpawnSpace(
                 () => playerPos + new Vector3(randpoint.x, Mathf.Abs(randpoint.y), randpoint.z) * UnityEngine.Random.Range(WBCRadiusMin, WBCRadiusMax));
-            SpawnCell(CellType.WhiteBloodCell,spawnPos); 
+            SpawnCell(CellType.WhiteBloodCell,spawnPos, Quaternion.identity); 
        }
     }
 
@@ -157,7 +158,7 @@ public class Simulation : MonoBehaviour
             Vector3 randpoint = UnityEngine.Random.insideUnitSphere.normalized;
             Vector3 spawnPos = this.FindSpawnSpace(
                 () => Vector3.zero + new Vector3(randpoint.x, Mathf.Abs(randpoint.y), randpoint.z) * UnityEngine.Random.Range(PathogenRadiusMin, PathogenRadiusMax));
-            SpawnCell(CellType.Pathogen, spawnPos);
+            SpawnCell(CellType.Pathogen, spawnPos, Quaternion.identity);
         }
     }
 
@@ -170,7 +171,7 @@ public class Simulation : MonoBehaviour
             Vector3 spawnPos = this.FindSpawnSpace(
                 () => playerPos + new Vector3(randpoint.x, Mathf.Abs(randpoint.y * 0.4f), randpoint.z) * UnityEngine.Random.Range(AntibodyRadiusMin, AntibodyRadiusMax),
                 3);
-            SpawnCell(CellType.Antibody, spawnPos);
+            SpawnCell(CellType.Antibody, spawnPos, Quaternion.identity);
         }
     }
 
@@ -220,7 +221,7 @@ public class Simulation : MonoBehaviour
     }
     
     [CanBeNull]
-    public GameObject SpawnCell(CellType type, Vector3 position)
+    public GameObject SpawnCell(CellType type, Vector3 position, Quaternion rotation)
     {
         GameObject newCellObject;
 
@@ -263,7 +264,7 @@ public class Simulation : MonoBehaviour
                 return null;
         }
 
-        GameObject instantiatedObject = Instantiate(newCellObject, position, Quaternion.identity); 
+        GameObject instantiatedObject = Instantiate(newCellObject, position, rotation); 
         if (type != CellType.PathogenNeutralized) cells.Add(instantiatedObject.GetComponentInChildren<Cell>());
         return instantiatedObject;
     }
