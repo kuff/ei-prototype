@@ -70,6 +70,7 @@ public class Cell : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
+        if (this.simulation == null) return;
         if (simulation.CollisionsAllowed()) { 
             collisionCell = collision.gameObject.GetComponentInChildren<Cell>() ?? collision.gameObject.GetComponent<Cell>();
 
