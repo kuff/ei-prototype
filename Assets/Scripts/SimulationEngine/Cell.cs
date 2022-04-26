@@ -57,7 +57,7 @@ public class Cell : MonoBehaviour
             StartCoroutine(DestructionEffect());
             StartCoroutine(Destruction());
         }
-        else
+        else if (this.type != CellType.Antibody)
         {
             this.SpawnElements(this.transform, spawnPrefab, null, explosionSound, 0f); // trigger spawning animation
         }
@@ -129,6 +129,7 @@ public class Cell : MonoBehaviour
             newInstance = this.simulation.SpawnCell(CellType.PathogenNeutralized, collision.transform.position, Quaternion.identity)?.transform;
 
         // play the effects
+        //if (newInstance.GetComponentInChildren<Cell>().type != CellType.Antibody)
         this.SpawnElements(newInstance, effect, collision, sound, volume);
     }
 

@@ -5,6 +5,7 @@ using Valve.VR;
 using Valve.VR.InteractionSystem;
 
 [RequireComponent(typeof(Interactable))]
+[RequireComponent(typeof(AudioSource))]
 public class GunScript : MonoBehaviour
 {
     [SerializeField]
@@ -22,7 +23,9 @@ public class GunScript : MonoBehaviour
     public SteamVR_Action_Boolean input;
     public SteamVR_Action_Boolean input2;
     public bool grabbable = false;
-    
+
+    public AudioClip reloadSound;
+    public AudioClip shootSound;
 
     protected void Start()
     {
@@ -68,6 +71,8 @@ public class GunScript : MonoBehaviour
         projectile.GetComponentInChildren<Rigidbody>().AddRelativeForce(Vector3.forward * projectileSpeed, ForceMode.Impulse);
 
         simulation.OnShot.Invoke(new Scenario());  // TODO: replace placeholder Scenario
+        
+        this.GetComponent<AudioSource>().PlayOneShot(this.shootSound);
     }
 
     void attachToHand()

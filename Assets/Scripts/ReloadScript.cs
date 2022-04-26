@@ -23,6 +23,8 @@ public class ReloadScript : MonoBehaviour
             isLoaded = true;
             //Destroy(other.gameObject);
             this.simulation.DespawnCell(other.GetComponentInChildren<Cell>(), false);
+            
+            this.GetComponentInParent<AudioSource>().PlayOneShot(this.GetComponentInParent<GunScript>().reloadSound);
         }
 
     }
