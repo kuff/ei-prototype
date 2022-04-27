@@ -14,6 +14,8 @@ public class GunScript : MonoBehaviour
     private Transform bulletSource = null;
     [SerializeField]
     private float projectileSpeed = 5.0f;
+    [SerializeField]
+    private Animator anim;
     private bool grabbed = false;
     private SteamVR_Input_Sources isource;
     private Simulation simulation;
@@ -73,6 +75,7 @@ public class GunScript : MonoBehaviour
         simulation.OnShot.Invoke(new Scenario());  // TODO: replace placeholder Scenario
         
         this.GetComponent<AudioSource>().PlayOneShot(this.shootSound);
+        anim.SetTrigger("Shoot");
     }
 
     void attachToHand()
@@ -80,7 +83,7 @@ public class GunScript : MonoBehaviour
         this.simulation.OnPickup.Invoke(new Scenario());
         
         gameObject.transform.parent = GetComponent<Interactable>().hoveringHand.transform;
-        gameObject.transform.localPosition = new Vector3(0f, -0.20f, 0f);  // 0f, -0.15f, 0.15f
+        gameObject.transform.localPosition = new Vector3(0f, -0.35f, 0f);  // 0f, -0.15f, 0.15f
         gameObject.transform.localRotation = Quaternion.Euler(0f, -90f, -40f);
         grabbed = true;
     }

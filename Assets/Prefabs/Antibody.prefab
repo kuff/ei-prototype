@@ -143,10 +143,10 @@ BoxCollider:
   m_GameObject: {fileID: 6663204481800420208}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.0002674096, y: 0.005418186, z: 0.0037624768}
-  m_Center: {x: -0.0000054756892, y: -9.313226e-10, z: 0}
+  m_Size: {x: 0.0002674096, y: 0.0036130475, z: 0.0011226952}
+  m_Center: {x: -0.0000054756924, y: -0.0009025674, z: -0.00003281444}
 --- !u!82 &4155692178141144019
 AudioSource:
   m_ObjectHideFlags: 0
@@ -243,32 +243,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1374655015739614548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6663204481800420208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10dc2176c7f8bcc47ba8e4849b42893d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 3
-  creationTimestamp: 0
-  targetCell: {fileID: 0}
-  sparklesPrefab: {fileID: 8311635123287835687, guid: e881f5a5926f4814b9b5f59c0a85ee16, type: 3}
-  explosionPrefab: {fileID: 8311635123287835687, guid: 9b61e6c4432c21b40b9fab541bc5d32b, type: 3}
-  destructionPrefab: {fileID: 8311635123287835687, guid: 31d7ad60497afe04e8368547b209fa5d, type: 3}
-  spawnPrefab: {fileID: 8311635123287835687, guid: 46961fd66c0eb6147aaa123e1904270c, type: 3}
-  despawnPrefab: {fileID: 8311635123287835687, guid: b460a4b2240baff429638e414bd23662, type: 3}
-  explosionSound: {fileID: 8300000, guid: dab10ad554e5f804f9f26ca9ca332f9a, type: 3}
-  sparklesSound: {fileID: 0}
-  destructionSound: {fileID: 8300000, guid: efee776e88902a74684c56ce2962678f, type: 3}
-  ObjectGenerated: {fileID: 3262622921959976616, guid: 2060388b6687fa840ae0cb129b6a594f, type: 3}
-  Antibody: {fileID: 0}
-  antibodyTarget: {fileID: 0}
 --- !u!114 &1339108766778226236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,6 +295,32 @@ MonoBehaviour:
   highlightOnHover: 1
   hideHighlight: []
   hoverPriority: 0
+--- !u!114 &1374655015739614548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6663204481800420208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10dc2176c7f8bcc47ba8e4849b42893d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 3
+  creationTimestamp: 0
+  targetCell: {fileID: 0}
+  sparklesPrefab: {fileID: 8311635123287835687, guid: e881f5a5926f4814b9b5f59c0a85ee16, type: 3}
+  explosionPrefab: {fileID: 8311635123287835687, guid: 9b61e6c4432c21b40b9fab541bc5d32b, type: 3}
+  destructionPrefab: {fileID: 8311635123287835687, guid: 31d7ad60497afe04e8368547b209fa5d, type: 3}
+  spawnPrefab: {fileID: 8311635123287835687, guid: 46961fd66c0eb6147aaa123e1904270c, type: 3}
+  despawnPrefab: {fileID: 8311635123287835687, guid: b460a4b2240baff429638e414bd23662, type: 3}
+  explosionSound: {fileID: 8300000, guid: dab10ad554e5f804f9f26ca9ca332f9a, type: 3}
+  sparklesSound: {fileID: 0}
+  destructionSound: {fileID: 8300000, guid: efee776e88902a74684c56ce2962678f, type: 3}
+  ObjectGenerated: {fileID: 3262622921959976616, guid: 2060388b6687fa840ae0cb129b6a594f, type: 3}
+  Antibody: {fileID: 0}
+  antibodyTarget: {fileID: 0}
 --- !u!114 &3096937766928552615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,3 +340,17 @@ MonoBehaviour:
     actionPath: /actions/default/in/GrabGrip
     needsReinit: 0
   grabbable: 0
+--- !u!64 &1180598312279405041
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6663204481800420208}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3758573805739257388, guid: 820a54bf6591dca45b29e3418111befb, type: 3}

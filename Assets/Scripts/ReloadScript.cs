@@ -6,6 +6,8 @@ using UnityEngine;
 public class ReloadScript : MonoBehaviour
 {
     public bool isLoaded = false;
+    [SerializeField]
+    private Animator anim;
     private Simulation simulation;
 
     protected void Start()
@@ -25,6 +27,7 @@ public class ReloadScript : MonoBehaviour
             this.simulation.DespawnCell(other.GetComponentInChildren<Cell>(), false);
             
             this.GetComponentInParent<AudioSource>().PlayOneShot(this.GetComponentInParent<GunScript>().reloadSound);
+            anim.SetTrigger("Load");
         }
 
     }

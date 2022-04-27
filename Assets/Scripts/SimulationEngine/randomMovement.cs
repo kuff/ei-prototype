@@ -22,6 +22,7 @@ public class randomMovement : MonoBehaviour
             float randY = Random.Range(rangelowerY, rangeupperY);
             float randZ = Random.Range(rangelowerZ, rangeupperZ);
             StartCoroutine(MoveToPoint(new Vector3(randX, randY, randZ)));
+            Debug.Log(new Vector3(randX, randY, randZ));
         }
     }
 
