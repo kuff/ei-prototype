@@ -909,6 +909,10 @@ PrefabInstance:
       value: 1.171782
       objectReference: {fileID: 0}
     - target: {fileID: 810215232059634556, guid: 09e6206357512cd499e8b6bc1f9eb826, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 810215232059634556, guid: 09e6206357512cd499e8b6bc1f9eb826, type: 3}
       propertyPath: m_Center.x
       value: -1.6858337
       objectReference: {fileID: 0}
@@ -1046,7 +1050,6 @@ GameObject:
   - component: {fileID: 417231927}
   - component: {fileID: 417231926}
   - component: {fileID: 417231925}
-  - component: {fileID: 417231924}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -1054,34 +1057,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &417231924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 417231923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4de9e8c1b3058b642ba44599b08e209e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetType: 1
-  OnHit:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3960755999004109594}
-        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!65 &417231925
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1524,7 +1499,6 @@ GameObject:
   - component: {fileID: 575270193}
   - component: {fileID: 575270192}
   - component: {fileID: 575270195}
-  - component: {fileID: 575270194}
   - component: {fileID: 575270191}
   m_Layer: 0
   m_Name: Manikin
@@ -1616,34 +1590,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 575270189}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &575270194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 575270189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4de9e8c1b3058b642ba44599b08e209e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetType: 1
-  OnHit:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Task, PPSAssemblyDefinition
-        m_MethodName: Resolve
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!65 &575270195
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5371,11 +5317,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 080dbe8d7c90f104a93615eeb61cfbbd, type: 3}
   m_PrefabInstance: {fileID: 1772077004}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &3960755999004109594 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 5666961792417559291, guid: abede87ad0be4f3439dc475ade1b55e9, type: 3}
-  m_PrefabInstance: {fileID: 8670125415993530849}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8670125415993530849
 PrefabInstance:

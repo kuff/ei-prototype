@@ -106,11 +106,14 @@ public class Simulation : MonoBehaviour
             else if (this.CollisionsAllowed())
             {
                 // find the closest Cell (or Player)
-                var closetTransform = cellsCopy[0].transform;
+                var closetPosition = cellsCopy[0].transform.position;
                 var shortestDistance = float.MaxValue;
                 if (c.type == CellType.Antibody)
                 {
-                    closetTransform = this.playerObject.transform;
+                    closetPosition = new Vector3(
+                        this.playerObject.transform.position.x,
+                        0.6f,
+                        this.playerObject.transform.position.z);
                 }
                 else
                 {
@@ -119,19 +122,19 @@ public class Simulation : MonoBehaviour
                         var distance = Vector3.Distance(this.transform.position, d.transform.position);
                         //Debug.Log("dist: " + (distance < shortestDistance));
                         //Debug.Log(closestCell.type);
-                        if (!(distance < shortestDistance)) continue;
-                        closetTransform = d.transform;
+                        if (!(distance < shortestDistance) || distance == 0) continue;
+                        closetPosition = d.transform.position;
                         shortestDistance = distance;
                     }
                 }
 
                 // define and inversly scale gravity vector
                 Vector3 gravityVector = new Vector3(
-                    1 / (closetTransform.position.x - c.transform.position.x),
-                    1 / (closetTransform.position.y - c.transform.position.y),
-                    1 / (closetTransform.position.z - c.transform.position.z));
-                gravityVector.Scale(new Vector3(0.1f, 0.1f, 0.1f));
-                if (c.type == CellType.Antibody) Debug.Log(gravityVector);
+                    1 / (closetPosition.x - c.transform.position.x),
+                    1 / (closetPosition.y - c.transform.position.y),
+                    1 / (closetPosition.z - c.transform.position.z));
+                if (c.type != CellType.Antibody) gravityVector.Scale(new Vector3(0.1f, 0.1f, 0.1f));
+                else Debug.Log(this.playerObject.transform.position);
                 
                 c.Tick(gravityVector);
             }
