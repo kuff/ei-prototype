@@ -1179,6 +1179,8 @@ MonoBehaviour:
   OnPathogensReducedToFiftyPercent:
     m_PersistentCalls:
       m_Calls: []
+  allowUpdateTicks: 1
+  tickRate: 0.02
 --- !u!4 &440167180
 Transform:
   m_ObjectHideFlags: 0
@@ -1332,6 +1334,8 @@ MonoBehaviour:
   OnPathogensReducedToFiftyPercent:
     m_PersistentCalls:
       m_Calls: []
+  allowUpdateTicks: 1
+  tickRate: 1
 --- !u!4 &510518653
 Transform:
   m_ObjectHideFlags: 0
@@ -2748,6 +2752,8 @@ MonoBehaviour:
   OnPathogensReducedToFiftyPercent:
     m_PersistentCalls:
       m_Calls: []
+  allowUpdateTicks: 1
+  tickRate: 0.02
 --- !u!4 &1105824361
 Transform:
   m_ObjectHideFlags: 0

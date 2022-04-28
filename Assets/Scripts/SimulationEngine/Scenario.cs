@@ -24,13 +24,18 @@ public class Scenario : Level
     public FirstAntibodyInfusionEvent           OnFirstAntibodyInfusion             = new FirstAntibodyInfusionEvent();
     public PathogensReducedToFiftyPercentEvent  OnPathogensReducedToFiftyPercent    = new PathogensReducedToFiftyPercentEvent();
 
+    public bool allowUpdateTicks;  // TODO: probably set this to false eventually...
+    public float tickRate;
+    
     private Simulation simulation;
     private bool hasReachFiftyPercent;
+    private double lastUpdateTimestamp;
 
     protected new void Start()
     {
         this.simulation = GameObject.FindGameObjectWithTag("Simulator").GetComponent<Simulation>();
         this.hasReachFiftyPercent = false;
+        this.lastUpdateTimestamp = 0;
 
         this.simulation.OnCollision     .AddListener(this.HandleFirstCollision);
         this.simulation.OnPickup        .AddListener(this.HandleFirstPickup);
@@ -88,9 +93,20 @@ public class Scenario : Level
 
     protected void FixedUpdate()
     {
-        if (this.isActive) simulation.Tick();
+        var newTimestamp = new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds();
+        //Debug.Log(newTimestamp - this.lastUpdateTimestamp);
+        if (newTimestamp - this.lastUpdateTimestamp >= this.tickRate)
+        {
+            this.lastUpdateTimestamp = newTimestamp;
+            this.Tick();
+        }
+    }
 
-        // ...
+    protected void Tick()
+    {
+        //Debug.Log(this.isActive + ", " + this.allowUpdateTicks);
+        if (this.isActive && this.allowUpdateTicks) 
+            simulation.Tick();
     }
 
     public new void Activate()
@@ -102,8 +118,18 @@ public class Scenario : Level
 
     public new void Complete()
     {
-        // TODO: tear down simulation
+        this.simulation.ClearCount();
 
         base.Complete();
+    }
+
+    public void StartTicks()
+    {
+        this.allowUpdateTicks = true;
+    }
+    
+    public void StopTicks()
+    {
+        this.allowUpdateTicks = false;
     }
 }

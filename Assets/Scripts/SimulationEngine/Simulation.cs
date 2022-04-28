@@ -94,16 +94,46 @@ public class Simulation : MonoBehaviour
 
     public void Tick()
     {
-        foreach (Cell c in this.cells)
+        var cellsCopy = new List<Cell>(this.cells);
+        foreach (Cell c in cellsCopy)
         {
-            if (Vector3.Distance(this.playerObject.transform.position, c.transform.position) > 10 || c.transform.position.y < 0)
+            var playerDistance = Vector3.Distance(this.playerObject.transform.position, c.transform.position);
+            if (playerDistance > 10f || c.transform.position.y < 0f)
             {
                 this.DespawnCell(c, true);
                 this.SpawnCells(c.type, 1);
             }
-            else
+            else if (this.CollisionsAllowed())
             {
-                c.Tick();
+                // find the closest Cell (or Player)
+                var closetTransform = cellsCopy[0].transform;
+                var shortestDistance = float.MaxValue;
+                if (c.type == CellType.Antibody)
+                {
+                    closetTransform = this.playerObject.transform;
+                }
+                else
+                {
+                    foreach (var d in cellsCopy)
+                    {
+                        var distance = Vector3.Distance(this.transform.position, d.transform.position);
+                        //Debug.Log("dist: " + (distance < shortestDistance));
+                        //Debug.Log(closestCell.type);
+                        if (!(distance < shortestDistance)) continue;
+                        closetTransform = d.transform;
+                        shortestDistance = distance;
+                    }
+                }
+
+                // define and inversly scale gravity vector
+                Vector3 gravityVector = new Vector3(
+                    1 / (closetTransform.position.x - c.transform.position.x),
+                    1 / (closetTransform.position.y - c.transform.position.y),
+                    1 / (closetTransform.position.z - c.transform.position.z));
+                gravityVector.Scale(new Vector3(0.1f, 0.1f, 0.1f));
+                if (c.type == CellType.Antibody) Debug.Log(gravityVector);
+                
+                c.Tick(gravityVector);
             }
         }
     }

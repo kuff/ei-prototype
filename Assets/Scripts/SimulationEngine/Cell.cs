@@ -19,7 +19,7 @@ public class Cell : MonoBehaviour
     private AudioSource audioSource;
     public CellType type;
     public double creationTimestamp;
-    public Cell targetCell;
+    public Transform targetTransform;
     public Transform sparklesPrefab;
     public Transform explosionPrefab;
     public Transform destructionPrefab;
@@ -63,9 +63,10 @@ public class Cell : MonoBehaviour
         }
     }
     
-    public void Tick()
+    public void Tick(Vector3 gravityVector)
     {
-        // ...
+        // apply inter-Cell gravitational force
+        this.gameObject.GetComponentInChildren<Rigidbody>()?.AddForce(gravityVector);
     }
 
     public void OnCollisionEnter(Collision collision)
@@ -112,7 +113,7 @@ public class Cell : MonoBehaviour
         Vector3 direction = center - player;
         float vectMagnitude = direction.magnitude;
 
-        Debug.Log(vectMagnitude);
+        //Debug.Log(vectMagnitude);
 
         float spacing = vectMagnitude / 50f;
         Vector3 position = center - (direction * spacing);
