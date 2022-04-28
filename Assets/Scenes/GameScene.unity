@@ -896,6 +896,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 766643525789542819, guid: 09e6206357512cd499e8b6bc1f9eb826, type: 3}
+      propertyPath: input
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 810215232059634556, guid: 09e6206357512cd499e8b6bc1f9eb826, type: 3}
+      propertyPath: m_Size.x
+      value: 0.52889764
+      objectReference: {fileID: 0}
+    - target: {fileID: 810215232059634556, guid: 09e6206357512cd499e8b6bc1f9eb826, type: 3}
+      propertyPath: m_Size.y
+      value: 1.171782
+      objectReference: {fileID: 0}
+    - target: {fileID: 810215232059634556, guid: 09e6206357512cd499e8b6bc1f9eb826, type: 3}
+      propertyPath: m_Center.x
+      value: -1.6858337
+      objectReference: {fileID: 0}
+    - target: {fileID: 810215232059634556, guid: 09e6206357512cd499e8b6bc1f9eb826, type: 3}
+      propertyPath: m_Center.y
+      value: 2.1420014
+      objectReference: {fileID: 0}
     - target: {fileID: 1852638359687436911, guid: 09e6206357512cd499e8b6bc1f9eb826, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.82
@@ -904,6 +924,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2872070276685338866, guid: 09e6206357512cd499e8b6bc1f9eb826, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1403342195}
+    - target: {fileID: 4192604862930935934, guid: 09e6206357512cd499e8b6bc1f9eb826, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 391820152}
+    - target: {fileID: 5676949471375782661, guid: 09e6206357512cd499e8b6bc1f9eb826, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 391820152}
     - target: {fileID: 5676949471375782661, guid: 09e6206357512cd499e8b6bc1f9eb826, type: 3}
       propertyPath: shootSound
       value: 
@@ -978,6 +1010,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09e6206357512cd499e8b6bc1f9eb826, type: 3}
+--- !u!1 &391820151 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8170806972609793843, guid: 09e6206357512cd499e8b6bc1f9eb826, type: 3}
+  m_PrefabInstance: {fileID: 391820150}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &391820152
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391820151}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b925571ad845c1242be6f2031635167f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &417231923
 GameObject:
   m_ObjectHideFlags: 0
@@ -3582,6 +3638,108 @@ Transform:
   m_Father: {fileID: 1105824361}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &1403342195
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: gunCore (Instance)
+  m_Shader: {fileID: 4800000, guid: 8fa84e1c8f3a97b4bb416e8eb087630e, type: 3}
+  m_ShaderKeywords: _EMISSION
+  m_LightmapFlags: 1
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmmisTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 374148372b64b7244af9ca7a89012cd9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _FresnelBrightness: 0.541
+    - _FresnelPower: 0.326
+    - _FresnelShadowDropoff: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 1
+    - _GradIntensity: 0
+    - _GradYCap: 0
+    - _HighIntensity: 4.14
+    - _LightScalar: 1.09
+    - _LowIntensity: 3.74
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _OutlineSize: 5.5
+    - _Parallax: 0.02
+    - _RampLevels: 49
+    - _RimAlpha: 0.513
+    - _RimDropOff: 0.207
+    - _RimPower: 0.254
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FresnelColor: {r: 0.672, g: 0.672, b: 1, a: 1}
+    - _HighColor: {r: 1, g: 0, b: 0, a: 1}
+    - _LowColor: {r: 0.47513747, g: 1, b: 0, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _RimColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1001 &1417219584
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4825,6 +4983,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 6668643273669711083, guid: b519c3d19672c24428419eb8bee56d0b, type: 3}
   bulletSource: {fileID: 1970795859}
   projectileSpeed: 5
+  anim: {fileID: 0}
   gunType: 1
   input:
     actionPath: /actions/default/in/GrabGrip
