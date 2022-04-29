@@ -1943,6 +1943,7 @@ MonoBehaviour:
   AntibodyRadiusMax: 6
   AntibodyRadiusMin: 5
   ceiling: 0.8
+  movementSpeedScale: 0.1
 --- !u!1001 &1298643404
 PrefabInstance:
   m_ObjectHideFlags: 0

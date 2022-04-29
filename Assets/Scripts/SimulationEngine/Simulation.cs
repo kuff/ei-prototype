@@ -82,6 +82,8 @@ public class Simulation : MonoBehaviour
     [Range(0.1f, 1f)]
     public float ceiling;
 
+    public float movementSpeedScale;
+
     protected void Start()
     {
         this.playerObject = GameObject.FindGameObjectWithTag("Player");
@@ -127,8 +129,9 @@ public class Simulation : MonoBehaviour
                         var distance = Vector3.Distance(this.transform.position, d.transform.position);
                         //Debug.Log("dist: " + (distance < shortestDistance));
                         //Debug.Log(closestCell.type);
-                        if (!(distance < shortestDistance) || distance == 0) continue;
+                        if (!(distance < shortestDistance) || distance == 0 || d.type == CellType.Antibody || c.type == d.type) continue;
                         closetPosition = d.transform.position;
+                        Debug.Log(c.type + " found " + d.type);
                         shortestDistance = distance;
                     }
                     gravityVector = new Vector3(
@@ -137,8 +140,9 @@ public class Simulation : MonoBehaviour
                         1 / (closetPosition.z - c.transform.position.z));
                 }
                 
-                if (c.type != CellType.Antibody) gravityVector.Scale(new Vector3(0.1f, 0.1f, 0.1f));
-                else Debug.Log(this.playerObject.transform.position);
+                if (c.type != CellType.Antibody) 
+                    gravityVector.Scale(new Vector3(this.movementSpeedScale, this.movementSpeedScale, this.movementSpeedScale));
+                //else Debug.Log(this.playerObject.transform.position);
                 
                 c.Tick(gravityVector);
             }
