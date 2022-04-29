@@ -44,15 +44,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5c384c9743b861c448abc061c649c431, type: 3}
       propertyPath: m_LocalScale.x
-      value: 80
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5c384c9743b861c448abc061c649c431, type: 3}
       propertyPath: m_LocalScale.y
-      value: 80
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5c384c9743b861c448abc061c649c431, type: 3}
       propertyPath: m_LocalScale.z
-      value: 80
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5c384c9743b861c448abc061c649c431, type: 3}
       propertyPath: m_LocalPosition.x
@@ -239,32 +239,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5102574689283951573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 128767247142644604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10dc2176c7f8bcc47ba8e4849b42893d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
-  creationTimestamp: 0
-  targetCell: {fileID: 0}
-  sparklesPrefab: {fileID: 8311635123287835687, guid: e881f5a5926f4814b9b5f59c0a85ee16, type: 3}
-  explosionPrefab: {fileID: 8311635123287835687, guid: 9b61e6c4432c21b40b9fab541bc5d32b, type: 3}
-  destructionPrefab: {fileID: 8311635123287835687, guid: 31d7ad60497afe04e8368547b209fa5d, type: 3}
-  spawnPrefab: {fileID: 8311635123287835687, guid: 46961fd66c0eb6147aaa123e1904270c, type: 3}
-  despawnPrefab: {fileID: 8311635123287835687, guid: b460a4b2240baff429638e414bd23662, type: 3}
-  explosionSound: {fileID: 8300000, guid: 918ee1b51fd32d748a66d520586569ba, type: 3}
-  sparklesSound: {fileID: 8300000, guid: 3f8f142e39c3f7b49940ba5168ba9b10, type: 3}
-  destructionSound: {fileID: 8300000, guid: 89bc09e638d372b4da18da17887f3e0e, type: 3}
-  ObjectGenerated: {fileID: 0}
-  Antibody: {fileID: 3262622921959976616, guid: f4822e0e8f087d34ba771d4a1e828f0f, type: 3}
-  antibodyTarget: {fileID: 0}
 --- !u!114 &2247772459874445649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,3 +256,29 @@ MonoBehaviour:
   rpmZ: 0
   Rotating: 1
   RandomRotate: 1
+--- !u!114 &5102574689283951573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128767247142644604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10dc2176c7f8bcc47ba8e4849b42893d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  creationTimestamp: 0
+  targetTransform: {fileID: 0}
+  sparklesPrefab: {fileID: 8311635123287835687, guid: e881f5a5926f4814b9b5f59c0a85ee16, type: 3}
+  explosionPrefab: {fileID: 8311635123287835687, guid: 9b61e6c4432c21b40b9fab541bc5d32b, type: 3}
+  destructionPrefab: {fileID: 8311635123287835687, guid: 31d7ad60497afe04e8368547b209fa5d, type: 3}
+  spawnPrefab: {fileID: 8311635123287835687, guid: 46961fd66c0eb6147aaa123e1904270c, type: 3}
+  despawnPrefab: {fileID: 8311635123287835687, guid: b460a4b2240baff429638e414bd23662, type: 3}
+  explosionSound: {fileID: 8300000, guid: 918ee1b51fd32d748a66d520586569ba, type: 3}
+  sparklesSound: {fileID: 8300000, guid: 3f8f142e39c3f7b49940ba5168ba9b10, type: 3}
+  destructionSound: {fileID: 8300000, guid: 89bc09e638d372b4da18da17887f3e0e, type: 3}
+  ObjectGenerated: {fileID: 0}
+  Antibody: {fileID: 3262622921959976616, guid: f4822e0e8f087d34ba771d4a1e828f0f, type: 3}
+  antibodyTarget: {fileID: 0}
