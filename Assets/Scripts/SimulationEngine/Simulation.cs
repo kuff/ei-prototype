@@ -108,12 +108,17 @@ public class Simulation : MonoBehaviour
                 // find the closest Cell (or Player)
                 var closetPosition = cellsCopy[0].transform.position;
                 var shortestDistance = float.MaxValue;
+                Vector3 gravityVector = Vector3.one;
                 if (c.type == CellType.Antibody)
                 {
                     closetPosition = new Vector3(
                         this.playerObject.transform.position.x,
                         0.6f,
                         this.playerObject.transform.position.z);
+                    gravityVector = new Vector3(
+                        (closetPosition.x - c.transform.position.x),
+                        (closetPosition.y - c.transform.position.y),
+                        (closetPosition.z - c.transform.position.z));
                 }
                 else
                 {
@@ -126,13 +131,12 @@ public class Simulation : MonoBehaviour
                         closetPosition = d.transform.position;
                         shortestDistance = distance;
                     }
+                    gravityVector = new Vector3(
+                        1 / (closetPosition.x - c.transform.position.x),
+                        1 / (closetPosition.y - c.transform.position.y),
+                        1 / (closetPosition.z - c.transform.position.z));
                 }
-
-                // define and inversly scale gravity vector
-                Vector3 gravityVector = new Vector3(
-                    1 / (closetPosition.x - c.transform.position.x),
-                    1 / (closetPosition.y - c.transform.position.y),
-                    1 / (closetPosition.z - c.transform.position.z));
+                
                 if (c.type != CellType.Antibody) gravityVector.Scale(new Vector3(0.1f, 0.1f, 0.1f));
                 else Debug.Log(this.playerObject.transform.position);
                 
@@ -318,13 +322,13 @@ public class Simulation : MonoBehaviour
         }
     }
     
-    private Vector3 FindSpawnSpace(Func<Vector3> generateSpawn, float minimumDistance = 7)
+    private Vector3 FindSpawnSpace(Func<Vector3> generateSpawn, float minimumDistance = 2)
     {
         Vector3 spawnPoint;
         
         bool isValidSpawn;
         int tries = 0;
-        int maxTriesAllowed = 100;
+        int maxTriesAllowed = 1000;
         do
         {
             isValidSpawn = true;
