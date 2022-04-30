@@ -9,8 +9,8 @@ public enum CellType
     Pathogen,
     PathogenNeutralized,
     Antibody,
-    Filler, 
-    Vaccine,// one filler type despite several different models, because the system does not need to distinguish between different models of filler Cells
+    Filler,  // one filler type despite several different models, because the system does not need to distinguish between different models of filler Cells
+    Vaccine,
 }
 [RequireComponent(typeof(AudioSource))]
 public class Cell : MonoBehaviour
@@ -97,13 +97,10 @@ public class Cell : MonoBehaviour
                     this.simulation.DespawnCell(this, true);
                     this.simulation.DespawnCell(collision.gameObject.GetComponentInChildren<Cell>() ?? null, true);
                 }
-                
-                this.simulation.OnCollision.Invoke(new Scenario());  // TODO: define the API for this...
             }
-        }
-
-        if (collisionCell?.type == CellType.Vaccine)
-        {
+            
+            else if (collisionCell?.type == CellType.Vaccine)
+            {
                 if (this.type == CellType.WhiteBloodCell)
                 {
                     bool applyForDrop = simulation.ApplyForDrop(this);
@@ -112,16 +109,16 @@ public class Cell : MonoBehaviour
                         {
                             SpawnElements(sparklesPrefab, collision, sparklesSound, 0.5f, true);
                         }
-                    simulation.DespawnCell(collisionCell.gameObject, false);
-                }
+                        simulation.DespawnCell(collisionCell.gameObject, false);
+                    }
                     else
                     {
                         SpawnElements(this.transform, sparklesPrefab, collision, sparklesSound, 0.7f);
                     }
                 }
-                
-                this.simulation.OnCollision.Invoke(new Scenario());  // TODO: define the API for this...
+            }
             
+            this.simulation.OnCollision.Invoke(new Scenario());  // TODO: define the API for this...
         }
     }
 

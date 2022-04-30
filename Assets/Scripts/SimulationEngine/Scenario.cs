@@ -14,6 +14,8 @@ public class FirstPlayerShootEvent : UnityEvent<Scenario> { }
 public class FirstAntibodyInfusionEvent : UnityEvent<Scenario> { }
 [Serializable]
 public class PathogensReducedToFiftyPercentEvent : UnityEvent<Scenario> { }
+[Serializable]
+public class FirstPlayerPathogenKillEvent : UnityEvent<Scenario> { }
 
 public class Scenario : Level
 {
@@ -23,6 +25,7 @@ public class Scenario : Level
     public FirstPlayerShootEvent                OnFirstPlayerShot                   = new FirstPlayerShootEvent();
     public FirstAntibodyInfusionEvent           OnFirstAntibodyInfusion             = new FirstAntibodyInfusionEvent();
     public PathogensReducedToFiftyPercentEvent  OnPathogensReducedToFiftyPercent    = new PathogensReducedToFiftyPercentEvent();
+    public FirstPlayerPathogenKillEvent         OnFirstPlayerPathogenKill           = new FirstPlayerPathogenKillEvent();
 
     public bool allowUpdateTicks;  // TODO: probably set this to false eventually...
     public float tickRate;
@@ -30,6 +33,8 @@ public class Scenario : Level
     private Simulation simulation;
     private bool hasReachFiftyPercent;
     private double lastUpdateTimestamp;
+    private bool hasShot;
+    private bool hasInfused;
 
     protected new void Start()
     {
@@ -37,12 +42,27 @@ public class Scenario : Level
         this.hasReachFiftyPercent = false;
         this.lastUpdateTimestamp = 0;
 
+        // hook in to Simulation
         this.simulation.OnCollision     .AddListener(this.HandleFirstCollision);
         this.simulation.OnPickup        .AddListener(this.HandleFirstPickup);
         this.simulation.OnReload        .AddListener(this.HandleFirstReload);
         this.simulation.OnShot          .AddListener(this.HandleFirstShot);
         this.simulation.OnPathgenDespawn.AddListener(HandleFirstAntibodyInfusion);
         this.simulation.OnPathgenDespawn.AddListener(HandlePathogensReducedToFiftyPercent);
+
+        // define logic for first Player Pathogen kill event
+        this.hasShot = false;
+        this.hasInfused = false;
+        this.OnFirstAntibodyInfusion.AddListener(s =>
+        {
+            this.hasInfused = true;
+            if (this.hasShot) this.OnFirstPlayerPathogenKill.Invoke(this);
+        });
+        this.OnFirstPlayerShot.AddListener(s =>
+        {
+            this.hasShot = true;
+            if (this.hasInfused) this.OnFirstPlayerPathogenKill.Invoke(this);
+        });
 
         base.Start();
     }

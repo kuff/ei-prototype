@@ -99,8 +99,11 @@ public class Simulation : MonoBehaviour
         var cellsCopy = new List<Cell>(this.cells);
         foreach (Cell c in cellsCopy)
         {
-            var playerDistance = Vector3.Distance(this.playerObject.transform.position, c.transform.position);
-            if (playerDistance > 10f || c.transform.position.y < 0f)
+            if (c == null || c.type == CellType.Vaccine) continue;
+            var cTransform = c.gameObject.transform/*.GetChild(0).gameObject.transform*/;
+            
+            var playerDistance = Vector3.Distance(this.playerObject.transform.position, cTransform.position);
+            if (playerDistance > 10f || cTransform.position.y < 0f)
             {
                 this.DespawnCell(c, true);
                 this.SpawnCells(c.type, 1);
@@ -111,33 +114,40 @@ public class Simulation : MonoBehaviour
                 var closetPosition = cellsCopy[0].transform.position;
                 var shortestDistance = float.MaxValue;
                 Vector3 gravityVector = Vector3.one;
+                
                 if (c.type == CellType.Antibody)
                 {
                     closetPosition = new Vector3(
                         this.playerObject.transform.position.x,
                         0.6f,
                         this.playerObject.transform.position.z);
+                    
                     gravityVector = new Vector3(
-                        (closetPosition.x - c.transform.position.x),
-                        (closetPosition.y - c.transform.position.y),
-                        (closetPosition.z - c.transform.position.z));
+                        (closetPosition.x - cTransform.position.x),
+                        (closetPosition.y - cTransform.position.y),
+                        (closetPosition.z - cTransform.position.z));
                 }
+                
                 else
                 {
                     foreach (var d in cellsCopy)
                     {
-                        var distance = Vector3.Distance(this.transform.position, d.transform.position);
-                        //Debug.Log("dist: " + (distance < shortestDistance));
-                        //Debug.Log(closestCell.type);
-                        if (!(distance < shortestDistance) || distance == 0 || d.type == CellType.Antibody || c.type == d.type) continue;
-                        closetPosition = d.transform.position;
-                        Debug.Log(c.type + " found " + d.type);
+                        if (d == null) continue;
+                        var dTransform = d.gameObject.transform/*.GetChild(0).gameObject.transform*/;
+                        
+                        if (d.type == CellType.Antibody || c.type == d.type) continue;
+                        var distance = Vector3.Distance(cTransform.position, dTransform.position);
+                        if (distance >= shortestDistance) continue;
+                        
+                        closetPosition = dTransform.position;
                         shortestDistance = distance;
                     }
+                    //if (c.type == CellType.WhiteBloodCell) Debug.Log(closetPosition);
                     gravityVector = new Vector3(
-                        1 / (closetPosition.x - c.transform.position.x),
-                        1 / (closetPosition.y - c.transform.position.y),
-                        1 / (closetPosition.z - c.transform.position.z));
+                        (closetPosition.x - cTransform.position.x),
+                        (closetPosition.y - cTransform.position.y),
+                        (closetPosition.z - cTransform.position.z));
+                    //gravityVector.Scale(new Vector3(1 / gravityVector.x, 1 / gravityVector.y, 1 / gravityVector.z));
                 }
                 
                 if (c.type != CellType.Antibody) 

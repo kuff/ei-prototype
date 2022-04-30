@@ -1,8 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
+
+[Serializable]
+public class GunGrabEvent : UnityEvent<Scenario> { }
 
 [RequireComponent(typeof(Interactable))]
 [RequireComponent(typeof(AudioSource))]
@@ -28,6 +33,8 @@ public class GunScript : MonoBehaviour
 
     public AudioClip reloadSound;
     public AudioClip shootSound;
+    
+    public GunGrabEvent OnGrab = new GunGrabEvent();
 
     protected void Start()
     {
@@ -46,6 +53,7 @@ public class GunScript : MonoBehaviour
         if(input.GetStateDown(isource) && !grabbed)
         {
             attachToHand();
+            this.OnGrab.Invoke(new Scenario());
         }
         else
         {
@@ -66,7 +74,7 @@ public class GunScript : MonoBehaviour
     {
         this.simulation.OnShot.Invoke(new Scenario());
         reload.isLoaded = false;
-        Debug.Log("Shoot!");
+        //Debug.Log("Shoot!");
         
         //var projectile = Instantiate(projectilePrefab, bulletSource.position, bulletSource.rotation);
         var projectile = this.simulation.SpawnCell(CellType.Antibody, bulletSource.position, bulletSource.rotation);
