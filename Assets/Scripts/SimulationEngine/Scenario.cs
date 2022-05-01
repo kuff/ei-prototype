@@ -53,15 +53,12 @@ public class Scenario : Level
         // define logic for first Player Pathogen kill event
         this.hasShot = false;
         this.hasInfused = false;
-        this.OnFirstAntibodyInfusion.AddListener(s =>
+        this.OnFirstAntibodyInfusion.AddListener(s => this.hasInfused = true);
+        this.OnFirstPlayerShot.AddListener(s => this.hasShot = true);
+        this.simulation.OnPathgenDespawn.AddListener(s =>
         {
-            this.hasInfused = true;
-            if (this.hasShot) this.OnFirstPlayerPathogenKill.Invoke(this);
-        });
-        this.OnFirstPlayerShot.AddListener(s =>
-        {
-            this.hasShot = true;
-            if (this.hasInfused) this.OnFirstPlayerPathogenKill.Invoke(this);
+            if (this.hasInfused && this.hasShot && this.simulation.PathogensDestroyed == 1) 
+                this.OnFirstPlayerPathogenKill.Invoke(this);
         });
 
         base.Start();

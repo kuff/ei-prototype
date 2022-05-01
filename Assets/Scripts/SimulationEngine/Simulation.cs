@@ -96,7 +96,7 @@ public class Simulation : MonoBehaviour
 
     public void Tick()
     {
-        var cellsCopy = new List<Cell>(this.cells);
+        var cellsCopy = this.GetCellsCopy();
         foreach (Cell c in cellsCopy)
         {
             if (c == null || c.type == CellType.Vaccine) continue;
@@ -111,7 +111,7 @@ public class Simulation : MonoBehaviour
             else if (this.CollisionsAllowed())
             {
                 // find the closest Cell (or Player)
-                var closetPosition = cellsCopy[0].transform.position;
+                var closetPosition = cTransform.position;  //cellsCopy[0].transform.position;
                 var shortestDistance = float.MaxValue;
                 Vector3 gravityVector = Vector3.one;
                 
@@ -157,6 +157,11 @@ public class Simulation : MonoBehaviour
                 c.Tick(gravityVector);
             }
         }
+    }
+
+    private List<Cell> GetCellsCopy()
+    {
+        return new List<Cell>(this.cells);
     }
 
     public void ClearCount()
@@ -399,5 +404,14 @@ public class Simulation : MonoBehaviour
     
     public void DespawnCell(GameObject go, bool playAnimation) {
         this.DespawnCell(go.GetComponent<Cell>(), playAnimation);
+    }
+
+    private void DespawnCells(CellType type, int amount = 0)
+    {
+        var cellsCopy = this.GetCellsCopy();
+        foreach (Cell c in cellsCopy)
+        {
+            if (c.type == type) this.DespawnCell(c, false);
+        }
     }
 }
