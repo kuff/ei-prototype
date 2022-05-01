@@ -15,6 +15,8 @@ public class FirstAntibodyInfusionEvent : UnityEvent<Scenario> { }
 [Serializable]
 public class PathogensReducedToFiftyPercentEvent : UnityEvent<Scenario> { }
 [Serializable]
+public class AllPathogensDestroyedEvent : UnityEvent<Scenario> { }
+[Serializable]
 public class FirstPlayerPathogenKillEvent : UnityEvent<Scenario> { }
 
 public class Scenario : Level
@@ -25,6 +27,7 @@ public class Scenario : Level
     public FirstPlayerShootEvent                OnFirstPlayerShot                   = new FirstPlayerShootEvent();
     public FirstAntibodyInfusionEvent           OnFirstAntibodyInfusion             = new FirstAntibodyInfusionEvent();
     public PathogensReducedToFiftyPercentEvent  OnPathogensReducedToFiftyPercent    = new PathogensReducedToFiftyPercentEvent();
+    public AllPathogensDestroyedEvent           OnAllPathogensDestroyed             = new AllPathogensDestroyedEvent();
     public FirstPlayerPathogenKillEvent         OnFirstPlayerPathogenKill           = new FirstPlayerPathogenKillEvent();
 
     public bool allowUpdateTicks;  // TODO: probably set this to false eventually...
@@ -59,6 +62,13 @@ public class Scenario : Level
         {
             if (this.hasInfused && this.hasShot && this.simulation.PathogensDestroyed == 1) 
                 this.OnFirstPlayerPathogenKill.Invoke(this);
+        });
+        
+        // all pathogens destroyed logix
+        this.simulation.OnPathgenDespawn.AddListener(s =>
+        {
+            if (this.simulation.PathogenCount == 0)
+                this.OnAllPathogensDestroyed.Invoke(this);
         });
 
         base.Start();
@@ -148,5 +158,15 @@ public class Scenario : Level
     public void StopTicks()
     {
         this.allowUpdateTicks = false;
+    }
+
+    public void SpawnTutorialPathogen()
+    {
+        this.simulation.SpawnCell(CellType.Pathogen, new Vector3(-8f, 1f, 0f), Quaternion.identity);
+    }
+
+    public void SpawnTutorialAntibody()
+    {
+        this.simulation.SpawnCell(CellType.Antibody, new Vector3(-8f, 2f, 0f), Quaternion.identity);
     }
 }

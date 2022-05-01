@@ -236,46 +236,26 @@ public class Simulation : MonoBehaviour
         // ...
     }
 
-    public void DespawnWBCells(int amount = 0)
+    public void DespawnWBCells(int amount = -1)
     {
-        // ...
+        this.DespawnCells(CellType.WhiteBloodCell, true, amount);
     }
 
-    public void DespawnPathogenCells(int amount = 0)
+    public void DespawnPathogenCells(int amount = -1)
     {
-        // ...
+        this.DespawnCells(CellType.Pathogen, true, amount);
     }
 
-    public void DespawnAntibodyCells(int amount = 0)
+    public void DespawnAntibodyCells(int amount = -1)
     {
-        // ...
+        this.DespawnCells(CellType.Antibody, true, amount);
     }
 
-    public void DespawnFillerCells(int amount = 0)
+    public void DespawnFillerCells(int amount = -1)
     {
-        // ...
+        this.DespawnCells(CellType.Filler, true, amount);
     }
 
-    public void DespawnWBCells(Cell[] cells)
-    {
-        // ...
-    }
-
-    public void DespawnPathogenCells(Cell[] cells)
-    {
-        // ...
-    }
-
-    public void DespawnAntibodyCells(Cell[] cells)
-    {
-        // ...
-    }
-
-    public void DespawnFillerCells(Cell[] cells)
-    {
-        // ...
-    }
-    
     [CanBeNull]
     public GameObject SpawnCell(CellType type, Vector3 position, Quaternion rotation)
     {
@@ -288,7 +268,7 @@ public class Simulation : MonoBehaviour
                 this.WBCsSpawned++;
                 this.WBCCount++;
                 this.OnWBCSpawn.Invoke(new Scenario());  // TODO: replace Scenario placeholder
-                break;                                   // API will probably change here...
+                break;                                       // API will probably change here...
 
             case CellType.Pathogen:
                 newCellObject = this.PathogenPrefab;
@@ -315,7 +295,6 @@ public class Simulation : MonoBehaviour
                 break;
 
             default:  // CellType.Filler
-                // TODO: randomly select and spawn Filler Cell prefab
                 //newCellObject = new GameObject();
                 return null;
         }
@@ -406,12 +385,23 @@ public class Simulation : MonoBehaviour
         this.DespawnCell(go.GetComponent<Cell>(), playAnimation);
     }
 
-    private void DespawnCells(CellType type, int amount = 0)
+    private void DespawnCells(CellType type, bool playAnimation, int amount = -1)
     {
         var cellsCopy = this.GetCellsCopy();
         foreach (Cell c in cellsCopy)
         {
-            if (c.type == type) this.DespawnCell(c, false);
+            if (amount == 0) break;
+            if (c.type == type)
+            {
+                this.DespawnCell(c, playAnimation);
+                amount--;
+            }
         }
+    }
+
+    private void DespawnCells(Cell[] despawningCells, bool playAnimation)
+    {
+        foreach (Cell c in despawningCells)
+            this.DespawnCell(c, playAnimation);
     }
 }

@@ -756,7 +756,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 510518653}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &383857161
 MonoBehaviour:
@@ -779,7 +779,19 @@ MonoBehaviour:
   secondsWaitAfterPlay: 1.5
   OnActive:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1042506008}
+        m_TargetAssemblyTypeName: Prompt, PPSAssemblyDefinition
+        m_MethodName: Activate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnResolve:
     m_PersistentCalls:
       m_Calls: []
@@ -860,18 +872,18 @@ PrefabInstance:
     - target: {fileID: 5676949471375782661, guid: 09e6206357512cd499e8b6bc1f9eb826, type: 3}
       propertyPath: OnGrab.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1042506008}
+      objectReference: {fileID: 510518652}
     - target: {fileID: 5676949471375782661, guid: 09e6206357512cd499e8b6bc1f9eb826, type: 3}
       propertyPath: OnGrab.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5676949471375782661, guid: 09e6206357512cd499e8b6bc1f9eb826, type: 3}
       propertyPath: OnGrab.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Activate
+      value: SpawnTutorialAntibody
       objectReference: {fileID: 0}
     - target: {fileID: 5676949471375782661, guid: 09e6206357512cd499e8b6bc1f9eb826, type: 3}
       propertyPath: OnGrab.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Prompt, PPSAssemblyDefinition
+      value: Scenario, SEAssemblyDefinition
       objectReference: {fileID: 0}
     - target: {fileID: 5676949471375782661, guid: 09e6206357512cd499e8b6bc1f9eb826, type: 3}
       propertyPath: OnGrab.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1121,7 +1133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62dd83913bf049f4f990e0bba1eb918a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entryPrompt: {fileID: 1042506008}
+  entryPrompt: {fileID: 383857161}
   isFirstLevel: 0
   isActive: 0
   OnFirstCollision:
@@ -1142,6 +1154,33 @@ MonoBehaviour:
   OnPathogensReducedToFiftyPercent:
     m_PersistentCalls:
       m_Calls: []
+  OnAllPathogensDestroyed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1171922089}
+        m_TargetAssemblyTypeName: Simulation, SEAssemblyDefinition
+        m_MethodName: DespawnWBCells
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: -1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1171922089}
+        m_TargetAssemblyTypeName: Simulation, SEAssemblyDefinition
+        m_MethodName: DespawnAntibodyCells
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: -1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnFirstPlayerPathogenKill:
     m_PersistentCalls:
       m_Calls:
@@ -1171,8 +1210,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 391820153}
-  - {fileID: 1042506007}
   - {fileID: 383857160}
+  - {fileID: 1042506007}
   - {fileID: 1866090405}
   - {fileID: 2020327009}
   - {fileID: 1745221866}
@@ -2003,7 +2042,7 @@ GameObject:
   - component: {fileID: 1042506007}
   - component: {fileID: 1042506008}
   m_Layer: 0
-  m_Name: Spawn1PathogenPrompt
+  m_Name: SpawnTutorialPathogenPrompt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2021,7 +2060,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 510518653}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1042506008
 MonoBehaviour:
@@ -2045,18 +2084,6 @@ MonoBehaviour:
   OnActive:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1171922089}
-        m_TargetAssemblyTypeName: Simulation, SEAssemblyDefinition
-        m_MethodName: SpawnPathogenCells
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 383857161}
         m_TargetAssemblyTypeName: Prompt, PPSAssemblyDefinition
         m_MethodName: Activate
@@ -2069,13 +2096,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnResolve:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1866090406}
-        m_TargetAssemblyTypeName: Prompt, PPSAssemblyDefinition
-        m_MethodName: Activate
-        m_Mode: 0
+      - m_Target: {fileID: 510518652}
+        m_TargetAssemblyTypeName: Scenario, SEAssemblyDefinition
+        m_MethodName: SpawnTutorialPathogen
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2084,6 +2108,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnResolve:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlay:
     m_PersistentCalls:
       m_Calls: []
@@ -2379,6 +2406,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnPathogensReducedToFiftyPercent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAllPathogensDestroyed:
     m_PersistentCalls:
       m_Calls: []
   OnFirstPlayerPathogenKill:
@@ -4018,7 +4048,7 @@ GameObject:
   - component: {fileID: 1866090405}
   - component: {fileID: 1866090406}
   m_Layer: 0
-  m_Name: Spawn5AntibodiesPrompt
+  m_Name: SpawnTutorialAntibodiesPrompt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4060,10 +4090,10 @@ MonoBehaviour:
   OnActive:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1171922089}
-        m_TargetAssemblyTypeName: Simulation, SEAssemblyDefinition
-        m_MethodName: SpawnAntibodyCells
-        m_Mode: 3
+      - m_Target: {fileID: 510518652}
+        m_TargetAssemblyTypeName: Scenario, SEAssemblyDefinition
+        m_MethodName: SpawnTutorialAntibody
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4143,6 +4173,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnPathogensReducedToFiftyPercent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAllPathogensDestroyed:
     m_PersistentCalls:
       m_Calls: []
   OnFirstPlayerPathogenKill:
@@ -4540,6 +4573,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1171922089}
+        m_TargetAssemblyTypeName: Simulation, SEAssemblyDefinition
+        m_MethodName: DespawnAntibodyCells
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: -1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
