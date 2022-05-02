@@ -41,11 +41,15 @@ public class Simulation : MonoBehaviour
     [HideInInspector]
     public int AntibodiesDestroyed;
     [HideInInspector]
+    public int VaccinesDestroyed;
+    [HideInInspector]
     public int WBCCount;
     [HideInInspector]
     public int PathogenCount;
     [HideInInspector]
     public int AntibodyCount;
+    [HideInInspector]
+    public int VaccineCount;
     [HideInInspector]
     public int collisionCount;
     [HideInInspector]
@@ -59,6 +63,7 @@ public class Simulation : MonoBehaviour
     public GameObject PathogenPrefab;
     public GameObject PathogenNeutralizedPrefab;
     public GameObject AntibodyPrefab;
+    public GameObject VaccinePrefab;
 
     public WBCSpawnEvent        OnWBCSpawn          = new WBCSpawnEvent();
     public PathogenSpawnEvent   OnPathogenSpawn     = new PathogenSpawnEvent();
@@ -86,6 +91,8 @@ public class Simulation : MonoBehaviour
 
     protected void Start()
     {
+        this.ClearCount();
+        
         this.playerObject = GameObject.FindGameObjectWithTag("Player");
         
         this.OnPickup   .AddListener(s => this.AntibodyPickupCount++);
@@ -99,7 +106,7 @@ public class Simulation : MonoBehaviour
         var cellsCopy = this.GetCellsCopy();
         foreach (Cell c in cellsCopy)
         {
-            if (c == null || c.type == CellType.Vaccine) continue;
+            if (c == null) continue;
             var cTransform = c.gameObject.transform/*.GetChild(0).gameObject.transform*/;
             
             var playerDistance = Vector3.Distance(this.playerObject.transform.position, cTransform.position);
@@ -110,38 +117,41 @@ public class Simulation : MonoBehaviour
             }
             else if (this.CollisionsAllowed())
             {
+                if (c.type == CellType.Vaccine) continue;
+                
                 // find the closest Cell (or Player)
-                var closetPosition = cTransform.position;  //cellsCopy[0].transform.position;
+                var closetPosition = cTransform.position; //cellsCopy[0].transform.position;
                 var shortestDistance = float.MaxValue;
                 Vector3 gravityVector = Vector3.one;
-                
+
                 if (c.type == CellType.Antibody)
                 {
                     closetPosition = new Vector3(
                         this.playerObject.transform.position.x,
                         0.6f,
                         this.playerObject.transform.position.z);
-                    
+
                     gravityVector = new Vector3(
                         (closetPosition.x - cTransform.position.x),
                         (closetPosition.y - cTransform.position.y),
                         (closetPosition.z - cTransform.position.z));
                 }
-                
+
                 else
                 {
                     foreach (var d in cellsCopy)
                     {
                         if (d == null) continue;
-                        var dTransform = d.gameObject.transform/*.GetChild(0).gameObject.transform*/;
-                        
+                        var dTransform = d.gameObject.transform /*.GetChild(0).gameObject.transform*/;
+
                         if (d.type == CellType.Antibody || c.type == d.type) continue;
                         var distance = Vector3.Distance(cTransform.position, dTransform.position);
                         if (distance >= shortestDistance) continue;
-                        
+
                         closetPosition = dTransform.position;
                         shortestDistance = distance;
                     }
+
                     //if (c.type == CellType.WhiteBloodCell) Debug.Log(closetPosition);
                     gravityVector = new Vector3(
                         (closetPosition.x - cTransform.position.x),
@@ -149,11 +159,12 @@ public class Simulation : MonoBehaviour
                         (closetPosition.z - cTransform.position.z));
                     //gravityVector.Scale(new Vector3(1 / gravityVector.x, 1 / gravityVector.y, 1 / gravityVector.z));
                 }
-                
-                if (c.type != CellType.Antibody) 
-                    gravityVector.Scale(new Vector3(this.movementSpeedScale, this.movementSpeedScale, this.movementSpeedScale));
+
+                if (c.type != CellType.Antibody)
+                    gravityVector.Scale(new Vector3(this.movementSpeedScale, this.movementSpeedScale,
+                        this.movementSpeedScale));
                 //else Debug.Log(this.playerObject.transform.position);
-                
+
                 c.Tick(gravityVector);
             }
         }
@@ -172,10 +183,15 @@ public class Simulation : MonoBehaviour
         this.WBCsDestroyed = 0;
         this.PathogensDestroyed = 0;
         this.AntibodiesDestroyed = 0;
+        this.VaccinesDestroyed = 0;
         this.WBCCount = 0;
         this.PathogenCount = 0;
         this.AntibodyCount = 0;
+        this.VaccineCount = 0;
         this.collisionCount = 0;
+        this.AntibodyPickupCount = 0;
+        this.gunReloadCount = 0;
+        this.gunShotCount = 0;
     }
 
     public bool CollisionsAllowed()
@@ -230,6 +246,17 @@ public class Simulation : MonoBehaviour
             SpawnCell(CellType.Antibody, spawnPos, Quaternion.identity);
         }
     }
+    
+    public void SpawnVaccineCells(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            Vector3 randpoint = UnityEngine.Random.insideUnitSphere.normalized;
+            Vector3 spawnPos = this.FindSpawnSpace(
+                () => Vector3.zero + new Vector3(randpoint.x, Mathf.Abs(randpoint.y), randpoint.z) * UnityEngine.Random.Range(PathogenRadiusMin, PathogenRadiusMax));
+            SpawnCell(CellType.Vaccine, spawnPos, Quaternion.identity);
+        }
+    }
 
     public void SpawnFillerCells(int amount)
     {
@@ -281,9 +308,15 @@ public class Simulation : MonoBehaviour
             case CellType.PathogenNeutralized:
                 newCellObject = this.PathogenNeutralizedPrefab;
 
-                this.PathogensSpawned++;
+                /*this.PathogensSpawned++;
                 this.PathogenCount++;
-                this.OnPathogenSpawn.Invoke(new Scenario());
+                this.OnPathogenSpawn.Invoke(new Scenario());*/
+                break;
+            
+            case CellType.Vaccine:
+                newCellObject = this.VaccinePrefab;
+
+                this.VaccineCount++;
                 break;
 
             case CellType.Antibody:
@@ -316,6 +349,9 @@ public class Simulation : MonoBehaviour
                 break;
             case CellType.Antibody:
                 this.SpawnAntibodyCells(amount);
+                break;
+            case CellType.Vaccine:
+                this.SpawnVaccineCells(amount);
                 break;
         }
     }
@@ -365,7 +401,7 @@ public class Simulation : MonoBehaviour
                 break;
 
             case CellType.Pathogen:
-            case CellType.PathogenNeutralized:
+            //case CellType.PathogenNeutralized:
                 this.PathogenCount--;
                 this.PathogensDestroyed++;
                 this.OnPathgenDespawn.Invoke(new Scenario());
@@ -375,6 +411,11 @@ public class Simulation : MonoBehaviour
                 this.AntibodyCount--;
                 this.AntibodiesDestroyed++;
                 this.OnAntibodyDespawn.Invoke(new Scenario());
+                break;
+            
+            case CellType.Vaccine:
+                this.VaccineCount--;
+                this.VaccinesDestroyed++;
                 break;
 
             // Filler Cells don't have these events so we don't need to catch them here

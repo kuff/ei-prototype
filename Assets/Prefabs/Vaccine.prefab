@@ -361,3 +361,20 @@ MonoBehaviour:
   ObjectGenerated: {fileID: 0}
   Antibody: {fileID: 3262622921959976616, guid: f4822e0e8f087d34ba771d4a1e828f0f, type: 3}
   antibodyTarget: {fileID: 0}
+--- !u!114 &7895201853008148971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6746583565283403522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf5070a7171da7a4fa8688f801e740ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rpmX: 0
+  rpmY: 0
+  rpmZ: 0
+  Rotating: 1
+  RandomRotate: 1

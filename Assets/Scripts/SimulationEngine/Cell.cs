@@ -88,6 +88,8 @@ public class Cell : MonoBehaviour
                     {
                         SpawnElements(this.transform, sparklesPrefab, collision, sparklesSound, 0.7f);
                     }
+                    
+                    this.simulation.OnCollision.Invoke(new Scenario());
                 }
                 else if (this.type == CellType.Antibody)
                 {
@@ -96,6 +98,8 @@ public class Cell : MonoBehaviour
                     CellType ct = collision.gameObject.GetComponentInChildren<Cell>().type;
                     this.simulation.DespawnCell(this, true);
                     this.simulation.DespawnCell(collision.gameObject.GetComponentInChildren<Cell>() ?? null, true);
+                    
+                    this.simulation.OnCollision.Invoke(new Scenario());
                 }
             }
             
@@ -115,10 +119,10 @@ public class Cell : MonoBehaviour
                     {
                         SpawnElements(this.transform, sparklesPrefab, collision, sparklesSound, 0.7f);
                     }
+                    
+                    this.simulation.OnCollision.Invoke(new Scenario());
                 }
             }
-            
-            this.simulation.OnCollision.Invoke(new Scenario());  // TODO: define the API for this...
         }
     }
 

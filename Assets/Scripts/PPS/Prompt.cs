@@ -238,7 +238,7 @@ public class Prompt : MonoBehaviour
 
         this.GetAudioSource().Stop();
 
-        if (this.OnActive != null && successful) this.OnResolve.Invoke(this);
+        if (this.OnActive != null /*&& successful*/) this.OnResolve.Invoke(this);
         else Debug.LogWarning(this + " OnResolve was invoked with no subscribed listeners. Is the event chain supposed to end here?", this);
     }
 
