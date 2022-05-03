@@ -3373,7 +3373,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isGlovingImmidiately: 1
-  hideUntilActive: 0
+  hideUntilActive: 1
   target: {fileID: 0}
   targetPrecision: 0.2
   matchRotation: 0
