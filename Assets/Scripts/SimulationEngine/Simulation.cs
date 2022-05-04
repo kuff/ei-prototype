@@ -334,6 +334,9 @@ public class Simulation : MonoBehaviour
 
         GameObject instantiatedObject = Instantiate(newCellObject, position, rotation); 
         if (type != CellType.PathogenNeutralized) cells.Add(instantiatedObject.GetComponentInChildren<Cell>());
+        
+        Logger.Log(Classifier.Cell.Spawn, instantiatedObject.GetComponentInChildren<Cell>());
+        
         return instantiatedObject;
     }
 
@@ -420,6 +423,8 @@ public class Simulation : MonoBehaviour
 
             // Filler Cells don't have these events so we don't need to catch them here
         }
+        
+        Logger.Log(Classifier.Cell.Despawn, cell);
     }
     
     public void DespawnCell(GameObject go, bool playAnimation) {

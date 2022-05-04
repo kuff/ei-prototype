@@ -95,6 +95,18 @@ public class Scenario : Level
             }
         });
         
+        // logging events
+        this.OnFirstCollision.AddListener(s => Logger.Log(Classifier.Scenario.OnFirstCollision, s));
+        this.OnFirstPlayerPickup.AddListener(s => Logger.Log(Classifier.Scenario.OnFirstPlayerPickup, s));
+        this.OnFirstPlayerReload.AddListener(s => Logger.Log(Classifier.Scenario.OnFirstPlayerReload, s));
+        this.OnFirstPlayerShot.AddListener(s => Logger.Log(Classifier.Scenario.OnFirstPlayerShot, s));
+        this.OnFirstAntibodyInfusion.AddListener(s => Logger.Log(Classifier.Scenario.OnfirstAntibodyInfusion, s));
+        this.onPathogensReducedEvent.AddListener(s => Logger.Log(Classifier.Scenario.OnPathogensReduced, s));
+        this.OnAllPathogensDestroyed.AddListener(s => Logger.Log(Classifier.Scenario.OnAllPathogensDestroyed, s));
+        this.OnFirstPlayerPathogenKill.AddListener(s => Logger.Log(Classifier.Scenario.OnFirstPlayerPathogenKill, s));
+        this.OnPathogenDestroyed.AddListener(s => Logger.Log(Classifier.Scenario.OnPathogenDestroyed, s));
+        this.OnVaccinesDestroyed.AddListener(s => Logger.Log(Classifier.Scenario.OnVaccinesDestroyed, s));
+        
         base.Start();
     }
 
@@ -162,6 +174,8 @@ public class Scenario : Level
 
     protected void Tick()
     {
+        Logger.Log(Classifier.Level.Tick, this);
+        
         //Debug.Log(this.isActive + ", " + this.allowUpdateTicks);
         if (this.isActive && this.allowUpdateTicks) 
             simulation.Tick();

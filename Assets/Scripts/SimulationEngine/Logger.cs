@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -78,6 +79,7 @@ public static class Classifier
         Unloaded,
         Started,
         Completed,
+        Tick,
     }
 
     public enum Microverse  // the things that happen in the Microverse specifically...
@@ -89,6 +91,36 @@ public static class Classifier
         MicroverseSnakeHit,
         MicroverseAcetHit,
         MicroverseAimingAt,
+    }
+
+    public enum Gun
+    {
+        GunPickup,
+        GunShot,
+        GunReload,
+    }
+
+    public enum Cell
+    {
+        Spawn,
+        Despawn,
+        PathogenWBCCollision,
+        PathogenAntibodyCollision,
+        VaccineWBCCollision,
+    }
+
+    public enum Scenario
+    {
+        OnFirstCollision,
+        OnFirstPlayerPickup,
+        OnFirstPlayerReload,
+        OnFirstPlayerShot,
+        OnfirstAntibodyInfusion,
+        OnPathogensReduced,
+        OnAllPathogensDestroyed,
+        OnFirstPlayerPathogenKill,
+        OnPathogenDestroyed,
+        OnVaccinesDestroyed,
     }
 }
 
@@ -400,6 +432,39 @@ public class Logger : MonoBehaviour  // class is almost entirely static
             SceneManager.GetActiveScene() != null ? SceneManager.GetActiveScene().name : "null",
             source.ToString().Replace(',', ';')
         ));
+    }
+
+    public static void Log(Classifier.Gun category, Transform gunTransform)
+    {
+        Logger.Log(new LogableEvent(
+            "Gun",
+            category.ToString(),
+            "null",
+            Level.activeLevel != null ? Level.activeLevel.name : "null",
+            SceneManager.GetActiveScene() != null ? SceneManager.GetActiveScene().name : "null",
+            gunTransform.forward.ToString()));
+    }
+
+    public static void Log(Classifier.Cell category, Cell c)
+    {
+        Logger.Log(new LogableEvent(
+            "Cell",
+            category.ToString(),
+            c.ToString(),
+            Level.activeLevel != null ? Level.activeLevel.name : "null",
+            SceneManager.GetActiveScene() != null ? SceneManager.GetActiveScene().name : "null",
+            c.type.ToString()));
+    }
+    
+    public static void Log(Classifier.Scenario category, Scenario s)
+    {
+        Logger.Log(new LogableEvent(
+            "Cell",
+            category.ToString(),
+            s.gameObject.ToString(),
+            Level.activeLevel != null ? Level.activeLevel.name : "null",
+            SceneManager.GetActiveScene() != null ? SceneManager.GetActiveScene().name : "null",
+            "null"));
     }
 
     // ===== THE BOTTLENECK LOG METHOD =====

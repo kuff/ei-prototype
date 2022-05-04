@@ -54,6 +54,7 @@ public class GunScript : MonoBehaviour
         {
             attachToHand();
             this.OnGrab.Invoke(new Scenario());
+            Logger.Log(Classifier.Gun.GunPickup, this.transform);
         }
         else
         {
@@ -72,7 +73,8 @@ public class GunScript : MonoBehaviour
     }
     void shoot()
     {
-        this.simulation.OnShot.Invoke(new Scenario());
+        //this.simulation.OnShot.Invoke(new Scenario());
+        //Logger.Log(Classifier.Gun.GunShot, this.transform);
         reload.isLoaded = false;
         //Debug.Log("Shoot!");
         
@@ -80,7 +82,8 @@ public class GunScript : MonoBehaviour
         var projectile = this.simulation.SpawnCell(CellType.Antibody, bulletSource.position, bulletSource.rotation);
         projectile.GetComponentInChildren<Rigidbody>().AddRelativeForce(Vector3.forward * projectileSpeed, ForceMode.Impulse);
 
-        simulation.OnShot.Invoke(new Scenario());  // TODO: replace placeholder Scenario
+        this.simulation.OnShot.Invoke(new Scenario());  // TODO: replace placeholder Scenario
+        Logger.Log(Classifier.Gun.GunShot, this.transform);
         
         this.GetComponent<AudioSource>().PlayOneShot(this.shootSound);
         anim.SetTrigger("Shoot");
@@ -88,12 +91,12 @@ public class GunScript : MonoBehaviour
 
     void attachToHand()
     {
-        this.simulation.OnPickup.Invoke(new Scenario());
-        
         gameObject.transform.parent = GetComponent<Interactable>().hoveringHand.transform;
         gameObject.transform.localPosition = new Vector3(0f, -0.35f, -0.08f);  // 0f, -0.15f, 0.15f
         gameObject.transform.localRotation = Quaternion.Euler(0f, -90f, -40f);
         grabbed = true;
+        
+        this.simulation.OnPickup.Invoke(new Scenario());
+        Logger.Log(Classifier.Gun.GunReload, this.transform);
     }
-
 }

@@ -1895,14 +1895,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44c7630d933b83e48abab72069262bde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementDuration: 7
-  waitBeforeMoving: 0
-  rangelowerX: -50
-  rangeupperX: 50
-  rangelowerY: -50
-  rangeupperY: 50
-  rangelowerZ: -50
-  rangeupperZ: 50
 --- !u!23 &575270192
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4789,6 +4781,27 @@ MonoBehaviour:
   OnPlay:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1716058263 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 107946, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+  m_PrefabInstance: {fileID: 183108823}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1716058264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716058263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68390e4ae4888a64b8a38f82cbc4048a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doLogging: 1
+  logConsole: 1
+  doLoIP: 0
+  loggingFrequency: 2
 --- !u!1 &1744038985
 GameObject:
   m_ObjectHideFlags: 0

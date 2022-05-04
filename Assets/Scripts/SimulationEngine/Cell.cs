@@ -90,6 +90,7 @@ public class Cell : MonoBehaviour
                     }
                     
                     this.simulation.OnCollision.Invoke(new Scenario());
+                    Logger.Log(Classifier.Cell.PathogenWBCCollision, collisionCell);
                 }
                 else if (this.type == CellType.Antibody)
                 {
@@ -100,6 +101,7 @@ public class Cell : MonoBehaviour
                     this.simulation.DespawnCell(collision.gameObject.GetComponentInChildren<Cell>() ?? null, true);
                     
                     this.simulation.OnCollision.Invoke(new Scenario());
+                    Logger.Log(Classifier.Cell.PathogenAntibodyCollision, collisionCell);
                 }
             }
             
@@ -121,6 +123,7 @@ public class Cell : MonoBehaviour
                     }
                     
                     this.simulation.OnCollision.Invoke(new Scenario());
+                    Logger.Log(Classifier.Cell.VaccineWBCCollision, collisionCell);
                 }
             }
         }
