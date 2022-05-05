@@ -47,10 +47,11 @@ public class GunScript : MonoBehaviour
         Hand localHand = gameObject.GetComponent<Interactable>().hoveringHand;
         if (localHand == null) return;
 
-        if (!grabbed) 
+        if (!grabbed) { 
             isource = gameObject.GetComponent<Interactable>().hoveringHand.handType;
+            gameObject.GetComponent<Interactable>().hoveringHand.ShowGrabHint();}
 
-        if(input.GetStateDown(isource) && !grabbed)
+        if (input.GetStateDown(isource) && !grabbed || input2.GetStateDown(isource) && !grabbed)
         {
             attachToHand();
             this.OnGrab.Invoke(new Scenario());
@@ -90,7 +91,7 @@ public class GunScript : MonoBehaviour
     void attachToHand()
     {
         this.simulation.OnPickup.Invoke(new Scenario());
-        
+        gameObject.GetComponent<Interactable>().hoveringHand.HideGrabHint();
         gameObject.transform.parent = GetComponent<Interactable>().hoveringHand.transform;
         gameObject.transform.localPosition = new Vector3(0f, -0.35f, -0.08f);  // 0f, -0.15f, 0.15f
         gameObject.transform.localRotation = Quaternion.Euler(0f, -90f, -40f);
