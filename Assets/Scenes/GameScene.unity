@@ -782,6 +782,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 9052523057054348983}
+        m_TargetAssemblyTypeName: Task, PPSAssemblyDefinition
+        m_MethodName: Hide
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlay:
     m_PersistentCalls:
       m_Calls: []
@@ -1859,7 +1871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entryPrompt: {fileID: 383857161}
-  isFirstLevel: 1
+  isFirstLevel: 0
   isActive: 0
   OnFirstCollision:
     m_PersistentCalls:
@@ -1940,7 +1952,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   allowUpdateTicks: 1
-  tickRate: 1
+  tickRate: 0.1
 --- !u!4 &510518653
 Transform:
   m_ObjectHideFlags: 0
@@ -3137,7 +3149,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 10
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3396,7 +3408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1105824360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3531,7 +3543,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 20
+          m_IntArgument: 10
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4524,7 +4536,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 10
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4912,7 +4924,7 @@ MonoBehaviour:
   playbackVolume: 0
   isOmnidirectional: 0
   isLooping: 0
-  secondsWaitAfterPlay: 2
+  secondsWaitAfterPlay: 0.5
   OnActive:
     m_PersistentCalls:
       m_Calls:
@@ -4923,7 +4935,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 10
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6806,19 +6818,7 @@ MonoBehaviour:
   isActive: 0
   OnFirstCollision:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1171922089}
-        m_TargetAssemblyTypeName: Simulation, SEAssemblyDefinition
-        m_MethodName: SpawnPathogenCells
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 10
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnFirstPlayerPickup:
     m_PersistentCalls:
       m_Calls: []
@@ -6871,7 +6871,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   allowUpdateTicks: 1
-  tickRate: 1
+  tickRate: 0.1
 --- !u!1 &1924165283
 GameObject:
   m_ObjectHideFlags: 0
@@ -7376,7 +7376,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 10
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -29216,7 +29216,7 @@ MonoBehaviour:
   target: {fileID: 0}
   targetPrecision: 0.2
   matchRotation: 0
-  hideAfterCompletion: 1
+  hideAfterCompletion: 0
   OnGrab:
     m_PersistentCalls:
       m_Calls: []

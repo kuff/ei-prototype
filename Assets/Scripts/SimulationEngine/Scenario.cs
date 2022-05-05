@@ -42,7 +42,7 @@ public class Scenario : Level
     
     private Simulation simulation;
     private bool hasReachFiftyPercent;
-    private double lastUpdateTimestamp;
+    private double deltaTime;
     private bool hasShot;
     private bool hasInfused;
     private bool vaccinesDestroyedCalled;
@@ -51,7 +51,7 @@ public class Scenario : Level
     {
         this.simulation = GameObject.FindGameObjectWithTag("Simulator").GetComponent<Simulation>();
         this.hasReachFiftyPercent = false;
-        this.lastUpdateTimestamp = 0;
+        this.deltaTime = 0;
         this.vaccinesDestroyedCalled = false;
 
         // hook in to Simulation
@@ -149,13 +149,14 @@ public class Scenario : Level
         // ...
     }*/
 
-    protected void FixedUpdate()
+    protected void Update()
     {
-        var newTimestamp = new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds();
+        this.deltaTime += Time.deltaTime;
         //Debug.Log(newTimestamp - this.lastUpdateTimestamp);
-        if (newTimestamp - this.lastUpdateTimestamp >= this.tickRate)
+        if (this.deltaTime >= this.tickRate)
         {
-            this.lastUpdateTimestamp = newTimestamp;
+            Debug.Log(this.gameObject.name);
+            this.deltaTime = 0;
             this.Tick();
         }
     }
