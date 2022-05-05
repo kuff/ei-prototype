@@ -4,10 +4,20 @@ using UnityEngine;
 
 public class rotate : MonoBehaviour
 {
-    public float rpmX = 10f;
-    public float rpmY = 10f;
-    public float rpmZ = 10f;
+    public float rpmX;
+    public float rpmY;
+    public float rpmZ;
     public bool Rotating = true;
+    public bool RandomRotate = true;
+
+    void Start()
+    {
+        if (RandomRotate == true) { 
+        rpmX = Random.Range(0f, 7f);
+        rpmY = Random.Range(0f, 7f);
+        rpmZ = Random.Range(0f, 7f);
+        }
+    }
 
     void Update()
     {
