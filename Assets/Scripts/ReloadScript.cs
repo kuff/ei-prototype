@@ -18,7 +18,7 @@ public class ReloadScript : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag != "Projectile" || isLoaded)return;
-        else
+        else if (other.tag == "Projectile")
         {
             isLoaded = true;
             //Destroy(other.gameObject);

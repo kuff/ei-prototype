@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 3664945101611098501}
   - component: {fileID: 5953204683380774189}
   - component: {fileID: 4192604862930935934}
+  - component: {fileID: 4200335904525128887}
   m_Layer: 0
   m_Name: ReloadPoint
   m_TagString: Untagged
@@ -71,7 +72,7 @@ BoxCollider:
   m_GameObject: {fileID: 4221593974180064718}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 0.59571314, z: 2.3403378}
   m_Center: {x: 0, y: 0.20214343, z: 0.106544256}
@@ -89,6 +90,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isLoaded: 0
   anim: {fileID: 0}
+--- !u!136 &4200335904525128887
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4221593974180064718}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.78805554
+  m_Height: 3.600392
+  m_Direction: 0
+  m_Center: {x: 0.42502892, y: -0.91931474, z: 0}
 --- !u!1 &5465087534332981646
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,7 +308,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 8170806972609793843}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.7601738
   m_Height: 3.446317
   m_Direction: 0
@@ -376,6 +391,9 @@ MonoBehaviour:
   grabbable: 0
   reloadSound: {fileID: 0}
   shootSound: {fileID: 0}
+  OnGrab:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!82 &5190264688025870072
 AudioSource:
   m_ObjectHideFlags: 0
