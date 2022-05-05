@@ -82,18 +82,18 @@ public class Cell : MonoBehaviour
                 {
                     bool applyForDrop = simulation.ApplyForDrop(this);
                     if (applyForDrop == true) {
-                        SpawnElements(sparklesPrefab, collision, sparklesSound, 0.7f, true);
+                        SpawnElements(sparklesPrefab, collision, sparklesSound, 0.5f, true);
                     }
                     else
                     {
-                        SpawnElements(this.transform, sparklesPrefab, collision, sparklesSound, 0.7f);
+                        SpawnElements(this.transform, sparklesPrefab, collision, sparklesSound, 0.5f);
                     }
                     
                     this.simulation.OnCollision.Invoke(new Scenario());
                 }
                 else if (this.type == CellType.Antibody)
                 {
-                    SpawnElements(explosionPrefab, collision, explosionSound, 0.7f, false);
+                    SpawnElements(explosionPrefab, collision, explosionSound, 0.6f, false);
                     
                     CellType ct = collision.gameObject.GetComponentInChildren<Cell>().type;
                     this.simulation.DespawnCell(this, true);
