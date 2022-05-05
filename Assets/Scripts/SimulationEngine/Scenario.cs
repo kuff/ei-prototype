@@ -77,10 +77,10 @@ public class Scenario : Level
         // all pathogens destroyed logic
         this.simulation.OnCollision.AddListener(s =>
         {
-            Debug.Log(this.simulation.PathogensSpawned);
+            //Debug.Log(this.simulation.PathogensSpawned);
             if (this.isActive && this.hasReachFiftyPercent && this.simulation.PathogensSpawned > 2 && this.simulation.PathogenCount == 0)
             {
-                Debug.Log("Pathogens destroyed in " + this.gameObject.name);
+                //Debug.Log("Pathogens destroyed in " + this.gameObject.name);
                 this.OnAllPathogensDestroyed.Invoke(this);
             }
         });
@@ -155,7 +155,7 @@ public class Scenario : Level
         //Debug.Log(newTimestamp - this.lastUpdateTimestamp);
         if (this.deltaTime >= this.tickRate)
         {
-            Debug.Log(this.gameObject.name);
+            //Debug.Log(this.gameObject.name);
             this.deltaTime = 0;
             this.Tick();
         }

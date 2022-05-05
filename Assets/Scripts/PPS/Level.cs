@@ -79,7 +79,7 @@ public class Level : MonoBehaviour
             Logger.Log(Classifier.Level.Unloaded, Level.activeLevel);
             
             Scene scene = SceneManager.GetActiveScene();
-            Debug.Log("Active Level is now " + Level.activeLevel.name + " in Scene " + scene.name);
+            //Debug.Log("Active Level is now " + Level.activeLevel.name + " in Scene " + scene.name);
         }
 
         Level.activeLevel = this;
