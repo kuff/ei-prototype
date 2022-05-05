@@ -1070,6 +1070,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1170715663}
+        m_TargetAssemblyTypeName: Prompt, PPSAssemblyDefinition
+        m_MethodName: Activate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlay:
     m_PersistentCalls:
       m_Calls: []
@@ -1458,6 +1470,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2125042715}
+        m_TargetAssemblyTypeName: Prompt, PPSAssemblyDefinition
+        m_MethodName: Activate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnResolve:
     m_PersistentCalls:
       m_Calls: []
@@ -1538,7 +1562,7 @@ PrefabInstance:
     - target: {fileID: 5676949471375782661, guid: 09e6206357512cd499e8b6bc1f9eb826, type: 3}
       propertyPath: OnGrab.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1866090406}
+      objectReference: {fileID: 2063338166}
     - target: {fileID: 5676949471375782661, guid: 09e6206357512cd499e8b6bc1f9eb826, type: 3}
       propertyPath: OnGrab.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1966,6 +1990,7 @@ Transform:
   m_Children:
   - {fileID: 391820153}
   - {fileID: 383857160}
+  - {fileID: 2125042716}
   - {fileID: 1042506007}
   - {fileID: 1866090405}
   - {fileID: 2063338165}
@@ -2226,7 +2251,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 1923784784}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &673818162
 MonoBehaviour:
@@ -3047,7 +3072,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 510518653}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1042506008
 MonoBehaviour:
@@ -3118,7 +3143,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 510518653}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1071411141
 MonoBehaviour:
@@ -3289,7 +3314,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 1923784784}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1095873370
 MonoBehaviour:
@@ -3510,7 +3535,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 1923784784}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1157826435
 MonoBehaviour:
@@ -3573,6 +3598,65 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlay:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &1170715661
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1170715662}
+  - component: {fileID: 1170715663}
+  m_Layer: 0
+  m_Name: newVO2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1170715662
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170715661}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.98, y: 0.8, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_Children: []
+  m_Father: {fileID: 1923784784}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1170715663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170715661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27d93c4da3886b54e9b3286679e14419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  promptName: An Awesome Prompt
+  promptText: 
+  audioClip: {fileID: 8300000, guid: e2d6699372972004fb928534bc0b24b5, type: 3}
+  playbackVolume: 0.8
+  isOmnidirectional: 1
+  isLooping: 0
+  secondsWaitAfterPlay: 0
+  OnActive:
+    m_PersistentCalls:
+      m_Calls: []
+  OnResolve:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlay:
     m_PersistentCalls:
       m_Calls: []
@@ -4208,7 +4292,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 510518653}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1216956255
 MonoBehaviour:
@@ -4518,7 +4602,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1923784784}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1310583220
 MonoBehaviour:
@@ -4858,7 +4942,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 1923784784}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1428816517
 MonoBehaviour:
@@ -5118,7 +5202,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 510518653}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1460014294
 MonoBehaviour:
@@ -5578,7 +5662,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 510518653}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1634918053
 MonoBehaviour:
@@ -5649,7 +5733,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 510518653}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1635633570
 MonoBehaviour:
@@ -5978,7 +6062,7 @@ Transform:
   m_Children:
   - {fileID: 97283649}
   m_Father: {fileID: 510518653}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1745221867
 MonoBehaviour:
@@ -6314,7 +6398,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 510518653}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1790525356
 MonoBehaviour:
@@ -6637,7 +6721,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 510518653}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1866090406
 MonoBehaviour:
@@ -6669,18 +6753,6 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 5
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2063338166}
-        m_TargetAssemblyTypeName: Prompt, PPSAssemblyDefinition
-        m_MethodName: Activate
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6806,6 +6878,7 @@ Transform:
   - {fileID: 1436362549}
   - {fileID: 2089140625}
   - {fileID: 338113006}
+  - {fileID: 1170715662}
   - {fileID: 1310583219}
   - {fileID: 1157826434}
   - {fileID: 1095873369}
@@ -6985,7 +7058,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 510518653}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1949964734
 MonoBehaviour:
@@ -7358,7 +7431,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 510518653}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2020327010
 MonoBehaviour:
@@ -7378,7 +7451,7 @@ MonoBehaviour:
   playbackVolume: 0
   isOmnidirectional: 0
   isLooping: 0
-  secondsWaitAfterPlay: 5
+  secondsWaitAfterPlay: 3.5
   OnActive:
     m_PersistentCalls:
       m_Calls:
@@ -7557,7 +7630,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 510518653}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2063338166
 MonoBehaviour:
@@ -7583,7 +7656,19 @@ MonoBehaviour:
       m_Calls: []
   OnResolve:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1866090406}
+        m_TargetAssemblyTypeName: Prompt, PPSAssemblyDefinition
+        m_MethodName: Activate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlay:
     m_PersistentCalls:
       m_Calls: []
@@ -7719,6 +7804,65 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 080dbe8d7c90f104a93615eeb61cfbbd, type: 3}
+--- !u!1 &2125042714
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2125042716}
+  - component: {fileID: 2125042715}
+  m_Layer: 0
+  m_Name: newVO1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2125042715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125042714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27d93c4da3886b54e9b3286679e14419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  promptName: An Awesome Prompt
+  promptText: 
+  audioClip: {fileID: 8300000, guid: 8ea9333da836a0348bd9a3a04b53411b, type: 3}
+  playbackVolume: 1.5
+  isOmnidirectional: 1
+  isLooping: 0
+  secondsWaitAfterPlay: 0.5
+  OnActive:
+    m_PersistentCalls:
+      m_Calls: []
+  OnResolve:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPlay:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &2125042716
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125042714}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.98, y: 0.8, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_Children: []
+  m_Father: {fileID: 510518653}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2137637795 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 080dbe8d7c90f104a93615eeb61cfbbd, type: 3}
@@ -45079,7 +45223,7 @@ GameObject:
   - component: {fileID: 1990886406}
   m_Layer: 0
   m_Name: Antibodytask
-  m_TagString: Projectile
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
