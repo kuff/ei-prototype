@@ -84,6 +84,7 @@ public class GunScript : MonoBehaviour
         
         this.GetComponent<AudioSource>().PlayOneShot(this.shootSound);
         anim.SetTrigger("Shoot");
+        ControllerButtonHints.HideTextHint(GetComponent<Interactable>().hoveringHand, input2);
     }
 
     void attachToHand()
@@ -94,6 +95,7 @@ public class GunScript : MonoBehaviour
         gameObject.transform.localPosition = new Vector3(0f, -0.35f, -0.08f);  // 0f, -0.15f, 0.15f
         gameObject.transform.localRotation = Quaternion.Euler(0f, -90f, -40f);
         grabbed = true;
+        ControllerButtonHints.ShowTextHint(GetComponent<Interactable>().hoveringHand, input2, "Skyd", true);
     }
 
 }
