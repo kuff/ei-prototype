@@ -78,7 +78,7 @@ public class Scenario : Level
         this.simulation.OnCollision.AddListener(s =>
         {
             Debug.Log(this.simulation.PathogensSpawned);
-            if (this.isActive && this.hasReachFiftyPercent && this.simulation.PathogensSpawned > 0 && this.simulation.PathogenCount == 0)
+            if (this.isActive && this.hasReachFiftyPercent && this.simulation.PathogensSpawned > 2 && this.simulation.PathogenCount == 0)
             {
                 Debug.Log("Pathogens destroyed in " + this.gameObject.name);
                 this.OnAllPathogensDestroyed.Invoke(this);
